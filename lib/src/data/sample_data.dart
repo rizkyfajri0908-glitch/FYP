@@ -1,0 +1,87 @@
+import '../models/grocery_suggestion.dart';
+import '../models/ingredient.dart';
+import '../models/recipe.dart';
+
+class SampleData {
+  const SampleData._();
+
+  static List<Ingredient> ingredients = [
+    Ingredient(
+      id: '1',
+      name: 'Chicken breast',
+      quantity: '2 pieces',
+      category: IngredientCategory.protein,
+      expiryDate: DateTime.now().add(const Duration(days: 1)),
+    ),
+    Ingredient(
+      id: '2',
+      name: 'Spinach',
+      quantity: '1 bunch',
+      category: IngredientCategory.vegetable,
+      expiryDate: DateTime.now().add(const Duration(days: 2)),
+    ),
+    Ingredient(
+      id: '3',
+      name: 'Milk',
+      quantity: '1 carton',
+      category: IngredientCategory.dairy,
+      expiryDate: DateTime.now().add(const Duration(days: 4)),
+    ),
+    Ingredient(
+      id: '4',
+      name: 'Rice',
+      quantity: '2 kg',
+      category: IngredientCategory.grain,
+      expiryDate: DateTime.now().add(const Duration(days: 60)),
+    ),
+    Ingredient(
+      id: '5',
+      name: 'Tomatoes',
+      quantity: '5 pieces',
+      category: IngredientCategory.vegetable,
+      expiryDate: DateTime.now().add(const Duration(days: 3)),
+    ),
+  ];
+
+  static const recipes = [
+    Recipe(
+      title: 'Spinach Chicken Rice Bowl',
+      description: 'Uses the most urgent ingredients before they expire.',
+      matchingIngredients: ['Chicken breast', 'Spinach', 'Rice'],
+      minutes: 25,
+    ),
+    Recipe(
+      title: 'Tomato Milk Pasta Sauce',
+      description: 'A simple creamy sauce using tomato and milk.',
+      matchingIngredients: ['Tomatoes', 'Milk'],
+      minutes: 20,
+    ),
+    Recipe(
+      title: 'Quick Fried Rice',
+      description: 'Flexible meal for leftovers and pantry items.',
+      matchingIngredients: ['Rice', 'Chicken breast'],
+      minutes: 15,
+    ),
+  ];
+
+  static const grocerySuggestions = [
+    GrocerySuggestion(
+      name: 'Eggs',
+      reason: 'Often used in quick meals and currently missing.',
+      priority: GroceryPriority.high,
+      source: GrocerySource.staple,
+    ),
+    GrocerySuggestion(
+      name: 'Onions',
+      reason: 'Frequently paired with chicken and rice recipes.',
+      priority: GroceryPriority.medium,
+      source: GrocerySource.staple,
+    ),
+    GrocerySuggestion(
+      name: 'Carrots',
+      reason: 'Useful for balanced meals and longer fridge storage.',
+      priority: GroceryPriority.low,
+      source: GrocerySource.staple,
+    ),
+  ];
+}
