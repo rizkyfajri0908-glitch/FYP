@@ -36,24 +36,26 @@ class _AuthScreenState extends State<AuthScreen> {
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 420),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     width: 64,
                     height: 64,
                     decoration: BoxDecoration(
-                      color: AppColors.darkGreen,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Icon(
-                      Icons.spa,
                       color: Colors.white,
-                      size: 36,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: AppColors.mintGreen),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    child: Image.asset(
+                      'assets/images/ecobite_logo.png',
+                      fit: BoxFit.cover,
                     ),
                   ),
                   const SizedBox(height: 20),
                   Text(
                     _isLoginMode ? 'Welcome back' : 'Create account',
+                    textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           color: AppColors.darkGreen,
                           fontWeight: FontWeight.w800,
@@ -62,6 +64,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   const SizedBox(height: 8),
                   const Text(
                     'Sign in to save your kitchen inventory and preferences.',
+                    textAlign: TextAlign.center,
                     style: TextStyle(color: AppColors.muted),
                   ),
                   const SizedBox(height: 20),

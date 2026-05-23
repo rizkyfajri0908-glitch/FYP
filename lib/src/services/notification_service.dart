@@ -66,28 +66,30 @@ class NotificationService {
           .take(50);
 
       for (final ingredient in upcomingIngredients) {
-        final reminderDate = _reminderDateFor(
+        final reminderDates = _reminderDatesFor(
           ingredient: ingredient,
           reminderDaysBefore: preferences.reminderDaysBefore,
+          repeatCount: preferences.notificationRepeatCount,
+          reminderHour: preferences.preferredReminderHour,
         );
 
-        if (reminderDate == null) {
-          continue;
+        for (var index = 0; index < reminderDates.length; index += 1) {
+          final reminderDate = reminderDates[index];
+
+          await _notifications.zonedSchedule(
+            id: _notificationIdFor(ingredient.id, index),
+            title: 'Use ${ingredient.name} soon',
+            body:
+                '${ingredient.name} expires on ${_formatDate(ingredient.expiryDate)}.',
+            scheduledDate: timezone.TZDateTime.from(
+              reminderDate,
+              timezone.local,
+            ),
+            notificationDetails: _notificationDetails(),
+            androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+            payload: ingredient.id,
+          );
         }
-
-        await _notifications.zonedSchedule(
-          id: _notificationIdFor(ingredient.id),
-          title: 'Use ${ingredient.name} soon',
-          body:
-              '${ingredient.name} expires on ${_formatDate(ingredient.expiryDate)}.',
-          scheduledDate: timezone.TZDateTime.from(
-            reminderDate,
-            timezone.local,
-          ),
-          notificationDetails: _notificationDetails(),
-          androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-          payload: ingredient.id,
-        );
       }
     } catch (_) {
       // Notification plugins are unavailable in widget tests and some desktop
@@ -104,7 +106,7 @@ class NotificationService {
       await initialize();
       await _notifications.show(
         id: 999001,
-        title: 'Smart Kitchen reminders are on',
+        title: 'EcoBite reminders are on',
         body: 'You will be reminded before ingredients expire.',
         notificationDetails: _notificationDetails(),
       );
@@ -155,22 +157,31 @@ class NotificationService {
     );
   }
 
-  DateTime? _reminderDateFor({
+  List<DateTime> _reminderDatesFor({
     required Ingredient ingredient,
     required int reminderDaysBefore,
+    required int repeatCount,
+    required int reminderHour,
   }) {
-    final reminderDate = DateTime(
+    final dates = <DateTime>[];
+    final expiryDay = DateTime(
       ingredient.expiryDate.year,
       ingredient.expiryDate.month,
       ingredient.expiryDate.day,
-      9,
-    ).subtract(Duration(days: reminderDaysBefore));
+    );
+    final remindersToCreate = repeatCount.clamp(1, 5).toInt();
 
-    if (reminderDate.isAfter(DateTime.now())) {
-      return reminderDate;
+    for (var index = 0; index < remindersToCreate; index += 1) {
+      final daysBefore = (reminderDaysBefore - index).clamp(0, 365).toInt();
+      final reminderDate = expiryDay
+          .subtract(Duration(days: daysBefore))
+          .add(Duration(hours: reminderHour.clamp(0, 23).toInt()));
+
+      if (reminderDate.isAfter(DateTime.now())) {
+        dates.add(reminderDate);
+      }
     }
 
-    final sameDayReminder = DateTime.now().add(const Duration(minutes: 1));
     final expiryEndOfDay = DateTime(
       ingredient.expiryDate.year,
       ingredient.expiryDate.month,
@@ -178,16 +189,18 @@ class NotificationService {
       23,
       59,
     );
+    final sameDayReminder = DateTime.now().add(const Duration(minutes: 1));
 
-    if (sameDayReminder.isBefore(expiryEndOfDay)) {
-      return sameDayReminder;
+    if (dates.isEmpty && sameDayReminder.isBefore(expiryEndOfDay)) {
+      dates.add(sameDayReminder);
     }
 
-    return null;
+    return dates;
   }
 
-  int _notificationIdFor(String ingredientId) {
-    return ingredientId.hashCode.abs() % 2147483647;
+  int _notificationIdFor(String ingredientId, int reminderIndex) {
+    final baseId = ingredientId.hashCode.abs() % 2147480000;
+    return baseId + reminderIndex;
   }
 
   String _formatDate(DateTime date) {

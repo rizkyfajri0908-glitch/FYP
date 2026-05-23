@@ -1,6 +1,6 @@
 import '../models/grocery_suggestion.dart';
 import '../models/ingredient.dart';
-import '../models/recipe.dart';
+import 'recipe_catalog.dart';
 
 class SampleData {
   const SampleData._();
@@ -43,26 +43,7 @@ class SampleData {
     ),
   ];
 
-  static const recipes = [
-    Recipe(
-      title: 'Spinach Chicken Rice Bowl',
-      description: 'Uses the most urgent ingredients before they expire.',
-      matchingIngredients: ['Chicken breast', 'Spinach', 'Rice'],
-      minutes: 25,
-    ),
-    Recipe(
-      title: 'Tomato Milk Pasta Sauce',
-      description: 'A simple creamy sauce using tomato and milk.',
-      matchingIngredients: ['Tomatoes', 'Milk'],
-      minutes: 20,
-    ),
-    Recipe(
-      title: 'Quick Fried Rice',
-      description: 'Flexible meal for leftovers and pantry items.',
-      matchingIngredients: ['Rice', 'Chicken breast'],
-      minutes: 15,
-    ),
-  ];
+  static const recipes = RecipeCatalog.recipes;
 
   static const grocerySuggestions = [
     GrocerySuggestion(

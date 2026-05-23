@@ -15,19 +15,27 @@ class SectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: AppColors.darkGreen,
-                fontWeight: FontWeight.w800,
-              ),
+        SizedBox(
+          width: double.infinity,
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  color: AppColors.darkGreen,
+                  fontWeight: FontWeight.w800,
+                ),
+          ),
         ),
         const SizedBox(height: 4),
-        Text(
-          subtitle,
-          style: const TextStyle(color: AppColors.muted),
+        SizedBox(
+          width: double.infinity,
+          child: Text(
+            subtitle,
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: AppColors.muted),
+          ),
         ),
       ],
     );

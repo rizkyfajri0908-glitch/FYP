@@ -1,5 +1,8 @@
 import '../data/sample_data.dart';
+import '../models/assistant_knowledge.dart';
 import '../models/ingredient.dart';
+import '../models/recipe.dart';
+import '../models/user_preferences.dart';
 import 'recipe_recommendation_service.dart';
 
 class AssistantResponseService {
@@ -10,6 +13,9 @@ class AssistantResponseService {
   String respond({
     required String question,
     required List<Ingredient> inventory,
+    required List<Recipe> recipes,
+    required List<AssistantKnowledge> knowledgeBase,
+    UserPreferences? preferences,
   }) {
     final normalizedQuestion = question.toLowerCase();
 
@@ -18,7 +24,11 @@ class AssistantResponseService {
     }
 
     if (_containsAny(normalizedQuestion, ['cook', 'recipe', 'meal', 'make'])) {
-      return _recipeResponse(inventory);
+      return _recipeResponse(
+        inventory: inventory,
+        recipes: recipes,
+        preferences: preferences,
+      );
     }
 
     if (_containsAny(
@@ -32,8 +42,17 @@ class AssistantResponseService {
       return _inventoryResponse(inventory);
     }
 
+    final knowledgeResponse = _knowledgeResponse(
+      question: normalizedQuestion,
+      knowledgeBase: knowledgeBase,
+    );
+    if (knowledgeResponse != null) {
+      return knowledgeResponse;
+    }
+
     return 'I can help with expiry checks, recipe ideas, grocery planning, '
-        'and your kitchen inventory. Try asking: "What can I cook today?"';
+        'food storage, food safety, dietary preferences, and waste reduction. '
+        'Try asking: "How can I reduce food waste?"';
   }
 
   bool _containsAny(String question, List<String> keywords) {
@@ -63,10 +82,15 @@ class AssistantResponseService {
     return 'Use these first: $topItems.';
   }
 
-  String _recipeResponse(List<Ingredient> inventory) {
+  String _recipeResponse({
+    required List<Ingredient> inventory,
+    required List<Recipe> recipes,
+    UserPreferences? preferences,
+  }) {
     final recommendations = _recipeService.rankRecipes(
-      recipes: SampleData.recipes,
+      recipes: recipes,
       inventory: inventory,
+      preferences: preferences,
     );
 
     if (recommendations.isEmpty) {
@@ -87,10 +111,55 @@ class AssistantResponseService {
         '${best.missingIngredients.join(', ')}.';
   }
 
-  String _groceryResponse(List<Ingredient> inventory) {
-    final inventoryNames = inventory
-        .map((ingredient) => ingredient.name.toLowerCase())
+  String? _knowledgeResponse({
+    required String question,
+    required List<AssistantKnowledge> knowledgeBase,
+  }) {
+    AssistantKnowledge? bestEntry;
+    var bestScore = 0;
+
+    for (final entry in knowledgeBase) {
+      final score = _knowledgeScore(question, entry);
+      if (score > bestScore) {
+        bestScore = score;
+        bestEntry = entry;
+      }
+    }
+
+    if (bestEntry == null || bestScore < 2) {
+      return null;
+    }
+
+    return bestEntry.answer;
+  }
+
+  int _knowledgeScore(String question, AssistantKnowledge entry) {
+    var score = 0;
+    final searchableText =
+        '${entry.question} ${entry.keywords.join(' ')}'.toLowerCase();
+    final questionWords = question
+        .split(RegExp(r'[^a-z0-9]+'))
+        .where((word) => word.length >= 3)
         .toSet();
+
+    for (final keyword in entry.keywords) {
+      if (question.contains(keyword.toLowerCase())) {
+        score += 3;
+      }
+    }
+
+    for (final word in questionWords) {
+      if (searchableText.contains(word)) {
+        score += 1;
+      }
+    }
+
+    return score;
+  }
+
+  String _groceryResponse(List<Ingredient> inventory) {
+    final inventoryNames =
+        inventory.map((ingredient) => ingredient.name.toLowerCase()).toSet();
     final missingSuggestions = SampleData.grocerySuggestions
         .where((item) => !inventoryNames.contains(item.name.toLowerCase()))
         .map((item) => item.name)

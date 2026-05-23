@@ -84,4 +84,105 @@ void main() {
 
     expect(recommendations.first.recipe.title, 'Quick Rice Meal');
   });
+
+  test('puts recipes with more available ingredients first', () {
+    const service = RecipeRecommendationService();
+    final inventory = [
+      Ingredient(
+        id: '1',
+        name: 'Rice',
+        quantity: '1 kg',
+        category: IngredientCategory.grain,
+        expiryDate: DateTime.now().add(const Duration(days: 30)),
+      ),
+      Ingredient(
+        id: '2',
+        name: 'Eggs',
+        quantity: '6 pieces',
+        category: IngredientCategory.protein,
+        expiryDate: DateTime.now().add(const Duration(days: 5)),
+      ),
+    ];
+
+    final recipes = [
+      const Recipe(
+        title: 'One Match',
+        description: 'Uses one inventory item.',
+        matchingIngredients: ['Rice', 'Chicken breast'],
+        minutes: 10,
+      ),
+      const Recipe(
+        title: 'Two Matches',
+        description: 'Uses two inventory items.',
+        matchingIngredients: ['Rice', 'Eggs', 'Spinach'],
+        minutes: 30,
+      ),
+      const Recipe(
+        title: 'No Match',
+        description: 'Uses no current items.',
+        matchingIngredients: ['Milk', 'Tomatoes'],
+        minutes: 5,
+      ),
+    ];
+
+    final recommendations = service.rankRecipes(
+      recipes: recipes,
+      inventory: inventory,
+    );
+
+    expect(recommendations.map((item) => item.recipe.title), [
+      'Two Matches',
+      'One Match',
+      'No Match',
+    ]);
+  });
+
+  test('filters recipes by dietary preference', () {
+    const service = RecipeRecommendationService();
+    const recipes = [
+      Recipe(
+        title: 'Pork Rice',
+        description: 'Contains pork.',
+        matchingIngredients: ['Pork', 'Rice'],
+        minutes: 20,
+      ),
+      Recipe(
+        title: 'Vegetable Rice',
+        description: 'Vegetarian rice meal.',
+        matchingIngredients: ['Rice', 'Spinach'],
+        minutes: 20,
+        dietary: 'vegetarian',
+      ),
+    ];
+
+    final halalRecommendations = service.rankRecipes(
+      recipes: recipes,
+      inventory: const [],
+      preferences: const UserPreferences(
+        dietaryPreference: DietaryPreference.halal,
+        cookingStyle: CookingStyle.quick,
+        householdSize: 1,
+        reminderDaysBefore: 3,
+        notificationRepeatCount: 2,
+      ),
+    );
+
+    final vegetarianRecommendations = service.rankRecipes(
+      recipes: recipes,
+      inventory: const [],
+      preferences: const UserPreferences(
+        dietaryPreference: DietaryPreference.vegetarian,
+        cookingStyle: CookingStyle.quick,
+        householdSize: 1,
+        reminderDaysBefore: 3,
+        notificationRepeatCount: 2,
+      ),
+    );
+
+    expect(
+      halalRecommendations.map((item) => item.recipe.title),
+      isNot(contains('Pork Rice')),
+    );
+    expect(vegetarianRecommendations.single.recipe.title, 'Vegetable Rice');
+  });
 }

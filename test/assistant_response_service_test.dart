@@ -1,5 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:smart_kitchen_assistant/src/data/assistant_knowledge_base.dart';
+import 'package:smart_kitchen_assistant/src/data/recipe_catalog.dart';
 import 'package:smart_kitchen_assistant/src/models/ingredient.dart';
+import 'package:smart_kitchen_assistant/src/models/user_preferences.dart';
 import 'package:smart_kitchen_assistant/src/services/assistant_response_service.dart';
 
 void main() {
@@ -18,6 +21,8 @@ void main() {
     final response = service.respond(
       question: 'What expires soon?',
       inventory: inventory,
+      recipes: RecipeCatalog.recipes,
+      knowledgeBase: AssistantKnowledgeBase.entries,
     );
 
     expect(response, contains('Spinach'));
@@ -45,8 +50,24 @@ void main() {
     final response = service.respond(
       question: 'What can I cook?',
       inventory: inventory,
+      recipes: RecipeCatalog.recipes,
+      knowledgeBase: AssistantKnowledgeBase.entries,
+      preferences: UserPreferences.defaults(),
     );
 
-    expect(response, contains('cook'));
+    expect(response, anyOf(contains('cook'), contains('Best option')));
+  });
+
+  test('answers food waste questions from the knowledge base', () {
+    const service = AssistantResponseService();
+
+    final response = service.respond(
+      question: 'How can I reduce food waste?',
+      inventory: const [],
+      recipes: RecipeCatalog.recipes,
+      knowledgeBase: AssistantKnowledgeBase.entries,
+    );
+
+    expect(response, contains('first-in, first-out'));
   });
 }

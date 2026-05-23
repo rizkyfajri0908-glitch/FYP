@@ -3,17 +3,20 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../data/assistant_knowledge_base.dart';
+import '../data/recipe_catalog.dart';
 import '../data/sample_data.dart';
+import '../models/assistant_knowledge.dart';
 import '../models/ingredient.dart';
+import '../models/recipe.dart';
 import '../models/user_preferences.dart';
 import '../services/firestore_kitchen_service.dart';
 import '../services/notification_service.dart';
 
 class KitchenController extends ChangeNotifier {
   KitchenController({String? userId})
-      : _cloudService = userId == null
-            ? null
-            : FirestoreKitchenService(userId: userId) {
+      : _cloudService =
+            userId == null ? null : FirestoreKitchenService(userId: userId) {
     _loadIngredients();
   }
 
@@ -22,12 +25,17 @@ class KitchenController extends ChangeNotifier {
 
   final FirestoreKitchenService? _cloudService;
   final List<Ingredient> _ingredients = [];
+  final List<Recipe> _recipes = [];
+  final List<AssistantKnowledge> _assistantKnowledge = [];
   UserPreferences _preferences = UserPreferences.defaults();
   bool _isLoading = true;
 
   bool get isLoading => _isLoading;
 
   List<Ingredient> get ingredients => List.unmodifiable(_ingredients);
+  List<Recipe> get recipes => List.unmodifiable(_recipes);
+  List<AssistantKnowledge> get assistantKnowledge =>
+      List.unmodifiable(_assistantKnowledge);
   UserPreferences get preferences => _preferences;
 
   List<Ingredient> get expiringSoon {
@@ -64,6 +72,21 @@ class KitchenController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> updateIngredient(Ingredient updatedIngredient) async {
+    final index = _ingredients.indexWhere(
+      (ingredient) => ingredient.id == updatedIngredient.id,
+    );
+    if (index == -1) {
+      return;
+    }
+
+    _ingredients[index] = updatedIngredient;
+    await _saveIngredients();
+    await _cloudService?.saveIngredient(updatedIngredient);
+    await _rescheduleExpiryReminders();
+    notifyListeners();
+  }
+
   Future<void> updatePreferences(UserPreferences preferences) async {
     _preferences = preferences;
     await _savePreferences();
@@ -77,44 +100,59 @@ class KitchenController extends ChangeNotifier {
   }
 
   Future<void> _loadIngredients() async {
-    final preferences = await SharedPreferences.getInstance();
-    final savedIngredients = preferences.getStringList(_ingredientsKey);
-    final savedPreferences = preferences.getString(_preferencesKey);
+    try {
+      final preferences = await SharedPreferences.getInstance();
+      final savedIngredients = preferences.getStringList(_ingredientsKey);
+      final savedPreferences = preferences.getString(_preferencesKey);
 
-    final cloudIngredients = await _loadCloudIngredients();
-    final cloudPreferences = await _loadCloudPreferences();
+      final cloudIngredients = await _loadCloudIngredients();
+      final cloudPreferences = await _loadCloudPreferences();
+      final cloudRecipes = await _loadCloudRecipes();
+      final cloudAssistantKnowledge = await _loadCloudAssistantKnowledge();
 
-    if (cloudIngredients != null) {
-      _ingredients.addAll(cloudIngredients);
-    } else if (savedIngredients == null) {
-      _ingredients.addAll(SampleData.ingredients);
-      await _saveIngredients();
-    } else {
-      _ingredients.addAll(
-        savedIngredients.map(
-          (item) => Ingredient.fromJson(
-            jsonDecode(item) as Map<String, dynamic>,
+      _recipes.addAll(cloudRecipes ?? RecipeCatalog.recipes);
+      _assistantKnowledge.addAll(
+        cloudAssistantKnowledge ?? AssistantKnowledgeBase.entries,
+      );
+
+      if (cloudIngredients != null) {
+        _ingredients.addAll(cloudIngredients);
+      } else if (savedIngredients == null) {
+        _ingredients.addAll(SampleData.ingredients);
+        await _saveIngredients();
+      } else {
+        _ingredients.addAll(
+          savedIngredients.map(
+            (item) => Ingredient.fromJson(
+              jsonDecode(item) as Map<String, dynamic>,
+            ),
           ),
-        ),
-      );
-    }
+        );
+      }
 
-    if (cloudPreferences != null) {
-      _preferences = cloudPreferences;
-    } else if (savedPreferences != null) {
-      _preferences = UserPreferences.fromJson(
-        jsonDecode(savedPreferences) as Map<String, dynamic>,
-      );
+      if (cloudPreferences != null) {
+        _preferences = cloudPreferences;
+      } else if (savedPreferences != null) {
+        _preferences = UserPreferences.fromJson(
+          jsonDecode(savedPreferences) as Map<String, dynamic>,
+        );
+      }
+    } catch (_) {
+      if (_ingredients.isEmpty) {
+        _ingredients.addAll(SampleData.ingredients);
+      }
+    } finally {
+      _isLoading = false;
+      await _rescheduleExpiryReminders();
+      notifyListeners();
     }
-
-    _isLoading = false;
-    await _rescheduleExpiryReminders();
-    notifyListeners();
   }
 
   Future<List<Ingredient>?> _loadCloudIngredients() async {
     try {
-      final cloudIngredients = await _cloudService?.loadIngredients();
+      final cloudIngredients = await _cloudService
+          ?.loadIngredients()
+          .timeout(const Duration(seconds: 8));
       if (cloudIngredients == null) {
         return null;
       }
@@ -132,10 +170,116 @@ class KitchenController extends ChangeNotifier {
 
   Future<UserPreferences?> _loadCloudPreferences() async {
     try {
-      return _cloudService?.loadPreferences();
+      return _cloudService
+          ?.loadPreferences()
+          .timeout(const Duration(seconds: 8));
     } catch (_) {
       return null;
     }
+  }
+
+  Future<List<Recipe>?> _loadCloudRecipes() async {
+    try {
+      final cloudRecipes = await _cloudService
+          ?.loadRecipes()
+          .timeout(const Duration(seconds: 8));
+      if (cloudRecipes == null) {
+        return null;
+      }
+      if (cloudRecipes.isEmpty) {
+        for (final recipe in RecipeCatalog.recipes) {
+          await _cloudService?.saveRecipe(recipe);
+        }
+        return RecipeCatalog.recipes;
+      }
+
+      return _syncCatalogRecipesToFirestore(cloudRecipes);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<List<AssistantKnowledge>?> _loadCloudAssistantKnowledge() async {
+    try {
+      final cloudKnowledge = await _cloudService
+          ?.loadAssistantKnowledge()
+          .timeout(const Duration(seconds: 8));
+      if (cloudKnowledge == null) {
+        return null;
+      }
+      if (cloudKnowledge.isEmpty) {
+        for (final knowledge in AssistantKnowledgeBase.entries) {
+          await _cloudService?.saveAssistantKnowledge(knowledge);
+        }
+        return AssistantKnowledgeBase.entries;
+      }
+
+      return _syncAssistantKnowledgeToFirestore(cloudKnowledge);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<List<AssistantKnowledge>> _syncAssistantKnowledgeToFirestore(
+    List<AssistantKnowledge> cloudKnowledge,
+  ) async {
+    final cloudKnowledgeById = {
+      for (final knowledge in cloudKnowledge) knowledge.id: knowledge,
+    };
+    final syncedKnowledge = <AssistantKnowledge>[];
+
+    for (final defaultKnowledge in AssistantKnowledgeBase.entries) {
+      final cloudEntry = cloudKnowledgeById[defaultKnowledge.id];
+      final shouldUpdateKnowledge = cloudEntry == null ||
+          cloudEntry.question != defaultKnowledge.question ||
+          cloudEntry.answer != defaultKnowledge.answer;
+
+      if (shouldUpdateKnowledge) {
+        await _cloudService?.saveAssistantKnowledge(defaultKnowledge);
+        syncedKnowledge.add(defaultKnowledge);
+      } else {
+        syncedKnowledge.add(cloudEntry);
+      }
+    }
+
+    final customCloudKnowledge = cloudKnowledge.where(
+      (knowledge) => !AssistantKnowledgeBase.entries.any(
+        (defaultKnowledge) => defaultKnowledge.id == knowledge.id,
+      ),
+    );
+
+    return [...syncedKnowledge, ...customCloudKnowledge];
+  }
+
+  Future<List<Recipe>> _syncCatalogRecipesToFirestore(
+    List<Recipe> cloudRecipes,
+  ) async {
+    final cloudRecipesById = {
+      for (final recipe in cloudRecipes) recipe.id: recipe,
+    };
+    final syncedRecipes = <Recipe>[];
+
+    for (final catalogRecipe in RecipeCatalog.recipes) {
+      final cloudRecipe = cloudRecipesById[catalogRecipe.id];
+      final shouldUpdateRecipe = cloudRecipe == null ||
+          cloudRecipe.sourceName == 'BBC Good Food' ||
+          cloudRecipe.sourceUrl.isEmpty ||
+          cloudRecipe.sourceUrl.contains('bbcgoodfood.com/search');
+
+      if (shouldUpdateRecipe) {
+        await _cloudService?.saveRecipe(catalogRecipe);
+      }
+
+      syncedRecipes.add(shouldUpdateRecipe ? catalogRecipe : cloudRecipe);
+    }
+
+    final customCloudRecipes = cloudRecipes.where(
+      (recipe) => !RecipeCatalog.recipes.any(
+        (catalogRecipe) => catalogRecipe.id == recipe.id,
+      ),
+    );
+
+    return [...syncedRecipes, ...customCloudRecipes];
   }
 
   Future<void> _saveIngredients() async {

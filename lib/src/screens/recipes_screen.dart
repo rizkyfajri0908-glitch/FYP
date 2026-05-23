@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/kitchen_controller.dart';
-import '../data/sample_data.dart';
+import '../models/grocery_suggestion.dart';
 import '../services/recipe_recommendation_service.dart';
 import '../theme/app_colors.dart';
 import '../widgets/section_header.dart';
@@ -19,7 +23,7 @@ class RecipesScreen extends StatelessWidget {
       listenable: controller,
       builder: (context, _) {
         final recommendations = _recommendationService.rankRecipes(
-          recipes: SampleData.recipes,
+          recipes: controller.recipes,
           inventory: controller.ingredients,
           preferences: controller.preferences,
         );
@@ -59,10 +63,13 @@ class _RecipeRecommendationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final recipe = recommendation.recipe;
+    final hasInventoryMatch = recommendation.matchedIngredients.isNotEmpty;
+    final contentColor = hasInventoryMatch ? AppColors.ink : AppColors.muted;
 
     return Padding(
       padding: padding,
       child: Card(
+        color: hasInventoryMatch ? Colors.white : const Color(0xFFF2F4F2),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -71,37 +78,48 @@ class _RecipeRecommendationCard extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    recommendation.canCookNow
-                        ? Icons.check_circle
-                        : Icons.restaurant,
-                    color: recommendation.canCookNow
-                        ? AppColors.forestGreen
-                        : AppColors.warning,
+                    _leadingIcon(hasInventoryMatch),
+                    color: _leadingColor(hasInventoryMatch),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       recipe.title,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: contentColor,
                             fontWeight: FontWeight.w800,
                           ),
                     ),
                   ),
-                  Text('${recipe.minutes} min'),
+                  Text(
+                    '${recipe.minutes} min',
+                    style: TextStyle(
+                      color: contentColor,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 8),
-              Text(recipe.description),
+              Text(
+                recipe.description,
+                style: TextStyle(color: contentColor),
+              ),
               const SizedBox(height: 8),
               Text(
                 '${recommendation.matchedIngredients.length} of ${recommendation.totalIngredients} ingredients available',
-                style: const TextStyle(
-                  color: AppColors.forestGreen,
+                style: TextStyle(
+                  color: hasInventoryMatch
+                      ? AppColors.forestGreen
+                      : AppColors.muted,
                   fontWeight: FontWeight.w700,
                 ),
               ),
               const SizedBox(height: 6),
-              Text(_recommendationReason()),
+              Text(
+                _recommendationReason(),
+                style: TextStyle(color: contentColor),
+              ),
               const SizedBox(height: 12),
               Wrap(
                 spacing: 8,
@@ -113,6 +131,26 @@ class _RecipeRecommendationCard extends StatelessWidget {
                         ))
                     .toList(),
               ),
+              const SizedBox(height: 12),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                alignment: WrapAlignment.end,
+                children: [
+                  FilledButton.icon(
+                    onPressed: recommendation.missingIngredients.isEmpty
+                        ? null
+                        : () => _addMissingItemsToGrocery(context),
+                    icon: const Icon(Icons.add_shopping_cart),
+                    label: const Text('Add Missing'),
+                  ),
+                  OutlinedButton.icon(
+                    onPressed: () => _openRecipeSource(context),
+                    icon: const Icon(Icons.open_in_new),
+                    label: Text('View on ${recipe.displaySourceName}'),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -120,7 +158,116 @@ class _RecipeRecommendationCard extends StatelessWidget {
     );
   }
 
+  Future<void> _openRecipeSource(BuildContext context) async {
+    final url = Uri.parse(recommendation.recipe.referenceUrl);
+    final messenger = ScaffoldMessenger.of(context);
+
+    try {
+      final didLaunch = await launchUrl(
+        url,
+        mode: LaunchMode.externalApplication,
+      );
+
+      if (didLaunch) {
+        return;
+      }
+    } catch (_) {
+      // Fall through to a clear user-facing message below.
+    }
+
+    try {
+      final didLaunch = await launchUrl(url, mode: LaunchMode.platformDefault);
+      if (didLaunch) {
+        return;
+      }
+    } catch (_) {
+      // Fall through to a clear user-facing message below.
+    }
+
+    if (!context.mounted) {
+      return;
+    }
+
+    messenger.showSnackBar(
+      const SnackBar(content: Text('Could not open recipe link.')),
+    );
+  }
+
+  Future<void> _addMissingItemsToGrocery(BuildContext context) async {
+    if (recommendation.missingIngredients.isEmpty) {
+      return;
+    }
+
+    const customItemsKey = 'grocery_custom_items';
+    final preferences = await SharedPreferences.getInstance();
+    final savedItems = preferences.getStringList(customItemsKey) ?? [];
+    final savedNames = savedItems
+        .map((item) {
+          try {
+            final decoded = jsonDecode(item) as Map<String, dynamic>;
+            return (decoded['name'] as String? ?? '').toLowerCase();
+          } catch (_) {
+            return '';
+          }
+        })
+        .where((name) => name.isNotEmpty)
+        .toSet();
+
+    final nextItems = [...savedItems];
+    for (final item in recommendation.missingIngredients) {
+      if (savedNames.contains(item.toLowerCase())) {
+        continue;
+      }
+
+      nextItems.add(
+        jsonEncode(
+          GrocerySuggestion(
+            name: item,
+            reason: 'Added from ${recommendation.recipe.title}.',
+            priority: GroceryPriority.high,
+            source: GrocerySource.custom,
+            tags: recommendation.recipe.tags.take(3).toList(),
+          ).toJson(),
+        ),
+      );
+    }
+
+    await preferences.setStringList(customItemsKey, nextItems);
+
+    if (!context.mounted) {
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '${recommendation.missingIngredients.length} missing item(s) added to Grocery Plan.',
+        ),
+      ),
+    );
+  }
+
+  IconData _leadingIcon(bool hasInventoryMatch) {
+    if (!hasInventoryMatch) {
+      return Icons.visibility_off_outlined;
+    }
+    return recommendation.canCookNow ? Icons.check_circle : Icons.restaurant;
+  }
+
+  Color _leadingColor(bool hasInventoryMatch) {
+    if (!hasInventoryMatch) {
+      return AppColors.muted;
+    }
+    return recommendation.canCookNow
+        ? AppColors.forestGreen
+        : AppColors.warning;
+  }
+
   String _recommendationReason() {
+    if (recommendation.matchedIngredients.isEmpty) {
+      return 'Add at least one ingredient from this recipe to unlock this suggestion.';
+    }
+
     if (recommendation.urgentIngredients.isNotEmpty) {
       return 'Recommended because ${recommendation.urgentIngredients.join(', ')} should be used soon.';
     }
@@ -157,8 +304,7 @@ class _IngredientChip extends StatelessWidget {
             ? AppColors.mintGreen
             : Colors.white;
 
-    final foregroundColor =
-        isUrgent ? const Color(0xFF7A4B00) : AppColors.ink;
+    final foregroundColor = isUrgent ? const Color(0xFF7A4B00) : AppColors.ink;
 
     final icon = isUrgent
         ? Icons.schedule

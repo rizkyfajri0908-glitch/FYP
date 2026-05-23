@@ -18,10 +18,9 @@ void main() {
 
     final plan = service.buildPlan(inventory);
 
-    expect(plan.map((item) => item.name), contains('Chicken breast'));
     expect(
-      plan.firstWhere((item) => item.name == 'Chicken breast').source,
-      GrocerySource.recipe,
+      plan.where((item) => item.source == GrocerySource.recipe),
+      isNotEmpty,
     );
   });
 

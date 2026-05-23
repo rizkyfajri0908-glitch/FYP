@@ -16,17 +16,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_FIREBASE_API_KEY',
-    appId: 'REPLACE_WITH_FIREBASE_APP_ID',
-    messagingSenderId: 'REPLACE_WITH_FIREBASE_SENDER_ID',
-    projectId: 'REPLACE_WITH_FIREBASE_PROJECT_ID',
+    apiKey: 'AIzaSyDGyoyuReb0iQGntAynasSvrcE0TE8jxiA',
+    appId: '1:749090828823:android:561876ff945c3c4dbbe252',
+    messagingSenderId: '749090828823',
+    projectId: 'ai-smart-kitchen-assista-fc160',
+    storageBucket: 'ai-smart-kitchen-assista-fc160.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_FIREBASE_API_KEY',
-    appId: 'REPLACE_WITH_FIREBASE_APP_ID',
-    messagingSenderId: 'REPLACE_WITH_FIREBASE_SENDER_ID',
-    projectId: 'REPLACE_WITH_FIREBASE_PROJECT_ID',
+    apiKey: 'AIzaSyBiPl269oqKKr5uHHsmJ_iCVSao0uhOw4I',
+    appId: '1:749090828823:ios:7dd9b750278109b0bbe252',
+    messagingSenderId: '749090828823',
+    projectId: 'ai-smart-kitchen-assista-fc160',
+    storageBucket: 'ai-smart-kitchen-assista-fc160.firebasestorage.app',
     iosBundleId: 'com.example.smartKitchenAssistant',
   );
+
 }

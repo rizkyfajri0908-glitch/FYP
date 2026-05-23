@@ -9,21 +9,20 @@ void main() {
     SharedPreferences.setMockInitialValues({});
   });
 
-  testWidgets('Smart Kitchen app loads the dashboard', (tester) async {
+  testWidgets('EcoBite app loads the dashboard', (tester) async {
     await tester.pumpWidget(const SmartKitchenApp(isFirebaseReady: false));
-    await tester.pumpAndSettle();
+    await _pumpUntilFound(tester, find.text('Home'));
 
-    expect(find.text('Smart Kitchen'), findsOneWidget);
-    expect(find.text('Today Priority'), findsOneWidget);
+    expect(find.text('Home'), findsOneWidget);
     expect(find.text('Items'), findsOneWidget);
   });
 
   testWidgets('Bottom navigation opens inventory screen', (tester) async {
     await tester.pumpWidget(const SmartKitchenApp(isFirebaseReady: false));
-    await tester.pumpAndSettle();
+    await _pumpUntilFound(tester, find.text('Items'));
 
     await tester.tap(find.text('Items'));
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(milliseconds: 500));
 
     expect(find.text('Kitchen Inventory'), findsOneWidget);
     expect(find.text('Add Ingredient'), findsOneWidget);
@@ -32,17 +31,32 @@ void main() {
 
   testWidgets('Bottom navigation opens profile screen', (tester) async {
     await tester.pumpWidget(const SmartKitchenApp(isFirebaseReady: false));
-    await tester.pumpAndSettle();
+    await _pumpUntilFound(tester, find.text('Profile'));
 
     if (find.text('Profile').evaluate().isEmpty) {
       await tester.drag(find.byType(NavigationBar), const Offset(-300, 0));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 500));
     }
 
     await tester.tap(find.text('Profile'));
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(milliseconds: 500));
 
     expect(find.text('Profile Preferences'), findsOneWidget);
-    expect(find.text('Dietary Preference'), findsOneWidget);
+    expect(find.text('Food Profile'), findsOneWidget);
+    expect(find.text('Cooking Preferences'), findsOneWidget);
+    expect(find.text('Reminder Settings'), findsOneWidget);
   });
+}
+
+Future<void> _pumpUntilFound(
+  WidgetTester tester,
+  Finder finder, {
+  int attempts = 30,
+}) async {
+  for (var index = 0; index < attempts; index += 1) {
+    await tester.pump(const Duration(milliseconds: 100));
+    if (finder.evaluate().isNotEmpty) {
+      return;
+    }
+  }
 }

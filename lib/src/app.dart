@@ -15,7 +15,7 @@ class SmartKitchenApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Smart Kitchen Assistant',
+      title: 'EcoBite',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       home: isFirebaseReady ? const AuthGate() : const HomeShell(),
