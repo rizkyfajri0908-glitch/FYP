@@ -44,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             const SectionHeader(
               title: 'Profile Preferences',
-              subtitle: 'Personalise reminders and recommendations.',
+              subtitle: 'Personalise reminders and recommendations',
             ),
             const SizedBox(height: 16),
             _ProfileSummaryCard(preferences: preferences),
@@ -151,7 +151,7 @@ class _SetupGuideCard extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             const Text(
-              'These settings improve recipes, grocery planning, reminders, and item suggestions.',
+              'These settings improve recipes, grocery planning, reminders and item suggestions',
               textAlign: TextAlign.center,
               style: TextStyle(color: AppColors.muted, height: 1.35),
             ),
@@ -495,46 +495,21 @@ class _ResetPreferencesCard extends StatelessWidget {
   Future<void> _confirmReset(BuildContext context) async {
     final shouldReset = await showDialog<bool>(
       context: context,
-      builder: (context) => Dialog(
-        insetPadding: const EdgeInsets.symmetric(horizontal: 32),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Reset Preferences?',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w800,
-                    ),
-              ),
-              const SizedBox(height: 18),
-              const Text(
-                'This will return profile, cooking, and reminder settings to the EcoBite defaults.',
-                textAlign: TextAlign.center,
-                style: TextStyle(height: 1.35),
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: const Text('Cancel'),
-                ),
-              ),
-              const SizedBox(height: 8),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: const Text('Reset'),
-                ),
-              ),
-            ],
-          ),
+      builder: (context) => AlertDialog(
+        title: const Text('Reset Preferences?'),
+        content: const Text(
+          'This will return profile, cooking and reminder settings to the EcoBite defaults',
         ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: const Text('Reset'),
+          ),
+        ],
       ),
     );
 
@@ -703,13 +678,13 @@ class _AccountSettingsCardState extends State<_AccountSettingsCard> {
         }
         setState(
           () => _message =
-              'For security, Firebase needs recent login. A reset email was sent.',
+              'For security, Firebase needs recent login. A reset email was sent',
         );
       } else {
         if (!mounted) {
           return;
         }
-        setState(() => _message = error.message ?? 'Password update failed.');
+        setState(() => _message = error.message ?? 'Password update failed');
       }
     }
   }
