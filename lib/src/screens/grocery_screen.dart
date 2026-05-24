@@ -378,9 +378,9 @@ class _GrocerySummaryCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(
+            Icon(
               Icons.shopping_cart_checkout,
-              color: AppColors.forestGreen,
+              color: AppColors.iconGreen(context),
               size: 34,
             ),
             const SizedBox(height: 10),
@@ -398,7 +398,7 @@ class _GrocerySummaryCard extends StatelessWidget {
                 value: progress,
                 minHeight: 10,
                 backgroundColor: AppColors.mintGreen,
-                color: AppColors.forestGreen,
+                color: AppColors.iconGreen(context),
               ),
             ),
             const SizedBox(height: 12),
@@ -493,7 +493,7 @@ class _GroceryGroup extends StatelessWidget {
           Text(
             title,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: AppColors.darkGreen,
+                  color: AppColors.titleGreen(context),
                   fontWeight: FontWeight.w900,
                 ),
           ),
@@ -565,8 +565,8 @@ class _GroceryTile extends StatelessWidget {
                 children: [
                   Text(
                     suggestion.quantity,
-                    style: const TextStyle(
-                      color: AppColors.forestGreen,
+                    style: TextStyle(
+                      color: AppColors.iconGreen(context),
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -675,7 +675,7 @@ class _AddPurchasedItemSheetState extends State<_AddPurchasedItemSheet> {
           Text(
             'Add Purchased Item',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: AppColors.darkGreen,
+                  color: AppColors.titleGreen(context),
                   fontWeight: FontWeight.w800,
                 ),
           ),
@@ -822,11 +822,11 @@ class _SourceChip extends StatelessWidget {
     };
 
     return Chip(
-      avatar: Icon(icon, size: 16, color: AppColors.darkGreen),
+      avatar: Icon(icon, size: 16, color: AppColors.titleGreen(context)),
       label: Text(
         label,
-        style: const TextStyle(
-          color: AppColors.darkGreen,
+        style: TextStyle(
+          color: AppColors.titleGreen(context),
           fontWeight: FontWeight.w800,
         ),
       ),
@@ -846,8 +846,8 @@ class _TagChip extends StatelessWidget {
     return Chip(
       label: Text(
         tag,
-        style: const TextStyle(
-          color: AppColors.darkGreen,
+        style: TextStyle(
+          color: AppColors.titleGreen(context),
           fontWeight: FontWeight.w700,
         ),
       ),
@@ -873,7 +873,7 @@ class _PriorityBadge extends StatelessWidget {
     final color = switch (priority) {
       GroceryPriority.high => AppColors.danger,
       GroceryPriority.medium => AppColors.warning,
-      GroceryPriority.low => AppColors.forestGreen,
+      GroceryPriority.low => AppColors.iconGreen(context),
     };
 
     return Container(

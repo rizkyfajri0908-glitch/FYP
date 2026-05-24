@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../app.dart';
 import '../controllers/kitchen_controller.dart';
 import '../models/user_preferences.dart';
 import '../theme/app_colors.dart';
@@ -137,7 +138,7 @@ class _SetupGuideCard extends StatelessWidget {
                 icon: const Icon(Icons.close),
               ),
             ),
-            const Icon(Icons.auto_awesome, color: AppColors.forestGreen),
+            Icon(Icons.auto_awesome, color: AppColors.iconGreen(context)),
             const SizedBox(height: 8),
             Text(
               completedItems == 0
@@ -145,15 +146,18 @@ class _SetupGuideCard extends StatelessWidget {
                   : 'Profile Setup: $completedItems of 4 improved',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: AppColors.darkGreen,
+                    color: AppColors.titleGreen(context),
                     fontWeight: FontWeight.w900,
                   ),
             ),
             const SizedBox(height: 6),
-            const Text(
+            Text(
               'These settings improve recipes, grocery planning, reminders and item suggestions',
               textAlign: TextAlign.center,
-              style: TextStyle(color: AppColors.muted, height: 1.35),
+              style: TextStyle(
+                color: AppColors.readableMuted(context),
+                height: 1.35,
+              ),
             ),
             const SizedBox(height: 12),
             const Wrap(
@@ -217,12 +221,12 @@ class _ProfileSummaryCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(Icons.tune, color: AppColors.forestGreen, size: 32),
+            Icon(Icons.tune, color: AppColors.iconGreen(context), size: 32),
             const SizedBox(height: 10),
             Text(
               'Your EcoBite Profile',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: AppColors.darkGreen,
+                    color: AppColors.titleGreen(context),
                     fontWeight: FontWeight.w900,
                   ),
               textAlign: TextAlign.center,
@@ -440,16 +444,13 @@ class _ReminderSettingsSection extends StatelessWidget {
           },
         ),
         const SizedBox(height: 12),
-        _InlineNumberPreference(
+        _ReminderTimePreference(
           title: 'Reminder Time',
-          value: preferences.preferredReminderHour,
-          min: 0,
-          max: 23,
+          hour24: preferences.preferredReminderHour,
           icon: Icons.schedule,
-          suffix: ':00',
-          onChanged: (value) {
+          onChanged: (hour24) {
             controller.updatePreferences(
-              preferences.copyWith(preferredReminderHour: value),
+              preferences.copyWith(preferredReminderHour: hour24),
             );
           },
         ),
@@ -473,7 +474,7 @@ class _ResetPreferencesCard extends StatelessWidget {
             Text(
               'Preference Controls',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: AppColors.darkGreen,
+                    color: AppColors.titleGreen(context),
                     fontWeight: FontWeight.w900,
                   ),
             ),
@@ -544,9 +545,9 @@ class _AccountSettingsCardState extends State<_AccountSettingsCard> {
       child: ExpansionTile(
         tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-        leading: const Icon(
+        leading: Icon(
           Icons.manage_accounts_outlined,
-          color: AppColors.forestGreen,
+          color: AppColors.iconGreen(context),
         ),
         title: Text(
           'Account Settings',
@@ -575,12 +576,14 @@ class _AccountSettingsCardState extends State<_AccountSettingsCard> {
               label: const Text('Change Password'),
             ),
           ),
+          const SizedBox(height: 12),
+          const _ThemeModeSetting(),
           if (_message != null) ...[
             const SizedBox(height: 10),
             Text(
               _message!,
-              style: const TextStyle(
-                color: AppColors.forestGreen,
+              style: TextStyle(
+                color: AppColors.iconGreen(context),
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -690,6 +693,46 @@ class _AccountSettingsCardState extends State<_AccountSettingsCard> {
   }
 }
 
+class _ThemeModeSetting extends StatelessWidget {
+  const _ThemeModeSetting();
+
+  @override
+  Widget build(BuildContext context) {
+    final themeController = SmartKitchenApp.themeControllerOf(context);
+
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeController,
+      builder: (context, themeMode, _) {
+        final isDarkMode = themeMode == ThemeMode.dark;
+
+        return Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: const Color(0xFFDDEFE1)),
+          ),
+          child: SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            secondary: Icon(
+              isDarkMode ? Icons.dark_mode : Icons.light_mode,
+              color: AppColors.iconGreen(context),
+            ),
+            title: const Text(
+              'Dark Mode',
+              style: TextStyle(fontWeight: FontWeight.w800),
+            ),
+            subtitle:
+                Text(isDarkMode ? 'Dark theme is on' : 'Light theme is on'),
+            value: isDarkMode,
+            onChanged: themeController.setDarkMode,
+          ),
+        );
+      },
+    );
+  }
+}
+
 class _AccountRow extends StatelessWidget {
   const _AccountRow({
     required this.icon,
@@ -705,7 +748,7 @@ class _AccountRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: AppColors.forestGreen),
+        Icon(icon, color: AppColors.iconGreen(context)),
         const SizedBox(width: 10),
         Expanded(
           child: Column(
@@ -713,8 +756,8 @@ class _AccountRow extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: const TextStyle(
-                  color: AppColors.muted,
+                style: TextStyle(
+                  color: AppColors.readableMuted(context),
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                 ),
@@ -762,7 +805,7 @@ class _InlineNumberPreference extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.forestGreen),
+          Icon(icon, color: AppColors.iconGreen(context)),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -775,8 +818,8 @@ class _InlineNumberPreference extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   '$value $suffix',
-                  style: const TextStyle(
-                    color: AppColors.muted,
+                  style: TextStyle(
+                    color: AppColors.readableMuted(context),
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                   ),
@@ -801,6 +844,116 @@ class _InlineNumberPreference extends StatelessWidget {
   }
 }
 
+class _ReminderTimePreference extends StatelessWidget {
+  const _ReminderTimePreference({
+    required this.title,
+    required this.hour24,
+    required this.icon,
+    required this.onChanged,
+  });
+
+  final String title;
+  final int hour24;
+  final IconData icon;
+  final ValueChanged<int> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final period = hour24 >= 12 ? 'PM' : 'AM';
+    final hour12 = switch (hour24 % 12) {
+      0 => 12,
+      final hour => hour,
+    };
+
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: AppColors.paleGreen,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColors.leafGreen),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: AppColors.iconGreen(context)),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(fontWeight: FontWeight.w800),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '$hour12:00 $period',
+                  style: TextStyle(
+                    color: AppColors.readableMuted(context),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          SizedBox(
+            width: 82,
+            child: DropdownButtonFormField<int>(
+              initialValue: hour12,
+              decoration: const InputDecoration(
+                isDense: true,
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              ),
+              items: List.generate(
+                12,
+                (index) {
+                  final hour = index + 1;
+                  return DropdownMenuItem(value: hour, child: Text('$hour'));
+                },
+              ),
+              onChanged: (value) {
+                if (value != null) {
+                  onChanged(_toHour24(value, period));
+                }
+              },
+            ),
+          ),
+          const SizedBox(width: 8),
+          SizedBox(
+            width: 88,
+            child: DropdownButtonFormField<String>(
+              initialValue: period,
+              decoration: const InputDecoration(
+                isDense: true,
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              ),
+              items: const [
+                DropdownMenuItem(value: 'AM', child: Text('AM')),
+                DropdownMenuItem(value: 'PM', child: Text('PM')),
+              ],
+              onChanged: (value) {
+                if (value != null) {
+                  onChanged(_toHour24(hour12, value));
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  int _toHour24(int hour12, String period) {
+    if (period == 'AM') {
+      return hour12 == 12 ? 0 : hour12;
+    }
+    return hour12 == 12 ? 12 : hour12 + 12;
+  }
+}
+
 class _SettingsSection extends StatelessWidget {
   const _SettingsSection({
     required this.title,
@@ -818,7 +971,7 @@ class _SettingsSection extends StatelessWidget {
       child: ExpansionTile(
         tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-        leading: Icon(icon, color: AppColors.forestGreen),
+        leading: Icon(icon, color: AppColors.iconGreen(context)),
         title: Text(
           title,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -959,9 +1112,9 @@ class _EditableChipListState extends State<_EditableChipList> {
                 ),
               ),
               if (widget.values.isEmpty)
-                const Text(
+                Text(
                   'None added',
-                  style: TextStyle(color: AppColors.muted),
+                  style: TextStyle(color: AppColors.readableMuted(context)),
                 ),
             ],
           ),
@@ -1025,8 +1178,8 @@ class _PreferenceBlock extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
-              color: AppColors.darkGreen,
+            style: TextStyle(
+              color: AppColors.titleGreen(context),
               fontWeight: FontWeight.w800,
             ),
           ),

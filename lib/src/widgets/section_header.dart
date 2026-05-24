@@ -23,7 +23,7 @@ class SectionHeader extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  color: AppColors.darkGreen,
+                  color: AppColors.titleGreen(context),
                   fontWeight: FontWeight.w800,
                 ),
           ),
@@ -34,7 +34,7 @@ class SectionHeader extends StatelessWidget {
           child: Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: AppColors.muted),
+            style: TextStyle(color: AppColors.readableMuted(context)),
           ),
         ),
       ],

@@ -31,7 +31,7 @@ class DashboardScreen extends StatelessWidget {
               title: Text(
                 'EcoBite',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: AppColors.darkGreen,
+                      color: AppColors.titleGreen(context),
                       fontWeight: FontWeight.w800,
                     ),
               ),
@@ -58,11 +58,11 @@ class DashboardScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Card(
                           child: ListTile(
-                            leading: const CircleAvatar(
+                            leading: CircleAvatar(
                               backgroundColor: AppColors.mintGreen,
                               child: Icon(
                                 Icons.schedule,
-                                color: AppColors.darkGreen,
+                                color: AppColors.titleGreen(context),
                               ),
                             ),
                             title: Text(item.name),
@@ -168,7 +168,7 @@ class _WasteSavingTipCardState extends State<_WasteSavingTipCard> {
               ),
               child: Icon(
                 hasUrgentItem ? Icons.notifications_active_outlined : Icons.eco,
-                color: AppColors.forestGreen,
+                color: AppColors.iconGreen(context),
               ),
             ),
             const SizedBox(height: 12),

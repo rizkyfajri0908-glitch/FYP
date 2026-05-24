@@ -64,12 +64,22 @@ class _RecipeRecommendationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final recipe = recommendation.recipe;
     final hasInventoryMatch = recommendation.matchedIngredients.isNotEmpty;
-    final contentColor = hasInventoryMatch ? AppColors.ink : AppColors.muted;
+    final isDarkMode = AppColors.isDarkMode(context);
+    final contentColor = hasInventoryMatch
+        ? Theme.of(context).colorScheme.onSurface
+        : AppColors.readableMuted(context);
+    final cardColor = isDarkMode
+        ? hasInventoryMatch
+            ? const Color(0xFF2A302C)
+            : const Color(0xFF202622)
+        : hasInventoryMatch
+            ? Colors.white
+            : const Color(0xFFF2F4F2);
 
     return Padding(
       padding: padding,
       child: Card(
-        color: hasInventoryMatch ? Colors.white : const Color(0xFFF2F4F2),
+        color: cardColor,
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -79,7 +89,7 @@ class _RecipeRecommendationCard extends StatelessWidget {
                 children: [
                   Icon(
                     _leadingIcon(hasInventoryMatch),
-                    color: _leadingColor(hasInventoryMatch),
+                    color: _leadingColor(context, hasInventoryMatch),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
@@ -110,8 +120,8 @@ class _RecipeRecommendationCard extends StatelessWidget {
                 '${recommendation.matchedIngredients.length} of ${recommendation.totalIngredients} ingredients available',
                 style: TextStyle(
                   color: hasInventoryMatch
-                      ? AppColors.forestGreen
-                      : AppColors.muted,
+                      ? AppColors.iconGreen(context)
+                      : AppColors.readableMuted(context),
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -145,6 +155,16 @@ class _RecipeRecommendationCard extends StatelessWidget {
                     label: const Text('Add Missing'),
                   ),
                   OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: isDarkMode ? Colors.black : Colors.white,
+                      foregroundColor:
+                          isDarkMode ? Colors.white : AppColors.darkGreen,
+                      side: BorderSide(
+                        color: isDarkMode
+                            ? const Color(0xFF4B5B51)
+                            : const Color(0xFFDDEFE1),
+                      ),
+                    ),
                     onPressed: () => _openRecipeSource(context),
                     icon: const Icon(Icons.open_in_new),
                     label: Text('View on ${recipe.displaySourceName}'),
@@ -254,12 +274,12 @@ class _RecipeRecommendationCard extends StatelessWidget {
     return recommendation.canCookNow ? Icons.check_circle : Icons.restaurant;
   }
 
-  Color _leadingColor(bool hasInventoryMatch) {
+  Color _leadingColor(BuildContext context, bool hasInventoryMatch) {
     if (!hasInventoryMatch) {
-      return AppColors.muted;
+      return AppColors.readableMuted(context);
     }
     return recommendation.canCookNow
-        ? AppColors.forestGreen
+        ? AppColors.iconGreen(context)
         : AppColors.warning;
   }
 
@@ -297,14 +317,27 @@ class _IngredientChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final isMatched = recommendation.matchedIngredients.contains(item);
     final isUrgent = recommendation.urgentIngredients.contains(item);
+    final isDarkMode = AppColors.isDarkMode(context);
 
-    final backgroundColor = isUrgent
-        ? const Color(0xFFFFE8BF)
-        : isMatched
-            ? AppColors.mintGreen
-            : Colors.white;
+    final backgroundColor = isDarkMode
+        ? isUrgent
+            ? const Color(0xFF4A3300)
+            : isMatched
+                ? const Color(0xFF244533)
+                : const Color(0xFF151A17)
+        : isUrgent
+            ? const Color(0xFFFFE8BF)
+            : isMatched
+                ? AppColors.mintGreen
+                : Colors.white;
 
-    final foregroundColor = isUrgent ? const Color(0xFF7A4B00) : AppColors.ink;
+    final foregroundColor = isDarkMode
+        ? isUrgent
+            ? const Color(0xFFFFE8BF)
+            : Colors.white
+        : isUrgent
+            ? const Color(0xFF7A4B00)
+            : AppColors.ink;
 
     final icon = isUrgent
         ? Icons.schedule
@@ -320,7 +353,11 @@ class _IngredientChip extends StatelessWidget {
       ),
       backgroundColor: backgroundColor,
       side: BorderSide(
-        color: isUrgent ? AppColors.warning : const Color(0xFFDDEFE1),
+        color: isDarkMode
+            ? const Color(0xFF4B5B51)
+            : isUrgent
+                ? AppColors.warning
+                : const Color(0xFFDDEFE1),
       ),
     );
   }

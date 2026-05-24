@@ -296,12 +296,12 @@ class _IngredientTile extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     ingredient.quantity,
-                    style: const TextStyle(color: AppColors.muted),
+                    style: TextStyle(color: AppColors.readableMuted(context)),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     'Expiry: $date',
-                    style: const TextStyle(color: AppColors.muted),
+                    style: TextStyle(color: AppColors.readableMuted(context)),
                   ),
                 ],
               ),
@@ -353,9 +353,34 @@ class _IngredientActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (ingredient.expiryStatus == ExpiryStatus.expired) {
-      return StatusChip(
-        days: ingredient.daysUntilExpiry,
-        status: ingredient.expiryStatus,
+      return SizedBox(
+        width: 70,
+        height: 74,
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              StatusChip(
+                days: ingredient.daysUntilExpiry,
+                status: ingredient.expiryStatus,
+              ),
+              const SizedBox(height: 6),
+              SizedBox(
+                width: 34,
+                height: 30,
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                  tooltip: 'Remove expired item',
+                  visualDensity: VisualDensity.compact,
+                  onPressed: onDelete,
+                  icon: const Icon(Icons.delete_outline, size: 18),
+                ),
+              ),
+            ],
+          ),
+        ),
       );
     }
 
@@ -732,7 +757,7 @@ class _AddIngredientSheetState extends State<_AddIngredientSheet> {
             Text(
               _isEditing ? 'Edit Ingredient' : 'Add Ingredient',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: AppColors.darkGreen,
+                    color: AppColors.titleGreen(context),
                     fontWeight: FontWeight.w800,
                   ),
             ),
@@ -762,8 +787,8 @@ class _AddIngredientSheetState extends State<_AddIngredientSheet> {
                 ),
                 child: Text(
                   'Found from ${widget.scannedIngredient!.source}. Confirm the item details before saving',
-                  style: const TextStyle(
-                    color: AppColors.darkGreen,
+                  style: TextStyle(
+                    color: AppColors.titleGreen(context),
                     fontWeight: FontWeight.w700,
                     height: 1.35,
                   ),
@@ -904,9 +929,9 @@ class _EmptyInventoryCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            const Icon(
+            Icon(
               Icons.kitchen_outlined,
-              color: AppColors.forestGreen,
+              color: AppColors.iconGreen(context),
               size: 36,
             ),
             const SizedBox(height: 10),

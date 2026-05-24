@@ -26,7 +26,7 @@ class EmptyStateCard extends StatelessWidget {
                 color: AppColors.mintGreen,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(icon, color: AppColors.forestGreen),
+              child: Icon(icon, color: AppColors.iconGreen(context)),
             ),
             const SizedBox(width: 12),
             Expanded(child: Text(message)),

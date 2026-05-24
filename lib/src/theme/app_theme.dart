@@ -75,4 +75,75 @@ class AppTheme {
       ),
     );
   }
+
+  static ThemeData get dark {
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: AppColors.leafGreen,
+      brightness: Brightness.dark,
+      primary: AppColors.leafGreen,
+      secondary: AppColors.mintGreen,
+      surface: const Color(0xFF13261D),
+    );
+
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: const Color(0xFF081711),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xFF081711),
+        foregroundColor: AppColors.mintGreen,
+        centerTitle: false,
+        elevation: 0,
+      ),
+      cardTheme: CardThemeData(
+        color: const Color(0xFF13261D),
+        elevation: 0,
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+          side: const BorderSide(color: Color(0xFF28503B)),
+        ),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: const Color(0xFF102119),
+        indicatorColor: const Color(0xFF28503B),
+        labelTextStyle: WidgetStateProperty.all(
+          const TextStyle(fontSize: 11, fontWeight: FontWeight.w700),
+        ),
+      ),
+      chipTheme: const ChipThemeData(
+        backgroundColor: Color(0xFF1E3B2B),
+        side: BorderSide(color: Color(0xFF28503B)),
+        labelStyle: TextStyle(
+          color: AppColors.mintGreen,
+          fontWeight: FontWeight.w700,
+        ),
+        iconTheme: IconThemeData(color: AppColors.leafGreen),
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          minimumSize: const Size.fromHeight(48),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          minimumSize: const Size.fromHeight(48),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: const Color(0xFF102119),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Color(0xFF28503B)),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Color(0xFF28503B)),
+        ),
+      ),
+    );
+  }
 }

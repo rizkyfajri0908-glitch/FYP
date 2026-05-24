@@ -12,4 +12,20 @@ class AppColors {
   static const danger = Color(0xFFD9534F);
   static const ink = Color(0xFF1D2B24);
   static const muted = Color(0xFF66746C);
+
+  static bool isDarkMode(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark;
+  }
+
+  static Color titleGreen(BuildContext context) {
+    return isDarkMode(context) ? mintGreen : darkGreen;
+  }
+
+  static Color iconGreen(BuildContext context) {
+    return isDarkMode(context) ? leafGreen : forestGreen;
+  }
+
+  static Color readableMuted(BuildContext context) {
+    return isDarkMode(context) ? const Color(0xFFC9D8CE) : muted;
+  }
 }

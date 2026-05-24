@@ -57,15 +57,15 @@ class _AuthScreenState extends State<AuthScreen> {
                     _isLoginMode ? 'Welcome back' : 'Create account',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: AppColors.darkGreen,
+                          color: AppColors.titleGreen(context),
                           fontWeight: FontWeight.w800,
                         ),
                   ),
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     'Sign in to save your kitchen inventory and preferences.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppColors.muted),
+                    style: TextStyle(color: AppColors.readableMuted(context)),
                   ),
                   const SizedBox(height: 20),
                   Card(
