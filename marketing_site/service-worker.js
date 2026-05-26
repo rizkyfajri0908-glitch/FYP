@@ -1,4 +1,4 @@
-const CACHE_NAME = "ecobite-marketing-v9";
+const CACHE_NAME = "ecobite-marketing-v10";
 const STATIC_ASSETS = [
   "/",
   "/index.html",

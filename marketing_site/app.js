@@ -3,6 +3,9 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const navLinks = document.querySelector("[data-nav-links]");
 const siteHeader = document.querySelector(".site-header");
 const year = document.querySelector("[data-year]");
+const featureTabs = document.querySelectorAll("[data-preview-image]");
+const featureImage = document.querySelector("[data-feature-image]");
+const featurePhone = document.querySelector(".feature-phone");
 
 let deferredInstallPrompt;
 
@@ -67,3 +70,32 @@ const updateHeaderState = () => {
 
 window.addEventListener("scroll", updateHeaderState, { passive: true });
 updateHeaderState();
+
+featureTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    if (!featureImage || !featurePhone) {
+      return;
+    }
+
+    featureTabs.forEach((item) => {
+      item.classList.remove("is-active");
+      item.setAttribute("aria-selected", "false");
+    });
+
+    tab.classList.add("is-active");
+    tab.setAttribute("aria-selected", "true");
+
+    const nextImage = tab.dataset.previewImage;
+    const nextAlt = tab.dataset.previewAlt || "";
+
+    featurePhone.classList.add("is-switching");
+
+    window.setTimeout(() => {
+      if (nextImage) {
+        featureImage.src = nextImage;
+      }
+      featureImage.alt = nextAlt;
+      featurePhone.classList.remove("is-switching");
+    }, 160);
+  });
+});
