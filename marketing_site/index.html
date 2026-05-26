@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="EcoBite is a smart kitchen assistant app that helps users decide what to cook, track food expiry, reduce waste, and plan groceries smarter."
+      content="EcoBite is a smart kitchen assistant app that helps users decide what to cook, track food expiry, reduce waste and plan groceries smarter."
     />
     <meta name="theme-color" content="#0f3d2e" />
     <title>EcoBite | Know What To Cook Next</title>
@@ -27,9 +27,11 @@
           <span></span>
         </button>
         <div class="nav-links" data-nav-links>
+          <a href="#why">Why EcoBite</a>
           <a href="#features">Features</a>
-          <a href="#how-it-works">See How It Works</a>
-          <a class="nav-login" href="/login.html">Log In</a>
+          <a href="#screens">Screens</a>
+          <a href="#cook">What To Cook</a>
+          <a href="#download">Get Started</a>
         </div>
       </nav>
     </header>
@@ -37,13 +39,15 @@
     <main id="home">
       <section class="hero">
         <div class="hero-content">
-          <h1>Open your fridge.<br />EcoBite tells you what to cook.</h1>
+          <p class="eyebrow">Smart kitchen assistant</p>
+          <h1>Open your fridge. EcoBite tells you what to cook.</h1>
           <p class="hero-copy">
-            EcoBite helps you stop guessing what to eat by turning your kitchen inventory into recipe ideas, expiry reminders, and smarter grocery plans.
+            EcoBite helps you stop guessing what to eat by turning your kitchen inventory into recipe ideas, expiry reminders and smarter grocery plans.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="/login.html">Get Started</a>
-            <a class="button secondary" href="#download">Download</a>
+            <a class="button primary" href="#features">See App Features</a>
+            <a class="button secondary" href="#cook">Why It Helps</a>
+            <button class="button secondary" type="button" data-install hidden>Install Website</button>
           </div>
         </div>
         <div class="phone-preview" aria-label="EcoBite app preview">
@@ -124,7 +128,18 @@
         </div>
         <div class="screen-showcase">
           <article class="screen-card interactive-card">
-            <img class="screenshot-image" src="/assets/screenshots/homepage.jpg" alt="EcoBite home dashboard showing priority food and waste saving tips" />
+            <div class="screen-phone home-screen">
+              <div class="screen-title">EcoBite</div>
+              <div class="screen-hero">
+                <img src="/assets/ecobite_logo.png" alt="" />
+                <strong>2 items need attention</strong>
+                <span>Tracking 8 ingredients. Cook smarter and buy only what your kitchen needs next.</span>
+              </div>
+              <div class="screen-heading">Today Priority</div>
+              <div class="priority-row urgent"><span>Beef</span><em>Today</em></div>
+              <div class="priority-row soon"><span>Chips</span><em>3d</em></div>
+              <div class="tip-box">Use Beef first. Expires today.</div>
+            </div>
             <div class="screen-copy">
               <h3>Home Dashboard</h3>
               <p>Shows what needs attention first, then gives waste-saving tips users can act on immediately.</p>
@@ -132,7 +147,15 @@
           </article>
 
           <article class="screen-card interactive-card">
-            <img class="screenshot-image" src="/assets/screenshots/kitchen_inventory.jpg" alt="EcoBite kitchen inventory screen with search, filters, and expiry indicators" />
+            <div class="screen-phone inventory-screen">
+              <div class="screen-title">Kitchen Inventory</div>
+              <div class="search-line">Search items</div>
+              <div class="screen-button">Add Ingredient</div>
+              <div class="filter-line"><span>All</span><span>Today</span><span>Urgent</span></div>
+              <div class="item-card danger"><strong>Beef</strong><span>Expiry: 26 May 2026</span><em>Today</em></div>
+              <div class="item-card warning"><strong>Chips</strong><span>Expiry: 29 May 2026</span><em>3d</em></div>
+              <div class="item-card fresh"><strong>Pasta</strong><span>Expiry: 30 May 2026</span><em>4d</em></div>
+            </div>
             <div class="screen-copy">
               <h3>Kitchen Inventory</h3>
               <p>Organizes items with expiry indicators, categories, search, edit, delete, and barcode support.</p>
@@ -140,7 +163,21 @@
           </article>
 
           <article class="screen-card interactive-card">
-            <img class="screenshot-image" src="/assets/screenshots/recipe_suggestions.jpg" alt="EcoBite recipe suggestions screen showing available ingredients and recipe links" />
+            <div class="screen-phone recipe-screen">
+              <div class="screen-title">Recipe Suggestions</div>
+              <div class="recipe-card">
+                <div><strong>Spinach Pasta</strong><em>18 min</em></div>
+                <p>3 of 4 ingredients available</p>
+                <div class="chip-row"><span>Pasta</span><span>Milk</span><span>Garlic</span></div>
+                <button>Add Missing</button>
+                <a>View on Taste</a>
+              </div>
+              <div class="recipe-card small">
+                <div><strong>Chicken Fried Rice</strong><em>20 min</em></div>
+                <p>3 of 4 ingredients available</p>
+                <div class="chip-row"><span>Chicken</span><span>Rice</span></div>
+              </div>
+            </div>
             <div class="screen-copy">
               <h3>Recipe Suggestions</h3>
               <p>Prioritizes recipes based on available ingredients and connects missing items to the grocery plan.</p>
@@ -148,7 +185,14 @@
           </article>
 
           <article class="screen-card interactive-card">
-            <img class="screenshot-image" src="/assets/screenshots/ai_assistant.jpg" alt="EcoBite AI assistant screen with food waste and recipe chat examples" />
+            <div class="screen-phone assistant-screen">
+              <div class="screen-title">AI Assistant</div>
+              <div class="prompt-row"><span>What can I cook?</span><span>Reduce food waste</span></div>
+              <div class="chat bot">Hi, I can help with expiry checks, recipe ideas, grocery planning and your kitchen inventory.</div>
+              <div class="chat user">What can I cook?</div>
+              <div class="chat bot">Best option: Spinach Pasta. You have Pasta, Milk, Garlic. Missing: Spinach.</div>
+              <div class="ask-line">Ask about your kitchen...</div>
+            </div>
             <div class="screen-copy">
               <h3>AI Assistant</h3>
               <p>Gives food-focused support for cooking, storage, shopping, and waste reduction questions.</p>
@@ -156,7 +200,21 @@
           </article>
 
           <article class="screen-card interactive-card screen-card-wide">
-            <img class="screenshot-image" src="/assets/screenshots/grocery_plan.jpg" alt="EcoBite predictive grocery plan screen with planned items and shopping progress" />
+            <div class="screen-phone grocery-screen">
+              <div class="screen-title">Predictive Grocery Plan</div>
+              <p class="center-copy">Suggested items based on recipes, missing staples, and your EcoBite profile.</p>
+              <div class="plan-card">
+                <strong>1 of 7 planned items selected</strong>
+                <span></span>
+                <button>Finish Shopping</button>
+              </div>
+              <div class="filter-line"><span>All</span><span>Recipes</span><span>Staples</span></div>
+              <div class="grocery-item">
+                <strong>Cabbage</strong>
+                <p>Needed for Cabbage Egg Stir Fry.</p>
+                <div class="chip-row"><span>Recipe</span><span>quick</span><span>budget</span></div>
+              </div>
+            </div>
             <div class="screen-copy">
               <h3>Predictive Grocery Plan</h3>
               <p>Helps users buy only what supports their recipes, staples, and preferences instead of guessing at the store.</p>
@@ -219,7 +277,7 @@
         </div>
       </section>
 
-      <section class="section reveal" id="how-it-works">
+      <section class="section reveal">
         <div class="section-heading centered">
           <p class="eyebrow">How It Helps</p>
           <h2>From confusion to a cooking plan in four simple steps.</h2>
