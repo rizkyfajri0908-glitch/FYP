@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="EcoBite is a smart kitchen assistant app that helps households reduce food waste with inventory tracking, expiry reminders, recipe suggestions, grocery planning, and an AI food assistant."
+      content="EcoBite is a smart kitchen assistant app that helps users decide what to cook, track food expiry, reduce waste, and plan groceries smarter."
     />
     <meta name="theme-color" content="#0f3d2e" />
-    <title>EcoBite | Smart Kitchen Assistant</title>
+    <title>EcoBite | Know What To Cook Next</title>
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/assets/ecobite_logo.png" />
     <link rel="apple-touch-icon" href="/assets/ecobite_logo.png" />
@@ -27,10 +27,10 @@
           <span></span>
         </button>
         <div class="nav-links" data-nav-links>
+          <a href="#why">Why EcoBite</a>
           <a href="#features">Features</a>
-          <a href="#sdg">SDG 12</a>
-          <a href="#workflow">How It Works</a>
-          <a href="#contact">FYP Info</a>
+          <a href="#cook">What To Cook</a>
+          <a href="#download">Get Started</a>
         </div>
       </nav>
     </header>
@@ -38,13 +38,14 @@
     <main id="home">
       <section class="hero">
         <div class="hero-content">
-          <p class="eyebrow">Smart kitchen assistant for food waste reduction</p>
-          <h1>Buy smarter, cook sooner, waste less.</h1>
+          <p class="eyebrow">Smart kitchen assistant</p>
+          <h1>Open your fridge. EcoBite tells you what to cook.</h1>
           <p class="hero-copy">
-            EcoBite helps households track kitchen inventory, monitor expiry dates, receive recipe suggestions, and plan groceries based on what they already have.
+            EcoBite helps you stop guessing what to eat by turning your kitchen inventory into recipe ideas, expiry reminders, and smarter grocery plans.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#features">Explore Features</a>
+            <a class="button primary" href="#features">See App Features</a>
+            <a class="button secondary" href="#cook">Why It Helps</a>
             <button class="button secondary" type="button" data-install hidden>Install Website</button>
           </div>
         </div>
@@ -53,128 +54,135 @@
             <div class="phone-top"></div>
             <div class="app-card hero-app-card">
               <img src="/assets/ecobite_logo.png" alt="EcoBite logo" />
-              <h2>EcoBite</h2>
-              <p>3 items need attention today</p>
+              <h2>Tonight's Ideas</h2>
+              <p>Based on your kitchen inventory</p>
             </div>
-            <div class="mini-card warning">
-              <span>Spinach</span>
-              <strong>Expires in 2d</strong>
+            <div class="mini-card fresh">
+              <span>Use Soon</span>
+              <strong>Spinach expires in 2 days</strong>
             </div>
             <div class="mini-card">
-              <span>Recipe Match</span>
-              <strong>Chicken Rice Bowl</strong>
+              <span>Suggested Recipe</span>
+              <strong>Chicken Spinach Rice Bowl</strong>
             </div>
             <div class="mini-card dark">
-              <span>Grocery Plan</span>
-              <strong>6 smart suggestions</strong>
+              <span>Shopping Help</span>
+              <strong>Only buy what is missing</strong>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="metrics" aria-label="Project highlights">
+      <section class="problem-strip" id="why" aria-label="Why EcoBite is useful">
         <article>
-          <strong>SDG 12</strong>
-          <span>Responsible consumption</span>
+          <strong>Do not know what to cook?</strong>
+          <span>EcoBite suggests meals from ingredients you already have.</span>
         </article>
         <article>
-          <strong>AI + Firebase</strong>
-          <span>Personalized kitchen data</span>
+          <strong>Food expiring unnoticed?</strong>
+          <span>The app highlights what should be used first.</span>
         </article>
         <article>
-          <strong>PWA</strong>
-          <span>Installable promo website</span>
+          <strong>Buying too much?</strong>
+          <span>Grocery planning helps reduce unnecessary purchases.</span>
         </article>
+      </section>
+
+      <section class="section intro-section">
+        <div class="section-heading centered">
+          <p class="eyebrow">Why EcoBite</p>
+          <h2>A kitchen app for people who want easier meal decisions.</h2>
+          <p>
+            EcoBite is ideal for students, busy households, beginners in cooking, and anyone who opens the fridge but still does not know what to make. Instead of starting from a blank mind, the app starts from your actual food items.
+          </p>
+        </div>
       </section>
 
       <section class="section" id="features">
         <div class="section-heading">
-          <p class="eyebrow">Application Features</p>
-          <h2>Designed around everyday kitchen decisions.</h2>
+          <p class="eyebrow">App Features</p>
+          <h2>Everything is built around using food before it goes to waste.</h2>
         </div>
         <div class="feature-grid">
           <article class="feature-card">
             <span class="feature-icon">01</span>
             <h3>Kitchen Inventory</h3>
-            <p>Add, edit, scan, search, and filter food items while expiry status is shown clearly with color-coded indicators.</p>
+            <p>Save your food items, quantities, categories, and expiry dates in one organized place.</p>
           </article>
           <article class="feature-card">
             <span class="feature-icon">02</span>
-            <h3>Recipe Suggestions</h3>
-            <p>Recipes are ranked using available ingredients, missing items, dietary preferences, and expiring food.</p>
+            <h3>Expiry Awareness</h3>
+            <p>Clear color indicators show fresh, expiring, and expired items so important food does not get forgotten.</p>
           </article>
           <article class="feature-card">
             <span class="feature-icon">03</span>
-            <h3>Predictive Grocery Plan</h3>
-            <p>EcoBite suggests grocery items based on recipe gaps, missing staples, expired replacements, and user profile settings.</p>
+            <h3>Recipe Suggestions</h3>
+            <p>EcoBite recommends recipes based on what is already available, especially ingredients that should be used soon.</p>
           </article>
           <article class="feature-card">
             <span class="feature-icon">04</span>
-            <h3>AI Food Assistant</h3>
-            <p>A focused assistant answers food storage, cooking, recipe, grocery, and food waste reduction questions.</p>
+            <h3>Predictive Grocery Plan</h3>
+            <p>The app suggests missing items for recipes and staples, helping users shop with a clearer purpose.</p>
           </article>
           <article class="feature-card">
             <span class="feature-icon">05</span>
-            <h3>Expiry Reminders</h3>
-            <p>Notification settings help users decide when and how often they want reminders before ingredients expire.</p>
+            <h3>AI Food Assistant</h3>
+            <p>Ask food-related questions about storage, cooking ideas, leftovers, waste reduction, and simple recipes.</p>
           </article>
           <article class="feature-card">
             <span class="feature-icon">06</span>
-            <h3>User Preferences</h3>
-            <p>Dietary needs, cooking style, household size, meal types, dark mode, and food habits personalize the experience.</p>
+            <h3>Personal Preferences</h3>
+            <p>Diet, cooking style, household size, meal preferences, reminders, and dark mode make the app feel personal.</p>
           </article>
         </div>
       </section>
 
-      <section class="split-section" id="sdg">
+      <section class="split-section" id="cook">
         <div>
-          <p class="eyebrow">Sustainability Alignment</p>
-          <h2>Supporting SDG 12: Responsible Consumption and Production.</h2>
+          <p class="eyebrow">For everyday cooking</p>
+          <h2>EcoBite helps when you have ingredients but no meal idea.</h2>
           <p>
-            EcoBite aligns especially with SDG Target 12.3 by helping users reduce consumer-level food waste through expiry tracking, recipe planning, reminders, and smarter grocery decisions.
+            Many users waste food not because they do not care, but because they forget what they own or do not know how to combine it. EcoBite connects inventory, recipes, and grocery planning so users can make decisions faster.
           </p>
         </div>
-        <div class="sdg-panel">
-          <strong>Target 12.3</strong>
-          <p>Reduce food waste at retail and consumer levels while encouraging efficient use of household food resources.</p>
+        <div class="choice-panel">
+          <p class="panel-label">Example flow</p>
+          <strong>Rice + chicken + spinach</strong>
+          <span>EcoBite suggests a quick rice bowl, reminds you spinach expires soon, and adds only missing ingredients to the grocery plan.</span>
         </div>
       </section>
 
-      <section class="section" id="workflow">
-        <div class="section-heading">
-          <p class="eyebrow">How It Works</p>
-          <h2>A simple loop for reducing waste.</h2>
+      <section class="section">
+        <div class="section-heading centered">
+          <p class="eyebrow">Benefits</p>
+          <h2>Small daily decisions, better kitchen habits.</h2>
         </div>
-        <div class="steps">
+        <div class="benefit-grid">
           <article>
-            <span>1</span>
-            <h3>Track</h3>
-            <p>Users add food items manually or through barcode scanning.</p>
+            <span>Less guessing</span>
+            <p>Recipe ideas are based on your actual ingredients, not random searches.</p>
           </article>
           <article>
-            <span>2</span>
-            <h3>Prioritize</h3>
-            <p>EcoBite highlights expiring and expired ingredients.</p>
+            <span>Less waste</span>
+            <p>Expiry reminders and priority items help you cook food before it spoils.</p>
           </article>
           <article>
-            <span>3</span>
-            <h3>Cook</h3>
-            <p>Recipe suggestions encourage users to cook with available ingredients.</p>
+            <span>Less overbuying</span>
+            <p>The grocery plan focuses on missing items instead of repeating what you already have.</p>
           </article>
           <article>
-            <span>4</span>
-            <h3>Plan</h3>
-            <p>The grocery plan helps users buy only what they need next.</p>
+            <span>More confidence</span>
+            <p>Beginner-friendly suggestions help users cook without feeling overwhelmed.</p>
           </article>
         </div>
       </section>
 
-      <section class="cta" id="contact">
+      <section class="cta" id="download">
         <div>
-          <p class="eyebrow">Final Year Project</p>
-          <h2>EcoBite: AI Smart Kitchen Assistant</h2>
+          <p class="eyebrow">Promotional App Website</p>
+          <h2>EcoBite makes your kitchen easier to manage.</h2>
           <p>
-            A Flutter-based Android and iOS application supported by Firebase, recipe recommendation logic, barcode scanning, notifications, and a PWA promotional website.
+            Track what you have, find what to cook, reduce waste, and plan groceries with a smarter food assistant.
           </p>
         </div>
         <a class="button primary" href="#home">Back to Top</a>
@@ -182,8 +190,8 @@
     </main>
 
     <footer class="footer">
-      <p>EcoBite FYP Project &copy; <span data-year></span></p>
-      <p>Built for responsible food consumption and household waste reduction.</p>
+      <p>EcoBite &copy; <span data-year></span></p>
+      <p>Smart food decisions for lower household waste.</p>
     </footer>
 
     <script src="/app.js"></script>

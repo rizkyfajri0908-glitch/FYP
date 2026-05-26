@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#ffffff"/>
+  <text x="70" y="70" font-family="Arial, sans-serif" font-size="38" font-weight="700" fill="#111827">Respondent Profile (n = 60)</text>
+  <text x="70" y="108" font-family="Arial, sans-serif" font-size="20" fill="#4b5563">Summary of demographic background and internet usage among survey respondents</text>
+
+  <g transform="translate(70 160)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#111827">Gender</text>
+    <rect x="0" y="42" width="520" height="44" rx="4" fill="#2563eb"/>
+    <rect x="321" y="42" width="199" height="44" rx="4" fill="#ef4444"/>
+    <text x="16" y="72" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff">Male 61.7%</text>
+    <text x="337" y="72" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff">Female 38.3%</text>
+  </g>
+
+  <g transform="translate(70 300)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#111827">Age Group</text>
+    <g font-family="Arial, sans-serif" font-size="18" fill="#111827">
+      <text x="0" y="58">21-23</text>
+      <rect x="150" y="35" width="467" height="34" rx="4" fill="#f59e0b"/>
+      <text x="632" y="59" font-weight="700">46.7%</text>
+
+      <text x="0" y="112">18-20</text>
+      <rect x="150" y="89" width="317" height="34" rx="4" fill="#ef4444"/>
+      <text x="482" y="113" font-weight="700">31.7%</text>
+
+      <text x="0" y="166">23 and above</text>
+      <rect x="150" y="143" width="200" height="34" rx="4" fill="#16a34a"/>
+      <text x="365" y="167" font-weight="700">20.0%</text>
+
+      <text x="0" y="220">Below 18</text>
+      <rect x="150" y="197" width="17" height="34" rx="4" fill="#2563eb"/>
+      <text x="182" y="221" font-weight="700">1.7%</text>
+    </g>
+  </g>
+
+  <g transform="translate(760 160)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#111827">Programme / Field of Study</text>
+    <g font-family="Arial, sans-serif" font-size="18" fill="#111827">
+      <text x="0" y="58">Engineering</text>
+      <rect x="205" y="35" width="317" height="34" rx="4" fill="#0f766e"/>
+      <text x="537" y="59" font-weight="700">31.7%</text>
+
+      <text x="0" y="112">IT / Computer Science</text>
+      <rect x="205" y="89" width="217" height="34" rx="4" fill="#2563eb"/>
+      <text x="437" y="113" font-weight="700">21.7%</text>
+
+      <text x="0" y="166">Business / Management</text>
+      <rect x="205" y="143" width="217" height="34" rx="4" fill="#7c3aed"/>
+      <text x="437" y="167" font-weight="700">21.7%</text>
+
+      <text x="0" y="220">Social Sciences</text>
+      <rect x="205" y="197" width="117" height="34" rx="4" fill="#ea580c"/>
+      <text x="337" y="221" font-weight="700">11.7%</text>
+
+      <text x="0" y="274">Others</text>
+      <rect x="205" y="251" width="132" height="34" rx="4" fill="#64748b"/>
+      <text x="352" y="275" font-weight="700">13.2%</text>
+    </g>
+  </g>
+
+  <g transform="translate(760 560)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#111827">Average Daily Internet Usage</text>
+    <g font-family="Arial, sans-serif" font-size="18" fill="#111827">
+      <text x="0" y="58">5-7 hours</text>
+      <rect x="190" y="35" width="533" height="34" rx="4" fill="#2563eb"/>
+      <text x="738" y="59" font-weight="700">53.3%</text>
+
+      <text x="0" y="112">More than 7 hours</text>
+      <rect x="190" y="89" width="250" height="34" rx="4" fill="#dc2626"/>
+      <text x="455" y="113" font-weight="700">25.0%</text>
+
+      <text x="0" y="166">2-4 hours</text>
+      <rect x="190" y="143" width="183" height="34" rx="4" fill="#f59e0b"/>
+      <text x="388" y="167" font-weight="700">18.3%</text>
+
+      <text x="0" y="220">Less than 2 hours</text>
+      <rect x="190" y="197" width="33" height="34" rx="4" fill="#16a34a"/>
+      <text x="238" y="221" font-weight="700">3.3%</text>
+    </g>
+  </g>
+
+  <g transform="translate(70 620)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#111827">Key Profile Insight</text>
+    <rect x="0" y="34" width="610" height="132" rx="8" fill="#f3f4f6"/>
+    <text x="28" y="82" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#111827">Most respondents are active digital users.</text>
+    <text x="28" y="122" font-family="Arial, sans-serif" font-size="20" fill="#374151">78.3% use the internet for 5 hours or more daily,</text>
+    <text x="28" y="154" font-family="Arial, sans-serif" font-size="20" fill="#374151">supporting the relevance of data privacy awareness.</text>
+  </g>
+</svg>
