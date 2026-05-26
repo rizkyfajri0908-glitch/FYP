@@ -343,35 +343,6 @@ h3 {
   color: #d8f2dd;
 }
 
-.food-ribbon {
-  width: 100%;
-  overflow: hidden;
-  border-block: 1px solid var(--line);
-  background: rgba(234, 247, 236, 0.8);
-}
-
-.ribbon-track {
-  width: max-content;
-  display: flex;
-  gap: 12px;
-  padding: 14px 0;
-  animation: ribbonMove 26s linear infinite;
-}
-
-.ribbon-track span {
-  display: inline-flex;
-  min-height: 40px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0 18px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  color: var(--dark-green);
-  font-weight: 850;
-  white-space: nowrap;
-}
-
 .problem-strip {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
@@ -434,13 +405,11 @@ h3 {
 
 .screen-showcase {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
 .screen-card {
   display: grid;
-  grid-template-columns: minmax(230px, 0.9fr) minmax(0, 1fr);
   gap: 20px;
   align-items: center;
   padding: 20px;
@@ -453,11 +422,12 @@ h3 {
 .screen-card-wide {
   grid-column: 1 / -1;
   grid-template-columns: minmax(260px, 420px) minmax(0, 1fr);
+  min-height: 460px;
 }
 
 .screenshot-image {
   width: min(100%, 330px);
-  max-height: 680px;
+  max-height: 620px;
   margin: 0 auto;
   display: block;
   border: 8px solid #102119;
@@ -469,6 +439,14 @@ h3 {
 
 .screen-card-wide .screenshot-image {
   width: min(100%, 360px);
+}
+
+.screen-card-reverse .screenshot-image {
+  order: 2;
+}
+
+.screen-card-reverse .screen-copy {
+  order: 1;
 }
 
 .screen-phone {
@@ -998,16 +976,6 @@ h3 {
   }
 }
 
-@keyframes ribbonMove {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1068,13 +1036,21 @@ h3 {
   margin-bottom: 18px;
 }
 
+.login-intro {
+  text-align: center;
+}
+
 .login-intro h1 {
   max-width: 560px;
+  margin-right: auto;
+  margin-left: auto;
   font-size: clamp(2.6rem, 5vw, 4.6rem);
 }
 
 .login-intro p {
   max-width: 560px;
+  margin-right: auto;
+  margin-left: auto;
   color: var(--muted);
   line-height: 1.65;
 }
@@ -1149,6 +1125,12 @@ h3 {
 
   .screen-card-wide {
     grid-column: auto;
+    min-height: auto;
+  }
+
+  .screen-card-reverse .screenshot-image,
+  .screen-card-reverse .screen-copy {
+    order: initial;
   }
 }
 
