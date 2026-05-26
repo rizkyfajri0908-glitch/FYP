@@ -404,49 +404,50 @@ h3 {
 }
 
 .screen-showcase {
+  max-width: 760px;
+  margin: 0 auto;
   display: grid;
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 22px 56px;
+  align-items: start;
 }
 
 .screen-card {
-  display: grid;
-  gap: 20px;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
+  display: flex;
+  justify-content: center;
+}
+
+.screen-card:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.screen-card:nth-child(even) {
+  justify-content: flex-end;
+  transform: translateY(72px);
+}
+
+.screen-card:nth-child(5) {
+  grid-column: 1;
+  transform: translateY(-18px);
+}
+
+.phone-frame {
+  width: min(100%, 245px);
+  aspect-ratio: 1080 / 2182;
   overflow: hidden;
-}
-
-.screen-card-wide {
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(260px, 420px) minmax(0, 1fr);
-  min-height: 460px;
-}
-
-.screenshot-image {
-  width: min(100%, 330px);
-  max-height: 620px;
-  margin: 0 auto;
-  display: block;
-  border: 8px solid #102119;
+  border: 7px solid #102119;
   border-radius: 30px;
   background: var(--pale-green);
   box-shadow: 0 20px 48px rgba(15, 61, 46, 0.16);
-  object-fit: contain;
 }
 
-.screen-card-wide .screenshot-image {
-  width: min(100%, 360px);
-}
-
-.screen-card-reverse .screenshot-image {
-  order: 2;
-}
-
-.screen-card-reverse .screen-copy {
-  order: 1;
+.screenshot-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: scale(1.025);
+  transform-origin: center;
 }
 
 .screen-phone {
@@ -752,16 +753,6 @@ h3 {
 
 .grocery-item p {
   color: var(--ink);
-}
-
-.screen-copy h3 {
-  font-size: 1.55rem;
-}
-
-.screen-copy p {
-  color: var(--muted);
-  font-size: 1.02rem;
-  line-height: 1.65;
 }
 
 .feature-grid {
@@ -1117,20 +1108,13 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .screen-showcase,
-  .screen-card,
-  .screen-card-wide {
-    grid-template-columns: 1fr;
+  .screen-showcase {
+    max-width: 620px;
+    gap: 20px 32px;
   }
 
-  .screen-card-wide {
-    grid-column: auto;
-    min-height: auto;
-  }
-
-  .screen-card-reverse .screenshot-image,
-  .screen-card-reverse .screen-copy {
-    order: initial;
+  .phone-frame {
+    width: min(100%, 220px);
   }
 }
 
@@ -1178,9 +1162,14 @@ h3 {
   .feature-grid,
   .steps,
   .benefit-grid,
-  .screen-showcase,
   .problem-strip {
     grid-template-columns: 1fr;
+  }
+
+  .screen-showcase {
+    max-width: 360px;
+    grid-template-columns: 1fr;
+    gap: 22px;
   }
 
   .phone-shell {
@@ -1188,7 +1177,8 @@ h3 {
   }
 
   .screen-card {
-    padding: 14px;
+    justify-content: center;
+    transform: none;
   }
 
   .screen-phone {
@@ -1197,9 +1187,16 @@ h3 {
     padding: 18px 12px;
   }
 
-  .screenshot-image {
-    width: min(100%, 320px);
-    max-height: 640px;
+  .screen-card:nth-child(odd),
+  .screen-card:nth-child(even),
+  .screen-card:nth-child(5) {
+    grid-column: auto;
+    justify-content: center;
+    transform: none;
+  }
+
+  .phone-frame {
+    width: min(100%, 285px);
   }
 
   .screen-title {
