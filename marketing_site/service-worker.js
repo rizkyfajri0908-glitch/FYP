@@ -1,10 +1,10 @@
-const CACHE_NAME = "ecobite-marketing-v10";
+const CACHE_NAME = "ecobite-marketing-v11";
 const STATIC_ASSETS = [
   "/",
   "/index.html",
   "/login.html",
-  "/styles.css",
-  "/app.js",
+  "/styles.css?v=11",
+  "/app.js?v=11",
   "/manifest.webmanifest",
   "/assets/ecobite_logo.png",
   "/assets/screenshots/homepage.jpg",
@@ -52,10 +52,17 @@ self.addEventListener("fetch", (event) => {
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      return (
-        cachedResponse ||
-        fetch(event.request).catch(() => caches.match("/index.html"))
-      );
+      if (event.request.url.includes("/styles.css") || event.request.url.includes("/app.js")) {
+        return fetch(event.request)
+          .then((response) => {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+            return response;
+          })
+          .catch(() => cachedResponse || caches.match("/index.html"));
+      }
+
+      return cachedResponse || fetch(event.request).catch(() => caches.match("/index.html"));
     })
   );
 });
