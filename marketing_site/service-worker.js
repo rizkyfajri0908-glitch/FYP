@@ -1,11 +1,17 @@
-const CACHE_NAME = "ecobite-marketing-v4";
+const CACHE_NAME = "ecobite-marketing-v5";
 const STATIC_ASSETS = [
   "/",
   "/index.html",
+  "/login.html",
   "/styles.css",
   "/app.js",
   "/manifest.webmanifest",
-  "/assets/ecobite_logo.png"
+  "/assets/ecobite_logo.png",
+  "/assets/screenshots/homepage.jpg",
+  "/assets/screenshots/kitchen_inventory.jpg",
+  "/assets/screenshots/recipe_suggestions.jpg",
+  "/assets/screenshots/ai_assistant.jpg",
+  "/assets/screenshots/grocery_plan.jpg"
 ];
 
 self.addEventListener("install", (event) => {
