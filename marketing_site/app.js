@@ -1,6 +1,7 @@
 const installButton = document.querySelector("[data-install]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const navLinks = document.querySelector("[data-nav-links]");
+const siteHeader = document.querySelector(".site-header");
 const year = document.querySelector("[data-year]");
 
 let deferredInstallPrompt;
@@ -43,3 +44,26 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     navToggle?.setAttribute("aria-expanded", "false");
   });
 });
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.18 }
+);
+
+document.querySelectorAll(".reveal").forEach((element) => {
+  revealObserver.observe(element);
+});
+
+const updateHeaderState = () => {
+  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 12);
+};
+
+window.addEventListener("scroll", updateHeaderState, { passive: true });
+updateHeaderState();
