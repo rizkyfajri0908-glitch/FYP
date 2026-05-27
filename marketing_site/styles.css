@@ -952,10 +952,52 @@ button.feature-tab {
   line-height: 1.6;
 }
 
+.audience-band {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--dark-green);
+  color: var(--white);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.audience-band .eyebrow {
+  color: #d8f2dd;
+}
+
+.audience-band h2 {
+  max-width: 820px;
+  margin: 0 auto;
+  color: var(--white);
+}
+
 .steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
+}
+
+.how-flow {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.how-flow article {
+  position: relative;
+}
+
+.how-flow article:not(:last-child)::after {
+  position: absolute;
+  top: 38px;
+  right: -18px;
+  width: 22px;
+  height: 2px;
+  content: "";
+  background: var(--forest-green);
 }
 
 .benefit-grid {
@@ -1092,6 +1134,25 @@ button.feature-tab {
   justify-content: space-between;
 }
 
+.final-cta {
+  background: var(--dark-green);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.final-cta h2 {
+  color: var(--white);
+}
+
+.final-cta p {
+  color: #d8f2dd;
+}
+
+.final-cta .button.primary {
+  background: var(--white);
+  color: var(--dark-green);
+}
+
 .cta div {
   max-width: 760px;
 }
@@ -1221,6 +1282,14 @@ button.feature-tab {
     grid-template-columns: 1fr 1fr;
   }
 
+  .how-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .how-flow article:not(:last-child)::after {
+    display: none;
+  }
+
   .login-panel {
     grid-template-columns: 1fr;
   }
@@ -1282,6 +1351,10 @@ button.feature-tab {
   .benefit-grid,
   .problem-strip {
     grid-template-columns: 1fr;
+  }
+
+  .audience-band {
+    padding: 24px 18px;
   }
 
   .feature-demo {
