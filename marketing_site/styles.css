@@ -171,27 +171,30 @@ a {
 }
 
 .hero::before {
-  width: min(82vw, 900px);
-  aspect-ratio: 1;
-  right: -15%;
-  top: 9%;
-  border: 1px solid rgba(15, 61, 46, 0.08);
-  border-radius: 50%;
-  box-shadow:
-    inset 0 0 0 72px rgba(234, 247, 236, 0.18),
-    0 40px 100px rgba(15, 61, 46, 0.08);
-  animation: calmRingDrift 18s ease-in-out infinite alternate;
+  inset: 12% 4% 10% 38%;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 22% 28%, rgba(31, 122, 77, 0.12), transparent 16%),
+    radial-gradient(circle at 74% 38%, rgba(123, 196, 127, 0.18), transparent 14%),
+    radial-gradient(circle at 54% 78%, rgba(15, 61, 46, 0.09), transparent 15%),
+    linear-gradient(135deg, rgba(234, 247, 236, 0.72), rgba(255, 255, 255, 0.18));
+  filter: blur(1px);
+  opacity: 0.85;
+  animation: calmGlowFloat 16s ease-in-out infinite alternate;
 }
 
 .hero::after {
-  inset: 10% -10% 8% 42%;
+  width: min(52vw, 540px);
+  aspect-ratio: 1.45;
+  right: 3%;
+  top: 20%;
+  border: 1px solid rgba(31, 122, 77, 0.08);
+  border-radius: 48% 52% 46% 54% / 52% 45% 55% 48%;
   background:
-    linear-gradient(115deg, transparent 0 31%, rgba(31, 122, 77, 0.055) 31% 32%, transparent 32% 100%),
-    linear-gradient(115deg, transparent 0 52%, rgba(123, 196, 127, 0.075) 52% 53%, transparent 53% 100%);
-  background-size: 220px 220px;
-  mask-image: linear-gradient(90deg, transparent, black 18%, black 84%, transparent);
-  opacity: 0.75;
-  animation: quietLineDrift 24s linear infinite;
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), transparent 18%),
+    rgba(234, 247, 236, 0.32);
+  opacity: 0.7;
+  animation: softBlobBreathe 20s ease-in-out infinite;
 }
 
 .hero-content {
@@ -1132,23 +1135,24 @@ button.feature-tab {
   }
 }
 
-@keyframes calmRingDrift {
+@keyframes calmGlowFloat {
   from {
     transform: translate3d(0, 0, 0) scale(1);
   }
 
   to {
-    transform: translate3d(-28px, 18px, 0) scale(1.035);
+    transform: translate3d(-18px, 22px, 0) scale(1.025);
   }
 }
 
-@keyframes quietLineDrift {
-  from {
-    background-position: 0 0;
+@keyframes softBlobBreathe {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
 
-  to {
-    background-position: 220px 110px;
+  50% {
+    transform: translate3d(-16px, 10px, 0) rotate(4deg) scale(1.04);
   }
 }
 
