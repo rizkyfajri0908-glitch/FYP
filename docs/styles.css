@@ -501,7 +501,7 @@ button.feature-tab {
 }
 
 .feature-phone {
-  width: min(100%, 365px);
+  width: min(100%, 410px);
   transition:
     opacity 180ms ease,
     transform 180ms ease;
@@ -542,7 +542,7 @@ button.feature-tab {
 }
 
 .phone-frame {
-  width: min(100%, 365px);
+  width: min(100%, 410px);
   aspect-ratio: 1080 / 2182;
   overflow: hidden;
   border: 8px solid #102119;
@@ -556,7 +556,7 @@ button.feature-tab {
   height: 100%;
   display: block;
   object-fit: cover;
-  transform: scale(1.025);
+  transform: scale(1);
   transform-origin: center;
 }
 
@@ -1373,7 +1373,7 @@ button.feature-tab {
   }
 
   .feature-phone {
-    width: min(100%, 315px);
+    width: min(100%, 335px);
   }
 
   .screen-showcase {
