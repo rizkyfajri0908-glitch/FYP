@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="EcoBite is a smart kitchen assistant app that helps users decide what to cook, track food expiry, reduce waste and plan groceries smarter."
+    />
+    <meta name="theme-color" content="#0f3d2e" />
+    <title>EcoBite | Know What To Cook Next</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="assets/ecobite_logo.png" />
+    <link rel="apple-touch-icon" href="assets/ecobite_logo.png" />
+    <link rel="stylesheet" href="styles.css?v=15" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="EcoBite home">
+          <img src="assets/ecobite_logo.png" alt="" />
+          <span>EcoBite</span>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" data-nav-links>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How It Works</a>
+          <a class="nav-login" href="login.html">Log In</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Cook Smarter<br />Waste Less</h1>
+          <p class="hero-copy">
+            EcoBite helps you stop guessing what to eat by turning your kitchen inventory into recipe ideas, expiry reminders and smarter grocery plans.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="login.html">Get Started</a>
+            <a class="button secondary" href="login.html">Download</a>
+          </div>
+        </div>
+        <div class="phone-preview" aria-label="EcoBite app preview">
+          <div class="phone-shell">
+            <div class="phone-top"></div>
+            <div class="app-card hero-app-card">
+              <img src="assets/ecobite_logo.png" alt="EcoBite logo" />
+              <h2>Tonight's Ideas</h2>
+              <p>Based on your kitchen inventory</p>
+            </div>
+            <div class="mini-card fresh">
+              <span>Use Soon</span>
+              <strong>Spinach expires in 2 days</strong>
+            </div>
+            <div class="mini-card">
+              <span>Suggested Recipe</span>
+              <strong>Chicken Spinach Rice Bowl</strong>
+            </div>
+            <div class="mini-card leaf">
+              <span>Shopping Help</span>
+              <strong>Only buy what is missing</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="features">
+        <div class="section-heading centered">
+          <p class="eyebrow">App Features</p>
+          <h2>Everything is built around using food before it goes to waste.</h2>
+          <p>Choose a feature to see the matching EcoBite app screen.</p>
+        </div>
+        <div class="feature-demo" data-feature-demo>
+          <div class="feature-tabs" role="tablist" aria-label="EcoBite feature previews">
+            <button class="feature-tab is-active" type="button" role="tab" aria-selected="true" data-preview-image="assets/screenshots/kitchen_inventory.jpg" data-preview-alt="EcoBite kitchen inventory screen with search, filters, and expiry indicators">
+              <span>01</span>
+              <strong>Kitchen Inventory</strong>
+              <small>Save food items, quantities, categories and expiry dates in one organized place.</small>
+            </button>
+            <button class="feature-tab" type="button" role="tab" aria-selected="false" data-preview-image="assets/screenshots/homepage.jpg" data-preview-alt="EcoBite home dashboard showing items that need attention">
+              <span>02</span>
+              <strong>Expiry Awareness</strong>
+              <small>See fresh, expiring and expired items before important food gets forgotten.</small>
+            </button>
+            <button class="feature-tab" type="button" role="tab" aria-selected="false" data-preview-image="assets/screenshots/recipe_suggestions.jpg" data-preview-alt="EcoBite recipe suggestions screen showing available and missing ingredients">
+              <span>03</span>
+              <strong>Recipe Suggestions</strong>
+              <small>Get recipe ideas based on ingredients you already have and food you should use soon.</small>
+            </button>
+            <button class="feature-tab" type="button" role="tab" aria-selected="false" data-preview-image="assets/screenshots/grocery_plan.jpg" data-preview-alt="EcoBite predictive grocery plan screen with planned items and shopping progress">
+              <span>04</span>
+              <strong>Predictive Grocery Plan</strong>
+              <small>Turn missing ingredients and staples into a clearer shopping plan.</small>
+            </button>
+            <button class="feature-tab" type="button" role="tab" aria-selected="false" data-preview-image="assets/screenshots/ai_assistant.jpg" data-preview-alt="EcoBite AI assistant screen with food waste and recipe chat examples">
+              <span>05</span>
+              <strong>AI Food Assistant</strong>
+              <small>Ask about storage, cooking ideas, leftovers, waste reduction and simple recipes.</small>
+            </button>
+            <button class="feature-tab" type="button" role="tab" aria-selected="false" data-preview-image="assets/screenshots/barcode_scanner.jpg" data-preview-alt="EcoBite barcode scanner screen for adding items faster">
+              <span>06</span>
+              <strong>Barcode Scanner</strong>
+              <small>Scan product barcodes to add items faster and keep inventory tracking convenient.</small>
+            </button>
+          </div>
+          <div class="feature-preview-panel" aria-live="polite">
+            <div class="phone-frame feature-phone">
+              <img class="screenshot-image" src="assets/screenshots/kitchen_inventory.jpg" alt="EcoBite kitchen inventory screen with search, filters, and expiry indicators" data-feature-image />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="audience-band">
+          <p class="eyebrow">Who It Is For</p>
+          <h2>Built for students, busy households, beginner cooks, and anyone who wants to waste less food.</h2>
+        </div>
+      </section>
+
+      <section class="section reveal" id="how-it-works">
+        <div class="section-heading centered">
+          <p class="eyebrow">How EcoBite Works</p>
+          <h2>From ingredients to a smarter shopping plan.</h2>
+        </div>
+        <div class="steps how-flow">
+          <article class="interactive-card">
+            <span>1</span>
+            <h3>Add your ingredients</h3>
+            <p>Record what you have by adding items manually or scanning product barcodes.</p>
+          </article>
+          <article class="interactive-card">
+            <span>2</span>
+            <h3>Get recipe suggestions</h3>
+            <p>EcoBite recommends meals based on available ingredients and food that should be used first.</p>
+          </article>
+          <article class="interactive-card">
+            <span>3</span>
+            <h3>Shop only what you need</h3>
+            <p>Missing ingredients and staples become a focused grocery plan.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="section-heading centered">
+          <p class="eyebrow">Benefits</p>
+          <h2>Small daily decisions, better kitchen habits.</h2>
+        </div>
+        <div class="benefit-grid">
+          <article class="interactive-card">
+            <span>Less guessing</span>
+            <p>Recipe ideas come from your actual inventory instead of random searches.</p>
+          </article>
+          <article class="interactive-card">
+            <span>Less waste</span>
+            <p>Priority reminders help users cook older food before it spoils.</p>
+          </article>
+          <article class="interactive-card">
+            <span>Less overbuying</span>
+            <p>Shopping suggestions focus on missing items instead of food already at home.</p>
+          </article>
+          <article class="interactive-card">
+            <span>More confidence</span>
+            <p>Beginner-friendly support makes cooking and planning feel more manageable.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta final-cta reveal">
+        <div>
+          <p class="eyebrow">Ready To Start?</p>
+          <h2>Ready to make every ingredient count?</h2>
+          <p>Start using EcoBite today and turn everyday food decisions into smarter, lower-waste habits.</p>
+        </div>
+        <a class="button primary" href="login.html">Start Using EcoBite</a>
+      </section>
+
+      <section class="section reveal">
+        <div class="section-heading centered">
+          <p class="eyebrow">FAQ</p>
+          <h2>Built for practical daily use</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Who is EcoBite useful for?</summary>
+            <p>Students, families, beginner cooks and anyone who wants help deciding what to cook from food they already own.</p>
+          </details>
+          <details>
+            <summary>Does EcoBite only track expiry dates?</summary>
+            <p>No. It connects expiry tracking with recipe suggestions, grocery planning, AI assistance, barcode scanning and personal preferences.</p>
+          </details>
+          <details>
+            <summary>Why is this related to food waste reduction?</summary>
+            <p>EcoBite encourages users to cook older ingredients first, avoid duplicate purchases and plan meals around food that might otherwise be forgotten.</p>
+          </details>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>EcoBite &copy; <span data-year></span></p>
+      <p>Smart food decisions for lower household waste.</p>
+    </footer>
+
+    <script src="app.js?v=15"></script>
+  </body>
+</html>
