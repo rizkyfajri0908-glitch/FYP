@@ -150,19 +150,22 @@ a {
 
 .hero {
   width: min(1120px, calc(100% - 32px));
-  min-height: calc(92vh - 72px);
+  min-height: calc(100vh - 72px);
   margin: 0 auto;
-  padding: 64px 0 48px;
+  padding: 108px 0 80px;
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 390px;
+  align-items: center;
+  gap: 72px;
+  overflow: visible;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 690px;
+  margin-top: 24px;
   animation: heroRise 700ms ease both;
 }
 
@@ -251,9 +254,9 @@ h3 {
 }
 
 .phone-preview {
-  position: absolute;
-  right: 0;
-  top: 64px;
+  position: relative;
+  right: auto;
+  top: auto;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -1263,16 +1266,14 @@ button.feature-tab {
 
   .hero {
     min-height: auto;
-    padding-top: 44px;
-    display: block;
+    padding: 70px 0 44px;
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
 
   .phone-preview {
-    position: relative;
-    right: auto;
-    top: auto;
     margin-bottom: 28px;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .feature-grid,
