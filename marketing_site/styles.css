@@ -1250,6 +1250,7 @@ button.feature-tab {
 .final-cta .button.primary {
   background: var(--white);
   color: var(--dark-green);
+  margin-right: 56px;
 }
 
 .cta div {
@@ -1522,5 +1523,9 @@ button.feature-tab {
   .cta .button {
     width: 100%;
     margin-top: 14px;
+  }
+
+  .final-cta .button.primary {
+    margin-right: 0;
   }
 }
