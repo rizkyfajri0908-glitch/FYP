@@ -1250,6 +1250,7 @@ button.feature-tab {
 .final-cta .button.primary {
   background: var(--white);
   color: var(--dark-green);
+  transform: translateX(-50px);
 }
 
 .cta div {
