@@ -40,6 +40,10 @@ a {
   text-decoration: none;
 }
 
+.text-light-green {
+  color: var(--leaf-green);
+}
+
 .site-header {
   position: sticky;
   top: 0;
