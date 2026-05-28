@@ -1,11 +1,11 @@
-const CACHE_NAME = "ecobite-marketing-v21";
+const CACHE_NAME = "ecobite-marketing-v22";
 const STATIC_ASSETS = [
   "/",
   "/index.html",
   "/login.html",
-  "/index.html?v=21",
-  "/styles.css?v=21",
-  "/app.js?v=21",
+  "/index.html?v=22",
+  "/styles.css?v=22",
+  "/app.js?v=22",
   "/manifest.webmanifest",
   "/assets/ecobite_logo.png",
   "/assets/screenshots/homepage.jpg",
