@@ -471,6 +471,11 @@ h3 {
   font-size: 1.05rem;
 }
 
+#features .section-heading > p:not(.eyebrow),
+.final-cta .eyebrow {
+  display: none;
+}
+
 .feature-demo {
   display: grid;
   grid-template-columns: minmax(280px, 440px) minmax(360px, 1fr);
