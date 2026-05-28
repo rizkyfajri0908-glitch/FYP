@@ -1,4 +1,3 @@
-const installButton = document.querySelector("[data-install]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const navLinks = document.querySelector("[data-nav-links]");
 const siteHeader = document.querySelector(".site-header");
@@ -7,7 +6,6 @@ const featureTabs = document.querySelectorAll("[data-preview-image]");
 const featureImage = document.querySelector("[data-feature-image]");
 const featurePhone = document.querySelector(".feature-phone");
 
-let deferredInstallPrompt;
 let featureSwapTimer;
 
 if (year) {
@@ -19,25 +17,6 @@ if (false && "serviceWorker" in navigator) {
     navigator.serviceWorker.register("/service-worker.js");
   });
 }
-
-window.addEventListener("beforeinstallprompt", (event) => {
-  event.preventDefault();
-  deferredInstallPrompt = event;
-  installButton?.removeAttribute("hidden");
-});
-
-installButton?.addEventListener("click", async (event) => {
-  event.preventDefault();
-
-  if (!deferredInstallPrompt) {
-    return;
-  }
-
-  deferredInstallPrompt.prompt();
-  await deferredInstallPrompt.userChoice;
-  deferredInstallPrompt = null;
-  installButton.setAttribute("hidden", "true");
-});
 
 navToggle?.addEventListener("click", () => {
   const isOpen = navLinks?.classList.toggle("is-open");
