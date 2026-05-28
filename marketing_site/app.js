@@ -26,7 +26,9 @@ window.addEventListener("beforeinstallprompt", (event) => {
   installButton?.removeAttribute("hidden");
 });
 
-installButton?.addEventListener("click", async () => {
+installButton?.addEventListener("click", async (event) => {
+  event.preventDefault();
+
   if (!deferredInstallPrompt) {
     return;
   }
