@@ -542,6 +542,16 @@ button.feature-tab {
   font-weight: 950;
 }
 
+.feature-tab span svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .feature-tab strong {
   color: var(--dark-green);
   font-size: 1.06rem;
