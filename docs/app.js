@@ -8,6 +8,7 @@ const featureImage = document.querySelector("[data-feature-image]");
 const featurePhone = document.querySelector(".feature-phone");
 
 let deferredInstallPrompt;
+let featureSwapTimer;
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -88,9 +89,10 @@ featureTabs.forEach((tab) => {
     const nextImage = tab.dataset.previewImage;
     const nextAlt = tab.dataset.previewAlt || "";
 
+    window.clearTimeout(featureSwapTimer);
     featurePhone.classList.add("is-switching");
 
-    window.setTimeout(() => {
+    featureSwapTimer = window.setTimeout(() => {
       if (nextImage) {
         featureImage.src = nextImage;
       }
