@@ -17,29 +17,21 @@ class AssistantResponseService {
     required List<AssistantKnowledge> knowledgeBase,
     UserPreferences? preferences,
   }) {
-    final normalizedQuestion = question.toLowerCase();
+    final normalizedQuestion = question.toLowerCase().trim();
 
-    if (_containsAny(normalizedQuestion, ['expire', 'expiry', 'expiring'])) {
+    if (_containsAny(normalizedQuestion, [
+      'expire',
+      'expiry',
+      'expiring',
+      'expired',
+      'use first',
+      'going bad',
+      'old food',
+      'spoiling',
+      'spoiled',
+      'soon',
+    ])) {
       return _expiryResponse(inventory);
-    }
-
-    if (_containsAny(normalizedQuestion, ['cook', 'recipe', 'meal', 'make'])) {
-      return _recipeResponse(
-        inventory: inventory,
-        recipes: recipes,
-        preferences: preferences,
-      );
-    }
-
-    if (_containsAny(
-      normalizedQuestion,
-      ['grocery', 'buy', 'shop', 'missing'],
-    )) {
-      return _groceryResponse(inventory);
-    }
-
-    if (_containsAny(normalizedQuestion, ['inventory', 'kitchen', 'have'])) {
-      return _inventoryResponse(inventory);
     }
 
     final knowledgeResponse = _knowledgeResponse(
@@ -50,9 +42,67 @@ class AssistantResponseService {
       return knowledgeResponse;
     }
 
+    if (_containsAny(normalizedQuestion, [
+      'cook',
+      'recipe',
+      'meal',
+      'make',
+      'eat',
+      'hungry',
+      'dinner',
+      'lunch',
+      'breakfast',
+      'snack',
+      'ideas',
+      'idea',
+      'what now',
+      'what should i do',
+      'not sure',
+      'dont know',
+      "don't know",
+    ])) {
+      return _recipeResponse(
+        inventory: inventory,
+        recipes: recipes,
+        preferences: preferences,
+      );
+    }
+
+    if (_containsAny(
+      normalizedQuestion,
+      [
+        'grocery',
+        'buy',
+        'shop',
+        'shopping',
+        'missing',
+        'need',
+        'store',
+        'supermarket',
+        'market',
+        'restock',
+      ],
+    )) {
+      return _groceryResponse(inventory);
+    }
+
+    if (_containsAny(normalizedQuestion, ['inventory', 'kitchen', 'have'])) {
+      return _inventoryResponse(inventory);
+    }
+
+    final vagueFoodResponse = _vagueFoodResponse(
+      question: normalizedQuestion,
+      inventory: inventory,
+      recipes: recipes,
+      preferences: preferences,
+    );
+    if (vagueFoodResponse != null) {
+      return vagueFoodResponse;
+    }
+
     return 'I can help with expiry checks, recipe ideas, grocery planning, '
         'food storage, food safety, dietary preferences, and waste reduction. '
-        'Try asking: "How can I reduce food waste?"';
+        'Try asking: "What can I cook?" or "How can I reduce food waste?"';
   }
 
   bool _containsAny(String question, List<String> keywords) {
@@ -136,10 +186,11 @@ class AssistantResponseService {
   int _knowledgeScore(String question, AssistantKnowledge entry) {
     var score = 0;
     final searchableText =
-        '${entry.question} ${entry.keywords.join(' ')}'.toLowerCase();
+        '${entry.question} ${entry.answer} ${entry.keywords.join(' ')}'
+            .toLowerCase();
     final questionWords = question
         .split(RegExp(r'[^a-z0-9]+'))
-        .where((word) => word.length >= 3)
+        .where((word) => word.length >= 3 && !_stopWords.contains(word))
         .toSet();
 
     for (final keyword in entry.keywords) {
@@ -155,6 +206,79 @@ class AssistantResponseService {
     }
 
     return score;
+  }
+
+  String? _vagueFoodResponse({
+    required String question,
+    required List<Ingredient> inventory,
+    required List<Recipe> recipes,
+    UserPreferences? preferences,
+  }) {
+    if (!_isFoodRelated(question)) {
+      return null;
+    }
+
+    if (_containsAny(question, [
+      'help',
+      'what',
+      'how',
+      'suggest',
+      'recommend',
+      'idea',
+      'ideas',
+      'confused',
+      'lazy',
+      'simple',
+      'easy',
+    ])) {
+      return _recipeResponse(
+        inventory: inventory,
+        recipes: recipes,
+        preferences: preferences,
+      );
+    }
+
+    return 'For food questions, I can help you decide what to cook, what to use first, how to store ingredients, and what to buy next. Add your ingredients to Inventory for more specific suggestions.';
+  }
+
+  bool _isFoodRelated(String question) {
+    return _containsAny(question, [
+      'food',
+      'ingredient',
+      'ingredients',
+      'kitchen',
+      'fridge',
+      'pantry',
+      'cook',
+      'cooking',
+      'meal',
+      'eat',
+      'recipe',
+      'grocery',
+      'shopping',
+      'leftover',
+      'leftovers',
+      'waste',
+      'expiry',
+      'expire',
+      'storage',
+      'store',
+      'fresh',
+      'safe',
+      'healthy',
+      'budget',
+      'breakfast',
+      'lunch',
+      'dinner',
+      'snack',
+      'rice',
+      'pasta',
+      'bread',
+      'milk',
+      'chicken',
+      'vegetable',
+      'fruit',
+    ]);
   }
 
   String _groceryResponse(List<Ingredient> inventory) {
@@ -185,4 +309,28 @@ class AssistantResponseService {
     return 'You currently have ${inventory.length} ingredients listed, '
         'including $itemNames.';
   }
+
+  static const _stopWords = {
+    'the',
+    'and',
+    'for',
+    'with',
+    'that',
+    'this',
+    'you',
+    'your',
+    'can',
+    'how',
+    'what',
+    'why',
+    'are',
+    'should',
+    'have',
+    'from',
+    'into',
+    'about',
+    'some',
+    'more',
+    'make',
+  };
 }

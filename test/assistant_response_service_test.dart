@@ -70,4 +70,30 @@ void main() {
 
     expect(response, contains('first-in, first-out'));
   });
+
+  test('answers vague food questions with meal guidance', () {
+    const service = AssistantResponseService();
+
+    final response = service.respond(
+      question: 'I am hungry but I do not know what to eat',
+      inventory: const [],
+      recipes: RecipeCatalog.recipes,
+      knowledgeBase: AssistantKnowledgeBase.entries,
+    );
+
+    expect(response, contains('expires first'));
+  });
+
+  test('answers ingredient-specific vague questions', () {
+    const service = AssistantResponseService();
+
+    final response = service.respond(
+      question: 'What can I make with cabbage?',
+      inventory: const [],
+      recipes: RecipeCatalog.recipes,
+      knowledgeBase: AssistantKnowledgeBase.entries,
+    );
+
+    expect(response, contains('Cabbage'));
+  });
 }

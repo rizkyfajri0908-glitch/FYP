@@ -619,6 +619,243 @@ class AssistantKnowledgeBase {
       category: 'safety',
     ),
     AssistantKnowledge(
+      id: 'vague_what_to_eat',
+      question: 'I do not know what to eat.',
+      answer:
+          'Start by checking what expires first, then choose one protein, one vegetable, and one carbohydrate. If you have rice, pasta, bread, eggs, chicken, or vegetables, EcoBite can suggest a simple meal from those items.',
+      keywords: [
+        'dont know what to eat',
+        "don't know what to eat",
+        'what to eat',
+        'hungry',
+        'not sure what to eat',
+        'meal idea',
+      ],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'vague_easy_food',
+      question: 'What is something easy I can make?',
+      answer:
+          'For an easy meal, use a base like rice, pasta, bread, or noodles, then add one available protein and any vegetable that needs to be used soon.',
+      keywords: [
+        'easy food',
+        'easy meal',
+        'simple food',
+        'simple meal',
+        'lazy meal',
+        'quick idea',
+      ],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'vague_use_random_food',
+      question: 'How do I use random ingredients?',
+      answer:
+          'Group random ingredients into a simple format: rice bowl, fried rice, pasta, soup, stir-fry, sandwich, wrap, or omelette. Pick the format that matches what you already have.',
+      keywords: [
+        'random ingredients',
+        'random food',
+        'whatever i have',
+        'use what i have',
+        'anything in fridge',
+      ],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'beginner_cooking',
+      question: 'I am a beginner at cooking. What should I do?',
+      answer:
+          'Start with simple meals that are hard to ruin: fried rice, omelette, pasta, soup, sandwich, or rice bowl. Use EcoBite to choose ingredients that are already available and expiring soon.',
+      keywords: [
+        'beginner',
+        'new to cooking',
+        'cannot cook',
+        'cant cook',
+        "can't cook",
+        'easy for beginners',
+      ],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'student_meals',
+      question: 'What meals are good for students?',
+      answer:
+          'Student-friendly meals include fried rice, egg noodles, tuna rice bowl, pasta with tomato sauce, chicken wraps, vegetable omelette, and cereal or oats for quick breakfasts.',
+      keywords: [
+        'student meal',
+        'student food',
+        'dorm food',
+        'college food',
+        'university meal',
+      ],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'snack_ideas',
+      question: 'What snacks can I make?',
+      answer:
+          'Quick snacks include toast, cereal with milk, fruit, yoghurt, egg sandwich, biscuits with milk, vegetable sticks, or a small rice bowl using leftovers.',
+      keywords: ['snack', 'snacks', 'small food', 'light food'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'breakfast_ideas',
+      question: 'What can I eat for breakfast?',
+      answer:
+          'Breakfast ideas include cereal with milk, toast, egg sandwich, oats, banana pancakes, yoghurt with fruit, or leftover rice with egg.',
+      keywords: ['breakfast', 'morning food', 'eat in morning'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'lunch_ideas',
+      question: 'What can I eat for lunch?',
+      answer:
+          'Lunch can be simple: rice bowl, fried rice, pasta, sandwich, wrap, soup, or noodles. Prioritise any item in your inventory that expires soon.',
+      keywords: ['lunch', 'midday meal', 'afternoon meal'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'dinner_ideas',
+      question: 'What can I eat for dinner?',
+      answer:
+          'Dinner ideas include stir-fry with rice, pasta, soup, chicken and vegetables, rice bowl, curry, or baked items using pantry ingredients.',
+      keywords: ['dinner', 'night meal', 'evening meal'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'almost_expired_ideas',
+      question: 'What should I do with food that is almost expired?',
+      answer:
+          'Cook almost-expired food today if it still smells and looks normal. Good options are soup, fried rice, pasta sauce, stir-fry, curry, or freezing cooked portions.',
+      keywords: [
+        'almost expired',
+        'nearly expired',
+        'close to expiry',
+        'food going bad',
+        'use soon',
+      ],
+      category: 'expiry',
+    ),
+    AssistantKnowledge(
+      id: 'too_many_vegetables',
+      question: 'What can I do with too many vegetables?',
+      answer:
+          'Use extra vegetables in fried rice, soup, stir-fry, pasta, omelette, curry, wraps, or roasted vegetable bowls. Cook the softest vegetables first.',
+      keywords: [
+        'too many vegetables',
+        'extra vegetables',
+        'lots of vegetables',
+        'use vegetables',
+      ],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'too_much_rice',
+      question: 'What can I do with too much rice?',
+      answer:
+          'Extra rice can become fried rice, rice porridge, rice soup, rice bowl, or packed lunch. Cool cooked rice quickly and refrigerate it.',
+      keywords: ['too much rice', 'extra rice', 'lots of rice'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'use_chicken_breast',
+      question: 'What can I make with chicken breast?',
+      answer:
+          'Chicken breast works well in fried rice, pasta, wraps, sandwiches, soup, stir-fry, chicken rice bowl, or salad. Cook it before expiry and store leftovers properly.',
+      keywords: ['chicken breast', 'use chicken breast', 'chicken ideas'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'use_cabbage',
+      question: 'What can I make with cabbage?',
+      answer:
+          'Cabbage is good in stir-fry, fried rice, soup, noodles, slaw, wraps, or cabbage egg stir-fry. It is useful for budget meals because it stretches portions.',
+      keywords: ['cabbage', 'use cabbage', 'cabbage recipe'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'use_carrot',
+      question: 'What can I make with carrots?',
+      answer:
+          'Carrots can be used in fried rice, soup, stir-fry, pasta sauce, curry, wraps, salad, or as a snack with dip.',
+      keywords: ['carrot', 'carrots', 'use carrot'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'use_flour',
+      question: 'What can I make with flour?',
+      answer:
+          'Flour can be used for pancakes, simple flatbread, batter, thickening soup or sauce, biscuits, or basic baking recipes.',
+      keywords: ['flour', 'use flour', 'plain flour'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'use_elbow_pasta',
+      question: 'What can I make with elbow pasta?',
+      answer:
+          'Elbow pasta works in mac and cheese, tomato pasta, pasta salad, soup, tuna pasta, chicken pasta, or vegetable pasta.',
+      keywords: ['elbow pasta', 'macaroni', 'pasta shape'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'use_chocolate_milk',
+      question: 'What can I do with chocolate milk?',
+      answer:
+          'Chocolate milk can be used in smoothies, oats, pancakes, chia pudding, iced drinks, or as a quick snack drink before it expires.',
+      keywords: ['chocolate milk', 'use chocolate milk'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'use_cereal',
+      question: 'What can I do with cereal?',
+      answer:
+          'Cereal can be eaten with milk, used as yoghurt topping, mixed into snack bars, crushed as a coating, or added to simple dessert bowls.',
+      keywords: ['cereal', 'use cereal', 'breakfast cereal'],
+      category: 'recipe',
+    ),
+    AssistantKnowledge(
+      id: 'food_smells_weird',
+      question: 'What if my food smells weird?',
+      answer:
+          'If food smells sour, rotten, unusually strong, or feels slimy, do not risk eating it. EcoBite can help plan earlier use, but safety comes first.',
+      keywords: [
+        'smells weird',
+        'bad smell',
+        'smells bad',
+        'is it safe',
+        'food safety',
+      ],
+      category: 'safety',
+    ),
+    AssistantKnowledge(
+      id: 'organize_fridge',
+      question: 'How should I organize my fridge?',
+      answer:
+          'Keep older items at the front, group similar foods together, label leftovers with dates, and place soon-to-expire food where you can see it easily.',
+      keywords: [
+        'organize fridge',
+        'fridge organization',
+        'arrange fridge',
+        'sort fridge',
+      ],
+      category: 'storage',
+    ),
+    AssistantKnowledge(
+      id: 'no_time_to_cook',
+      question: 'What if I do not have time to cook?',
+      answer:
+          'Choose fast meals such as fried rice, pasta, sandwich, wrap, omelette, cereal, or rice bowl. Use ingredients that are already prepared or expiring soon.',
+      keywords: [
+        'no time',
+        'busy',
+        'fast food at home',
+        'quick cooking',
+        'too busy',
+      ],
+      category: 'planning',
+    ),
+    AssistantKnowledge(
       id: 'unknown_barcode',
       question: 'What if a barcode is not found?',
       answer:
