@@ -84,7 +84,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 ),
                 const SizedBox(width: 10),
                 IconButton.filledTonal(
-                  tooltip: 'Scan QR or barcode',
+                  tooltip: 'Scan product barcode',
                   onPressed: () => _scanIngredientCode(context),
                   icon: const Icon(Icons.qr_code_scanner),
                 ),
@@ -565,7 +565,7 @@ class _IngredientScannerScreenState extends State<_IngredientScannerScreen> {
               child: const SafeArea(
                 top: false,
                 child: Text(
-                  'Point the camera at a QR code or product barcode.',
+                  'Point the camera at a product barcode.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,

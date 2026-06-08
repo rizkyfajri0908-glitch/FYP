@@ -628,10 +628,10 @@ class AssistantKnowledgeBase {
     ),
     AssistantKnowledge(
       id: 'qr_code_format',
-      question: 'What QR code format works best?',
+      question: 'What barcode format works best?',
       answer:
-          'The most realistic QR code format is a product ID such as FOOD001 or BELLPEPPER001. EcoBite can use that ID to find the item details from the Firestore products database.',
-      keywords: ['qr code', 'qr format', 'scan qr'],
+          'Use a Code 128 barcode with a product ID such as CABBAGE001 or CHICKENBREAST001. EcoBite can scan that ID and find the item details from the product database.',
+      keywords: ['barcode format', 'code 128', 'scan barcode'],
       category: 'inventory',
     ),
     AssistantKnowledge(
