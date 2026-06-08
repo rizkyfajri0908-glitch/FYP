@@ -630,7 +630,7 @@ class AssistantKnowledgeBase {
       id: 'qr_code_format',
       question: 'What QR code format works best?',
       answer:
-          'A useful QR code can contain text like name=Milk;quantity=1 carton;category=dairy. The app can use that to prefill the item form.',
+          'The most realistic QR code format is a product ID such as FOOD001 or BELLPEPPER001. EcoBite can use that ID to find the item details from the Firestore products database.',
       keywords: ['qr code', 'qr format', 'scan qr'],
       category: 'inventory',
     ),

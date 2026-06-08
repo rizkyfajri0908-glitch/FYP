@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/ingredient.dart';
@@ -21,24 +22,64 @@ class BarcodeProduct {
 }
 
 class BarcodeLookupService {
-  BarcodeLookupService({http.Client? client})
-      : _client = client ?? http.Client();
+  BarcodeLookupService({
+    FirebaseFirestore? firestore,
+    http.Client? client,
+  })  : _firestore = firestore ?? FirebaseFirestore.instance,
+        _client = client ?? http.Client();
 
+  final FirebaseFirestore _firestore;
   final http.Client _client;
 
-  Future<BarcodeProduct?> lookup(String barcode) async {
-    final normalizedBarcode = barcode.trim();
-    if (normalizedBarcode.isEmpty ||
-        !RegExp(r'^\d{6,14}$').hasMatch(normalizedBarcode)) {
+  Future<BarcodeProduct?> lookup(String code) async {
+    final normalizedCode = code.trim();
+    if (normalizedCode.isEmpty) {
       return null;
     }
 
-    final localProduct = _LocalBarcodeDatabase.lookup(normalizedBarcode);
+    final firestoreProduct = await _lookupFirestoreProduct(normalizedCode);
+    if (firestoreProduct != null) {
+      return firestoreProduct;
+    }
+
+    final localProduct = _LocalBarcodeDatabase.lookup(normalizedCode);
     if (localProduct != null) {
       return localProduct;
     }
 
-    return _lookupOpenFoodFacts(normalizedBarcode);
+    if (!RegExp(r'^\d{6,14}$').hasMatch(normalizedCode)) {
+      return null;
+    }
+
+    return _lookupOpenFoodFacts(normalizedCode);
+  }
+
+  Future<BarcodeProduct?> _lookupFirestoreProduct(String code) async {
+    try {
+      final productId = code.trim().toUpperCase();
+      final snapshot =
+          await _firestore.collection('products').doc(productId).get();
+      final data = snapshot.data();
+
+      if (data == null) {
+        return null;
+      }
+
+      final name = _firstText([data['name'], data['productName']]);
+      if (name == null) {
+        return null;
+      }
+
+      return BarcodeProduct(
+        barcode: productId,
+        name: name,
+        quantity: _quantityText(data['quantity']),
+        category: _categoryFromValue(data['category']),
+        source: 'EcoBite product database',
+      );
+    } catch (_) {
+      return null;
+    }
   }
 
   Future<BarcodeProduct?> _lookupOpenFoodFacts(String barcode) async {
@@ -108,6 +149,29 @@ class BarcodeLookupService {
       }
     }
     return null;
+  }
+
+  String _quantityText(dynamic value) {
+    final text = value?.toString().trim();
+    if (text == null || text.isEmpty) {
+      return '1 item';
+    }
+    return text;
+  }
+
+  static IngredientCategory _categoryFromValue(dynamic value) {
+    final category = value?.toString().trim().toLowerCase();
+    if (category == null || category.isEmpty) {
+      return IngredientCategory.pantry;
+    }
+
+    for (final option in IngredientCategory.values) {
+      if (option.name == category) {
+        return option;
+      }
+    }
+
+    return _categoryFromText(category);
   }
 
   static IngredientCategory _categoryFromText(String text) {
@@ -180,6 +244,83 @@ class _LocalBarcodeDatabase {
   const _LocalBarcodeDatabase._();
 
   static const _products = {
+    'CABBAGE001': BarcodeProduct(
+      barcode: 'CABBAGE001',
+      name: 'Cabbage',
+      quantity: '1',
+      category: IngredientCategory.vegetable,
+      source: 'EcoBite demo product database',
+    ),
+    'CHICKENBREAST001': BarcodeProduct(
+      barcode: 'CHICKENBREAST001',
+      name: 'Chicken Breast',
+      quantity: '1',
+      category: IngredientCategory.protein,
+      source: 'EcoBite demo product database',
+    ),
+    'FLOUR001': BarcodeProduct(
+      barcode: 'FLOUR001',
+      name: 'Flour',
+      quantity: '1',
+      category: IngredientCategory.pantry,
+      source: 'EcoBite demo product database',
+    ),
+    'CARROT001': BarcodeProduct(
+      barcode: 'CARROT001',
+      name: 'Carrot',
+      quantity: '1',
+      category: IngredientCategory.vegetable,
+      source: 'EcoBite demo product database',
+    ),
+    'BISCUIT001': BarcodeProduct(
+      barcode: 'BISCUIT001',
+      name: 'Biscuit',
+      quantity: '1',
+      category: IngredientCategory.pantry,
+      source: 'EcoBite demo product database',
+    ),
+    'STEAK001': BarcodeProduct(
+      barcode: 'STEAK001',
+      name: 'Steak',
+      quantity: '1',
+      category: IngredientCategory.protein,
+      source: 'EcoBite demo product database',
+    ),
+    'ELBOWPASTA001': BarcodeProduct(
+      barcode: 'ELBOWPASTA001',
+      name: 'Elbow Pasta',
+      quantity: '1',
+      category: IngredientCategory.grain,
+      source: 'EcoBite demo product database',
+    ),
+    'CHOCOLATEMILK001': BarcodeProduct(
+      barcode: 'CHOCOLATEMILK001',
+      name: 'Chocolate Milk',
+      quantity: '1',
+      category: IngredientCategory.dairy,
+      source: 'EcoBite demo product database',
+    ),
+    'RICE001': BarcodeProduct(
+      barcode: 'RICE001',
+      name: 'Rice',
+      quantity: '1',
+      category: IngredientCategory.grain,
+      source: 'EcoBite demo product database',
+    ),
+    'BREAD001': BarcodeProduct(
+      barcode: 'BREAD001',
+      name: 'Bread',
+      quantity: '1',
+      category: IngredientCategory.grain,
+      source: 'EcoBite demo product database',
+    ),
+    'CEREAL001': BarcodeProduct(
+      barcode: 'CEREAL001',
+      name: 'Cereal',
+      quantity: '1',
+      category: IngredientCategory.grain,
+      source: 'EcoBite demo product database',
+    ),
     '9556041600017': BarcodeProduct(
       barcode: '9556041600017',
       name: 'Milk',
