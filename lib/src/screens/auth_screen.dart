@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   bool _isLoginMode = true;
   bool _isSubmitting = false;
+  bool _obscurePassword = true;
   String? _errorMessage;
 
   @override
@@ -38,20 +41,7 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 64,
-                    height: 64,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: AppColors.mintGreen),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: Image.asset(
-                      'assets/images/ecobite_logo.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  const _FruitBowlAnimation(),
                   const SizedBox(height: 20),
                   Text(
                     _isLoginMode ? 'Welcome back' : 'Create account',
@@ -87,10 +77,25 @@ class _AuthScreenState extends State<AuthScreen> {
                             const SizedBox(height: 12),
                             TextFormField(
                               controller: _passwordController,
-                              obscureText: true,
-                              decoration: const InputDecoration(
+                              obscureText: _obscurePassword,
+                              decoration: InputDecoration(
                                 labelText: 'Password',
-                                prefixIcon: Icon(Icons.lock_outline),
+                                prefixIcon: const Icon(Icons.lock_outline),
+                                suffixIcon: IconButton(
+                                  tooltip: _obscurePassword
+                                      ? 'Show password'
+                                      : 'Hide password',
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscurePassword = !_obscurePassword;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    _obscurePassword
+                                        ? Icons.visibility_outlined
+                                        : Icons.visibility_off_outlined,
+                                  ),
+                                ),
                               ),
                               validator: _validatePassword,
                             ),
@@ -197,5 +202,188 @@ class _AuthScreenState extends State<AuthScreen> {
       _isLoginMode = !_isLoginMode;
       _errorMessage = null;
     });
+  }
+}
+
+class _FruitBowlAnimation extends StatefulWidget {
+  const _FruitBowlAnimation();
+
+  @override
+  State<_FruitBowlAnimation> createState() => _FruitBowlAnimationState();
+}
+
+class _FruitBowlAnimationState extends State<_FruitBowlAnimation>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2600),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      label: 'Animated fruits bouncing into a bowl',
+      child: SizedBox(
+        width: 220,
+        height: 120,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return CustomPaint(
+              painter: _FruitBowlPainter(
+                progress: _controller.value,
+                isDarkMode: AppColors.isDarkMode(context),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _FruitBowlPainter extends CustomPainter {
+  const _FruitBowlPainter({
+    required this.progress,
+    required this.isDarkMode,
+  });
+
+  final double progress;
+  final bool isDarkMode;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final bowlPaint = Paint()
+      ..color = isDarkMode ? AppColors.leafGreen : AppColors.darkGreen
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5
+      ..strokeCap = StrokeCap.round;
+    final fillPaint = Paint()
+      ..color = isDarkMode
+          ? const Color(0xFF1E3B2B)
+          : AppColors.mintGreen.withValues(alpha: 0.85);
+
+    final bowlRect = Rect.fromLTWH(
+      size.width * 0.27,
+      size.height * 0.62,
+      size.width * 0.46,
+      size.height * 0.24,
+    );
+
+    final bowlPath = Path()
+      ..moveTo(bowlRect.left, bowlRect.top)
+      ..quadraticBezierTo(
+        bowlRect.center.dx,
+        bowlRect.bottom + 18,
+        bowlRect.right,
+        bowlRect.top,
+      );
+
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(size.width * 0.5, size.height * 0.74),
+        width: size.width * 0.5,
+        height: size.height * 0.18,
+      ),
+      fillPaint,
+    );
+    canvas.drawPath(bowlPath, bowlPaint);
+    canvas.drawLine(
+      Offset(bowlRect.left - 6, bowlRect.top),
+      Offset(bowlRect.right + 6, bowlRect.top),
+      bowlPaint,
+    );
+
+    _drawFruit(
+      canvas,
+      size,
+      color: const Color(0xFFD9534F),
+      start: Offset(-22, size.height * 0.24),
+      end: Offset(size.width * 0.42, size.height * 0.56),
+      delay: 0,
+      radius: 12,
+    );
+    _drawFruit(
+      canvas,
+      size,
+      color: const Color(0xFFE7A23B),
+      start: Offset(size.width + 18, size.height * 0.18),
+      end: Offset(size.width * 0.56, size.height * 0.53),
+      delay: 0.22,
+      radius: 11,
+    );
+    _drawFruit(
+      canvas,
+      size,
+      color: AppColors.leafGreen,
+      start: Offset(-18, size.height * 0.42),
+      end: Offset(size.width * 0.5, size.height * 0.48),
+      delay: 0.44,
+      radius: 10,
+    );
+    _drawFruit(
+      canvas,
+      size,
+      color: const Color(0xFFFFD166),
+      start: Offset(size.width + 24, size.height * 0.36),
+      end: Offset(size.width * 0.47, size.height * 0.52),
+      delay: 0.66,
+      radius: 9,
+    );
+  }
+
+  void _drawFruit(
+    Canvas canvas,
+    Size size, {
+    required Color color,
+    required Offset start,
+    required Offset end,
+    required double delay,
+    required double radius,
+  }) {
+    final raw = (progress + delay) % 1;
+    final travel = raw < 0.78 ? Curves.easeOutCubic.transform(raw / 0.78) : 1.0;
+    final settle = raw < 0.78 ? 0.0 : (raw - 0.78) / 0.22;
+    final arc = -48 * math.sin(travel * math.pi);
+    final bounce = raw < 0.78 ? arc : -7 * math.sin(settle * math.pi * 2);
+    final position = Offset.lerp(start, end, travel)! + Offset(0, bounce);
+
+    final fruitPaint = Paint()..color = color;
+    final shinePaint = Paint()..color = Colors.white.withValues(alpha: 0.5);
+    final leafPaint = Paint()
+      ..color = isDarkMode ? AppColors.mintGreen : AppColors.forestGreen;
+
+    canvas.drawCircle(position, radius, fruitPaint);
+    canvas.drawCircle(
+      position.translate(-radius * 0.32, -radius * 0.34),
+      radius * 0.25,
+      shinePaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: position.translate(radius * 0.4, -radius * 0.92),
+        width: radius * 0.8,
+        height: radius * 0.42,
+      ),
+      leafPaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_FruitBowlPainter oldDelegate) {
+    return oldDelegate.progress != progress ||
+        oldDelegate.isDarkMode != isDarkMode;
   }
 }
