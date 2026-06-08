@@ -26,15 +26,33 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(123, 196, 127, 0.28), transparent 32rem),
     radial-gradient(circle at top right, rgba(31, 122, 77, 0.16), transparent 30rem),
     linear-gradient(180deg, var(--pale-green), #ffffff 44rem);
+}
+
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+a,
+button,
+input {
+  max-width: 100%;
 }
 
 a {
@@ -1496,6 +1514,7 @@ button.feature-tab {
     align-items: stretch;
     max-width: 100%;
     overflow: visible;
+    text-align: left;
   }
 
   .hero-content {
@@ -1505,16 +1524,16 @@ button.feature-tab {
   }
 
   .hero::before {
-    inset: 6% -18% 32% -18%;
+    inset: 4% 0 44% 0;
+    border-radius: 40px;
   }
 
   .hero::after {
-    width: 92vw;
-    right: -28vw;
-    top: 34%;
+    display: none;
   }
 
   .hero-copy {
+    width: 100%;
     max-width: none;
     overflow-wrap: anywhere;
     word-break: normal;
@@ -1526,7 +1545,7 @@ button.feature-tab {
   }
 
   .phone-shell {
-    max-width: calc(100vw - 48px);
+    max-width: 100%;
   }
 
   .mini-card strong,
@@ -1722,7 +1741,8 @@ button.feature-tab {
   }
 
   .button {
-    width: 100%;
+    width: auto;
+    min-width: 160px;
   }
 
   .feature-tab {
@@ -1744,8 +1764,10 @@ button.feature-tab {
   }
 
   .phone-shell {
-    width: min(100%, calc(100vw - 54px));
+    width: min(100%, 300px);
     min-height: auto;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .faq-list summary {
