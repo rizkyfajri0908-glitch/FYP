@@ -1,0 +1,990 @@
+Final Year Project Proposal
+Project Title: AI Smart Kitchen Assistant with Web Platform for Reducing Food Waste
+Student Name:Muhammad Rizky FajriProgramme: BICTSupervisor: Sir Ahmad Luqman
+Abstract
+Table of Content
+1.0 Introduction
+1.1 Project Background
+1.2 Problem statement
+1.3 Objectives
+1.4 Project Scope
+1.5 Project Significance
+1.6 Chapter Summary
+2.0 Literature Review
+2.1 Introduction of Topic
+2.2 Explanation of Key terms, Terminologies and Theories
+2.3 Existing Solutions and Technologies
+2.3.1 Review of Current Systems
+2.3.2 Comparison of Technologies and Frameworks
+2.3.3 Gaps in Existing Solutions
+2.4 Relevant Algorithms and Methodologies
+2.4.1 Recommendation Algorithms
+2.4.2 Supervised Learning for Forecasting and Inventory
+2.4.3 Algorithms for Image and Barcode-Based Recognition (Optional Extension)
+2.4.4 Natural Language Processing for Conversational Interfaces
+2.4.5 Implementation Approaches
+2.4.6 Evaluation Metrics
+2.5 State of the Art in the Field
+2.5.1 Recent Advances
+2.5.2 Trends and Future Directions
+2.6 Critical Review of Similar Products and Systems
+2.6.1 Review of Similar Projects
+2.6.2 How the Proposed Project Differs
+2.6.3 Comparison between Similar Systems and the Proposed System
+2.7 Summary of Findings
+2.7.1 Synthesis of Literature
+2.7.2 Research Gap
+2.8 Chapter Summary
+2.8.1 Justification for the Project
+2.8.2 Connection to Project Goals
+3.0 Methodology
+3.1. Introduction
+3.2 Software Development Methodology
+3.2.1. Chosen Methodology and Justification
+3.2.2- Step by step explanation of activities done in each phase of the chosen methodology
+3.3. Research Methodology
+3.3. Chosen Research Methodology and Justification
+3.3.2. Questionnaire Design and Samples
+3.3.4 Proposed System Requirement
+3.3.4.1 Functional Requirements
+3.3.4.2 Non-Functional Requirements
+3.3.4.3 Requirements Prioritisation Matrix (Pre-Survey)
+3.3.4.4 Validation Through Survey Results
+3.4. Proposed System Design
+3.4.1 UML Modeling of the Proposed System:
+3.4.2 Block Diagrams
+3.5 Chapter Summary
+4.0: Findings and Results
+4.1 Findings of Objective 1: Identification of User Needs and Food Waste Problems
+4.2 Findings of Objective 2: Design of the EcoBite Mobile Application and Website
+4.3 Findings of Objective 3: Development and Implementation of EcoBite
+4.3.1 Mobile Application Development
+4.3.2 Kitchen Inventory and Expiry Tracking
+4.3.3 Recipe Suggestion Development
+4.3.4 Predictive Grocery Plan Development
+4.3.5 AI Assistant Development
+4.3.6 Notification and Preference Development
+4.3.7 Promotional Website Development
+4.4 User Evaluation Survey Results
+4.4.1 Respondent Background
+4.4.2 Usability Findings
+4.4.3 Feature Usefulness Findings
+4.4.4 Food Waste Reduction Findings
+4.4.5 Overall Acceptance and Recommendation
+4.5 Discussion of Findings
+4.6 Chapter Summary
+5.0: Summary and Conclusion
+5.1 Summary
+5.2 Conclusion
+5.2.1 Achievement of Project Objectives
+5.2.2 Limitations of the Study
+5.2.3 Project Contribution
+5.3 Recommendations and Future Enhancements
+5.4 Chapter Summary
+References
+Table of Figures
+1.0 Introduction
+1.1 Project Background
+Food waste is a huge global issue that affects homes worldwide. It is frequently caused by poor planning, overbuying, and a lack of awareness of food expiration dates. Many consumers buy groceries with good intentions, but then keep them unused in refrigerators or cabinets until they deteriorate, resulting in financial losses and unnecessary waste. Globally, families account for over 60% of food waste, making them the most significant contributors to the problem (United Nations Environment Programme, 2024). Food waste accounts for around 8-10% of global greenhouse gas emissions (Food and Agriculture Organization, 2022; United Nations Environment Programme, 2024).
+As modern lifestyles become more hectic, many people are unable to carefully manage their food inventory, plan meals efficiently, or watch expiration dates. This condition raises the possibility of lost ingredients and unnecessary spoiling. As a result, there is a growing demand for a simple and dependable solution that allows homes to monitor their food consumption and eliminate unnecessary waste.
+Although there are numerous recipe apps and grocery planning tools available, the majority of them work independently and do not address the underlying causes of home food waste. Many recipe apps recommend meals without taking into account the things that the user already has in the kitchen. Other inventory apps require manual tracking but do not provide intelligent expiration reminders or targeted recommendations. As a result, users continue to struggle with efficient meal planning, resulting in increased food waste. This demonstrates a significant gap in current solutions, which rarely combine ingredient tracking, expiry control, and intelligent meal recommendations into a single platform. A smart system that can learn user behavior and provide preemptive advice, has the potential to greatly enhance home food management.
+As a result, the goal of this project is to create an AI-powered kitchen helper that will help people reduce food waste at home. The planned smartphone application will recommend meals based on components that are currently on hand, track expiration dates, and alert users before food spoils. The system will also include a smart grocery planner that learns from user purchase habits to anticipate future requirements and recommend new cuisines. Along with the mobile application, a promotional website will be created to highlight the system's advantages, raise awareness of food sustainability, and enable easy access to download the app. This project aims to ease meal planning, reduce family expenses, and promote more ecologically sustainable behavior in daily life by incorporating artificial intelligence into common culinary processes.
+1.2 Problem statement
+Household food waste is a major global issue, mostly caused by poor meal planning, over-purchasing and a lack of understanding of existing food inventory and expiration dates. Many households unintentionally reject still edible food because they lack reliable tools for tracking which ingredients they have and when they will expire. According to the United Nations Environment Programme (2024), households account for over 60% of total worldwide food waste, highlighting the critical need for consumer-level intervention.
+Beyond the financial losses suffered by households, food waste has major environmental effects. Discarding food wastes the resources utilized in its production, such as water, energy and land, and decaying food adds considerably to greenhouse gas emissions (Food and Agriculture Organization, 2022). Despite the availability of recipe apps and grocery management systems, most existing solutions work in silos and do not provide an integrated strategy that includes real-time ingredient tracking, expiry monitoring and tailored meal recommendations.
+Furthermore, many current systems rely primarily on manual data entry and provide generic recommendations that do not account for users' consumption or purchasing behaviors. This decreases user interest and limits the usefulness of such applications in reducing home food waste. As modern lifestyles become more fast-paced, there is a growing desire for an intelligent, user-friendly solution that can help households track, manage, and optimize their food consumption.
+As a result, there is a clear academic and practical need for an AI-powered kitchen assistant that can integrate smart inventory management, predictive expiry alarms, and personalized meal planning to successfully decrease unnecessary home food waste and promote sustainable consumption habits.
+1.3 Objectives
+To explore and identify effective methods of reducing household food waste through ingredient tracking, recipe suggestions and AI–based reminders.
+To design a mobile application and web platform that incorporate these food-waste reduction features, including a chatbot, expiry tracking system and predictive grocery planning.
+To develop and implement the mobile app and website, integrating AI functionalities that suggest recipes, notify users of upcoming expiry dates and recommend future grocery purchases.
+1.4 Project Scope
+This project aims to create an AI-powered kitchen assistant system with two major components: a mobile application for end users and a web platform for information, promotion and app distribution. The scope defines the features, functions and boundaries of what the system will and will not include.
+User Scope
+This approach is primarily used by household members, particularly those who cook or handle food at home on a regular basis. This includes students, working adults, families, and anyone looking for a better systematic approach to managing food inventory.
+Ingredient Tracking:Users will be able to manually input food items they purchase, including quantity, category, and expiry date. The app will also allow optional barcode scanning for easier item registration (if implemented in later stages).
+Expiry Date Monitoring:Users will receive reminders when food items are close to expiration. Notifications will be pushed directly to their mobile phones to encourage timely usage.
+Recipe Recommendations:The system will suggest recipes based on ingredients that users already have in their kitchen. These recommendations will consider ingredient availability, expiry urgency, and user preferences.
+AI Chatbot Interaction:Users can communicate with a built-in chatbot to ask questions like “What can I cook with chicken?” or “What ingredients are expiring soon?”. This feature makes the app more interactive and user-friendly.
+Predictive Grocery Planning:Users will receive suggestions on what items they may need to buy soon based on their purchase history, usage patterns, and frequently cooked meals.
+User Account & Personalization:Each user will have a personal account that stores their cooking preferences, dietary restrictions, and ingredient habits, allowing the system to generate more accurate recommendations. The mobile app is the primary interactive tool for consumers to monitor, plan and manage their kitchen inventory.
+System Scope
+The system scope describes what the application platform will support behind the scenes, such as AI capabilities, database activities, and system interactions.
+Database Management:A structured database will store user profiles, ingredient lists, expiry dates, recipe information, and purchase history. The system will retrieve and update this data dynamically as users interact with the app.
+AI Processing & Recommendation Engine:The system incorporates machine learning models to analyze user behavior, predict ingredient usage, and generate recipe or grocery suggestions. The engine will consider factors such as:
+Ingredient availability
+Expiry urgency
+User cooking patterns
+Preference history
+Natural Language Processing (NLP) Module:The chatbot functionality relies on NLP techniques to understand user queries, extract keywords, and generate appropriate responses. This includes simple intent detection, recommendation retrieval, and general assistance.
+Notification & Reminder System:The system will automatically push alerts to users when items are nearing expiration, running low, or commonly used in upcoming meals.
+Web Platform Implementation: The website will provide:
+A full overview of the app’s key features
+Information about food sustainability and waste reduction
+A download link or QR-code to access the mobile app
+Contact or support information for users
+The web platform serves as a supporting system to educate and guide users but does not handle active ingredient tracking or AI processing.
+Security & Authentication: The system will include secure login features, data encryption, and privacy protection mechanisms to safeguard user information.
+System Limitations (Out of Scope): To maintain a realistic and achievable scope, the system will not include:
+Automated image recognition for ingredient detection
+Real-time grocery delivery or online store integration
+Advanced nutritional analysis or diet planning
+Multi-household synchronization features
+These features may be explored in later project phases, but they are not part of the present development plan.
+1.5 Project Significance
+This project is notable because it addresses the growing problem of domestic food waste through the use of clever digital technologies. Household consumers continue to be the leading contributors to worldwide food waste, typically due to inefficient meal planning, missed expiry dates, and restricted visibility of available ingredients (United Nations Environment Programme, 2024). By addressing these root problems, the proposed AI-powered kitchen helper hopes to improve the efficiency and understanding of everyday food management activities.
+This project provides an integrated smart kitchen management solution that includes personalized recipe recommendations, automated expiry tracking, and a predictive grocery planning module on a single mobile platform. This integrated method immediately addresses the usual inefficiencies associated with fragmented food management tools.
+Primary users, such as busy individuals, students, and families, will benefit from improved food inventory management and meal planning. Indirect beneficiaries include the larger society and the environment, since reduced home food waste leads to fewer greenhouse gas emissions and more efficient resource utilization (Food and Agriculture Organization, 2022).
+The method adds the most value during normal family operations such as meal planning, grocery shopping, and daily kitchen management. The technology encourages proactive decision-making before food spoiling by providing timely notifications and intelligent recommendations.
+The proposed solution is deployed in the home environment via a mobile application, which is supplemented with a supporting website for user awareness and onboarding. Its digital and adaptable design allows for wider adoption across various user groups and geographic regions.
+The importance of this endeavor stems from the limits of existing applications, which often run in isolation and lack adaptive intelligence. Current systems rarely provide a comprehensive environment for tracking inventories, monitoring expiry dates, and personalizing meal planning. This project bridges that gap while remaining consistent with global sustainability goals.
+The challenge is solved by deploying artificial intelligence systems that learn from user behavior and automate critical food management procedures. The system analyzes purchase trends, suggests meals based on available ingredients, sends out pre-expiry notifications, and estimates grocery needs. Collectively, these features limit over-purchasing, eliminate food waste, and promote more responsible consumption habits. Furthermore, the accompanying website raises public knowledge of sustainable food practices and promotes systemic adoption.
+In conclusion, this study demonstrates the practical usage of artificial intelligence in resolving a real-world household problem. It provides measurable economic benefits to users while promoting environmental sustainability by reducing needless food waste.
+1.6 Chapter Summary
+The Introduction chapter provides a complete review of the difficulties, motivations, and goals driving the development of an AI-powered kitchen helper to reduce family food waste. It begins by emphasizing the growing global worry over food waste, which is primarily caused by poor planning, overbuying, and a lack of knowledge about ingredient expiration dates. Despite the availability of recipe and grocery apps, existing solutions do not combine critical features like ingredient tracking, expiry reminders, and recipe ideas into a single, unified platform. This gap serves as the foundation for the project's problem statement, emphasizing the importance of a simple, user-friendly system that assists homes in better managing their food inventory and reducing waste.
+The chapter also discusses the project's goals, which include researching effective methods for reducing food waste, designing a mobile application and web platform with AI-powered features, and creating an intelligent system capable of recommending recipes, tracking expiry dates, and forecasting future grocery needs. The project scope further defines the system's boundaries by detailing both the user-facing features—such as ingredient tracking, personalized notifications, AI chatbot interaction, and predictive grocery planning—and the system-side functions, which include database management, recommendation algorithms, NLP processing, security measures, and the accompanying informational website.
+Finally, the project significance highlights the initiative's broader impact. By assisting users in making smarter cooking and buying selections, the AI-powered solution not only eliminates household financial and food waste, but also adds to environmental sustainability. The research highlights how AI can address real-world challenges and encourage more ethical and efficient food management practices by providing practical solutions, personalized guidance, and easily available technology.
+2.0 Literature Review
+2.1 Introduction of Topic
+This project is based in the field of artificial intelligence (AI), with a focus on intelligent recommendation systems and user-assisted decision making. AI has become a major area in computer science because it enables machines to simulate human reasoning, analyze patterns, and provide personalized suggestions. In mobile and web applications, AI is often used to enhance user experience by offering relevant recommendations, improving task automation, and supporting smarter decision processes. In particular, conversational AI and predictive modeling are widely used in modern applications to help users receive quick information, manage data easily, and interact with systems more naturally. This project applies these AI capabilities within a kitchen and household context, where data related to ingredients, expiry dates, and shopping habits can be used to generate useful outputs.
+The chosen topic is important because AI-driven systems can provide practical solutions to everyday problems, especially those related to waste reduction and resource management. Food waste has become a growing concern in many households due to poor planning and lack of awareness. With AI, it is possible to analyze user behavior, identify patterns in grocery purchases, and generate suggestions that encourage better decision making. Integrating AI into a food management application helps users track what they own, receive timely reminders before items expire, and discover suitable recipes based on existing ingredients. This highlights how AI can contribute not only to technological innovation but also to sustainability and environmentally friendly habits. By focusing on user-centered AI design, this project aims to demonstrate the value of intelligent systems in improving daily life and reducing unnecessary waste.
+2.2 Explanation of Key terms, Terminologies and Theories
+This research draws on core concepts from artificial intelligence, natural language processing, and recommendation systems. Understanding these words is critical since they create the foundation for how the system will be designed, implemented, and assessed. Artificial intelligence (AI) refers to computer systems capable of performing tasks that would normally require human intelligence, such as learning, problem solving, and pattern recognition. AI allows software to make decisions and generate ideas based on data rather than predetermined instructions. In the context of this project, AI will assist the application in analyzing user behavior, tracking ingredients, and predicting grocery needs without requiring the user to manually plan every action—particularly important given that households account for approximately 60% of global food waste, or 631 million tonnes per year (Statista, 2025a, 2025b).
+A closely related idea is machine learning (ML), a discipline of artificial intelligence that focuses on developing methods that allow systems to learn from data automatically. Instead of being designed with rigid logic, machine learning systems can improve their performance by spotting patterns. In this project, ML approaches can be used to analyze user purchase history, identify common culinary tastes, and provide predictive recommendations about what goods a user might need to buy next, similar to models that predict supermarket sales using regression (Kaur & Sharma, 2023). Depending on the type and volume of data available, models such as decision trees, collaborative filtering, and simple regression-based predictions may be used.
+Natural language processing (NLP) is another major subject involved in this project. NLP enables computers to interpret, understand, and generate human language. It's widely used in chatbots, voice assistants, and automated message systems. The mobile app's chatbot can speak organically with users by recognizing phrases like "What should I cook today?" or "Show me recipes using chicken and potatoes," as proven by NLP-powered recipe recommenders (Kulwinder, 2023). NLP techniques like intent detection, keyword extraction, and text classification will enable the system to respond intelligently and make relevant recommendations based on user input.
+Theoretical foundations for this research include recommendation system theory, which explains how systems might suggest suitable products or actions to users. Typically, recommendation systems are classified into three types: content-based filtering, collaborative filtering, and hybrid techniques. Content-based filtering proposes products that are comparable to those the user has already used, whereas collaborative filtering recommends items based on similar users' behavior. A hybrid approach combines both methods to provide more accurate and flexible suggestions, with studies demonstrating that KNN-SVD hybrids improve food app accuracy by combining user data and nutrition attributes (Yap et al., 2024); for this project, this is appropriate for expiry-aware recipe suggestions filtered by dietary needs (Xu et al., 2024).
+In addition to AI ideas, the project incorporates inventory management theory, which focuses on how resources might be recorded, arranged, and utilized efficiently. This idea applies to household settings by monitoring food products, managing expiry dates, eliminating unnecessary purchases, and preventing waste—AI solutions such as speech-based trackers have shown up to 30% waste reduction in pilots (Donnelly, 2023). Implementing inventory management concepts helps users understand what ingredients they already have and what needs to be used soon. This hypothesis supports the project's main purpose, which is to reduce food waste through increased awareness and planning.
+Finally, user-centered design (UCD) concepts will be used to guide the system's entire development. UCD prioritizes user needs, behavior, goals, and comfort throughout the development process. This includes creating user-friendly interfaces, providing clear instructions, and making sure that the most important features—such as tracking expiry dates or viewing recipe suggestions—are easily accessible, with persuasive elements proven to increase engagement in waste apps (Nkwo et al., 2021; Mathisen et al., 2022). Using user-centered design makes the system more intuitive and encourages regular use, which is required to meet the project's long-term sustainability goals.
+This project builds a solid theoretical foundation by integrating artificial intelligence, machine learning, natural language processing, recommendation systems, inventory management theory, and user-centered design concepts. These concepts drive the system's ability to learn from user data, communicate organically with users, efficiently organize food products, and make smart recommendations that reduce waste and promote environmentally responsible habits.
+2.3 Existing Solutions and Technologies
+Existing tools and studies in this area rely on a range of underlying technologies, from simple rule-based reminders to advanced hybrid recommendation models and AI-driven inventory forecasting. This section looks at those technologies and methodologies, rather than the products themselves, and explains how they have been used to address problems similar to household food waste. The focus is on the types of algorithms, system architectures, and technical design choices that inform the implementation of your proposed AI kitchen assistant.
+2.3.1 Review of Current Systems
+Many food and recipe applications are built on relatively simple technical foundations such as keyword search, tag-based filtering, and basic rules. For example, early recipe recommenders typically used string matching on ingredient names and categories, offering results if the ingredient list contained certain keywords or tags (Abbas et al., 2022). These approaches are easy to implement and fast to run, but they do not genuinely learn from user behaviour or adapt to patterns over time. In inventory-style apps, expiry reminders are often implemented as fixed date-based notifications linked to manually entered items, without any learning or prediction.
+More advanced systems in research and industry use recommender system technologies to provide personalised suggestions. Collaborative filtering (user–user or item–item) and content-based filtering are the most common approaches. Collaborative filtering uses past interactions—such as ratings, favourites, or recipe choices—to identify similar users or items and recommend what similar users liked; content-based methods rely on item features like ingredients, cuisine type, or nutritional attributes to compute similarity (Abbas et al., 2022). Some commercial platforms and academic prototypes use a hybrid of both: combining user preference data with rich item features so that the model can still make reasonable suggestions even when user history is sparse (Yap et al., 2024).
+In parallel, machine learning for forecasting and inventory management has become a central technology in food-related systems. Supervised learning models, including linear regression, decision trees, random forests, and gradient boosting methods such as XGBoost or LightGBM, are widely used to forecast food demand, plan stock levels, and reduce over-ordering (IBM, 2024). These models learn from historical transaction data, seasonality, day-of-week patterns, and other contextual variables to predict future consumption. In commercial kitchens, AI-based inventory and waste monitoring systems like Winnow and similar platforms combine sensor data (weights, timestamps) and computer vision to classify discarded food and generate analytics that inform procurement and menu planning (Djekic et al., 2025).
+Finally, natural language processing (NLP) is increasingly used to support more natural user interaction. Many current apps still rely on simple search boxes and predefined filters, but research systems and some emerging products employ intent classification and entity recognition models to understand queries such as “show me quick vegetarian dinners with broccoli” (Abbas et al., 2022). These NLP components range from traditional models (e.g., logistic regression or support vector machines on bag-of-words features) to modern transformer-based encoders that capture context and phrasing more effectively.
+2.3.2 Comparison of Technologies and Frameworks
+Different technologies have strengths and weaknesses depending on the problem being solved. In the context of a smart kitchen assistant, the most relevant comparisons involve recommendation algorithms, forecasting methods, and deployment architectures.
+The main technologies used in similar systems can be compared in terms of strengths, weaknesses, and suitability for a household food-waste assistant, as shown in Table
+Technology / Approach
+Typical Use in Similar Systems
+Main Strengths
+Main Weaknesses
+Suitability for Proposed System
+KNN Collaborative Filtering
+Basic food/recipe recommendations that use user–item interactions to suggest similar items or what similar users liked (Abbas et al., 2022; Yap et al., 2024).
+Simple to implement; interpretable; works reasonably well when lots of rating/usage data are available.
+Performs poorly with sparse data and cold-start users; hard to incorporate rich item features like expiry dates or nutrition (Abbas et al., 2022).
+Useful as a component for finding “neighbour” users/items, but not sufficient alone for expiry-aware household recommendations.
+Matrix Factorisation (e.g., SVD)
+Academic food recommenders to predict user ratings/preferences from large interaction matrices (Yap et al., 2024).
+Higher accuracy than plain KNN; captures latent taste factors; scales better to larger datasets.
+Still relies on sufficient interaction data; does not directly model constraints like expiry time without extra design.
+Good for ranking recipes by preference once inventory and constraints are known; forms part of a hybrid recommender.
+Content
+Based Filtering
+Many recipe apps that match ingredients, cuisine, or nutrition profiles to user preferences (Abbas et al., 2022).
+Works well with little user history; can recommend new items based on features; easy to control by filtering ingredients, diets, etc.
+Can become narrow and repetitive; struggles to exploit community patterns; usually not expiry-aware by default.
+Very suitable for incorporating ingredient availability and dietary rules; needs to be combined with other methods for diversity and learning.
+Hybrid Recommenders
+Advanced research systems that personalise meals while respecting health or nutrition constraints (Yap et al., 2024; Xu et al., 2024).
+Combine strengths of both approaches; more robust to sparsity; can encode multiple constraints (diet, preferences, item attributes).
+More complex to design and tune; higher computational cost than simple models.
+Highly suitable as core of the proposed system to balance preference, ingredient availability, and expiry priorities.
+Supervised Forecasting (e.g., Regression, Random Forest, Gradient Boosting)
+Demand and inventory forecasting in retail and hospitality; predicting future stock levels and orders
+Handles non-linear patterns; improves over simple rules; reduces overstock and stock-outs when integrated into planning.
+Typically developed for large-scale data; models may not directly transfer to sparse, noisy household data without adaptation.
+Well-suited for predicting household grocery needs from purchase and usage history, with appropriate scaling and feature design.
+Computer Vision (e.g., CNNs for Waste Detection)
+Commercial systems like Winnow/Kitro to classify and weigh discarded food in professional kitchens (Djekic et al., 2025).
+Automated, objective waste measurement; enables detailed analytics and 30–50% waste reductions in trials.
+Requires cameras, sensors, and installation; costly and complex for normal home kitchens.
+Inspirational for future extensions (e.g., photo-based recognition), but not essential in the first version of the household app.
+Cloud-Only Architectures
+Many web-based recommenders and inventory tools that run all heavy computation server-side (IBM, 2024).
+Easy to scale; centralised model updates; supports large datasets and complex models.
+Dependent on constant internet access; privacy concerns; possible latency issues.
+Useful for training and heavy processing, but not ideal alone; should be combined with on-device capabilities.
+Edge / On-Device Processing
+Emerging smart-kitchen and mobile assistants that run lightweight models locally.
+Low latency; better privacy; works offline; responsive in real-time cooking contexts.
+Limited by device resources; harder to deploy very large models.
+Very suitable for intent recognition, basic recommendation, and expiry logic in the proposed mobile app.
+Hybrid Cloud–Edge Architectures
+Recent AI assistants combining cloud training with on-device inference for speed and privacy (Xu et al., 2024).
+Balance between power and responsiveness; can keep sensitive data local while still benefiting from powerful cloud models.
+More complex to design and maintain; requires careful synchronisation and caching strategies.
+Best fit for the proposed system: cloud for training and heavy tasks, edge for fast, private user interaction.
+In summary, existing systems usually rely on only one or two of these technologies in isolation, such as simple content-based filtering or cloud-only recommendation. The proposed AI kitchen assistant deliberately combines hybrid recommendation, household-level forecasting, and a hybrid cloud–edge deployment to provide expiry-aware, personalised, and responsive support for everyday meal planning and grocery decisions.
+2.3.3 Gaps in Existing Solutions
+Despite significant progress, the current technological landscape still shows important gaps when viewed against the requirements of your project. Most existing recommendation technologies are not explicitly expiry-aware: they may recommend recipes based on ingredients or preferences, but they do not systematically prioritise items nearing their expiry date. This means that, even when users rely on AI for meal suggestions, food can still be forgotten and wasted. Similarly, many forecasting models are designed for large-scale retail or hospitality contexts and are not tailored to individual household patterns, where data is sparser and more irregular
+On the implementation side, many current apps rely on cloud-only architectures and high manual input, often requiring users to repeatedly enter or update their inventory, which leads to outdated data and disengagement over time (Kwasny et al., 2025). NLP capabilities, when present, are usually limited to simple search or command phrases rather than fully conversational interactions that can handle natural, everyday questions from users. As a result, the underlying technologies have not been combined into a cohesive, user-centred system that seamlessly links inventory tracking, expiry management, hybrid recommendations, and predictive grocery planning.
+The proposed AI kitchen assistant directly addresses these gaps by selecting and integrating technologies that have so far mostly been used separately. It aims to use hybrid recommendation algorithms that consider both preferences and expiry dates, supervised forecasting models adapted to household-level data, and a hybrid edge–cloud architecture that supports responsive and privacy-aware interaction. In doing so, it builds on the strengths of existing technologies but aligns them more closely with the practical requirements of home food waste reduction.
+2.4 Relevant Algorithms and Methodologies
+Similar challenges to this project, such as recipe suggestion, food demand forecasting, and intelligent inventory management, have been solved utilizing a variety of machine learning, recommendation, and natural language processing techniques. These algorithms serve as the methodological underpinning for services such as personalized meal recommendations, expiry-aware planning, and predictive grocery lists. The most applicable approaches are collaborative and content-based filtering, hybrid recommendation models, supervised learning for demand and purchase prediction, and natural language processing (NLP) models for conversational interfaces.
+2.4.1 Recommendation Algorithms
+Collaborative filtering is a popular strategy in recommender systems that anticipates user preferences based on patterns in past interactions, such as ratings or selections from comparable persons or goods (Abbas et al., 2022). In user-based or item-based k-nearest neighbours (KNN) collaborative filtering, the system finds users with similar tastes or recipes with similar profiles and then recommends items that those neighbors liked. KNN is simple and interpretable, but it can struggle with sparse data and cold-start users (Yap et al., 2024). Matrix factorization techniques, such as singular value decomposition (SVD), decompose the user-item interaction matrix into latent factors, capturing hidden dimensions of preference (for example, a user's general preference for spicy or vegetarian dishes) and typically achieve lower prediction error than pure KNN in food recommendation contexts.
+Content-based filtering uses item qualities (e.g., ingredients, cuisine, cooking time, nutritional profile) rather than other users' behavior to offer recipes similar to ones a user has previously enjoyed (Abbas et al., 2022). In the food domain, content-based models frequently use vector representations of ingredients and recipe metadata to calculate similarity scores between potential recipes and the user's profile. Pure collaborative or content-based techniques have limitations—collaborative systems require a large number of users and interactions, whereas content-based systems might become too restricted and struggle to include variety (Xu et al., 2024).
+To overcome these constraints, hybrid recommendation algorithms combine collaborative and content-based approaches. Yap et al. (2024) demonstrate that a hybrid model combining KNN and SVD achieves more accuracy (lower root mean square error and mean absolute error) in a meal recommender than either method alone, while also incorporating nutritional limitations. Similarly, Xu et al. (2024) present a hybrid meal recommendation framework that filters dishes based on health and nutritional constraints before ranking them using preference learning, resulting in improved personalization for chronic illness patients. Hybrid recommenders are ideal for this project because they can suggest meals that take into account user preferences, ingredient availability, and expiry dates all at once.
+2.4.2 Supervised Learning for Forecasting and Inventory
+Supervised learning algorithms are often used to estimate food demand and optimize inventory levels, which are closely related to anticipating what goods a user will require. Gradient boosting algorithms, such as XGBoost, LightGBM, and related ensemble models, are widely used in demand forecasting because they effectively handle non-linear relationships, mixed feature types, and noisy data (for example, different days of the week, seasons, promotions, and user habits). Recent research on food demand forecasting and supply chain management shows that gradient boosting and tree-based ensembles outperform simple linear regression in predicting future orders and required stock, reducing overstock and waste.
+In inventory management, machine learning models are used to predict stock-outs, recommend reorder points, and dynamically change safety stock. Supervised approaches can use historical purchase histories, consumption rates, and contextual factors to forecast when certain items will run out or risk expiration. IBM's AI-driven inventory management idea, for example, focuses on predictive models that continuously update projections as new data comes, allowing for automated replenishment decisions rather than fixed norms. Similar supervised learning algorithms, such as gradient boosting or random forests, can be trained on user purchase histories and consumption habits to suggest what things to buy next and in what quantities, decreasing both shortages and waste.
+2.4.3 Algorithms for Image and Barcode-Based Recognition (Optional Extension)
+Although this research does not focus on comprehensive computer vision, several comparable systems employ picture recognition to identify food or monitor waste. Convolutional neural networks (CNNs) are the standard architecture for image-based tasks, and commercial systems like Winnow and similar tools in commercial kitchens use CNNs to detect plate waste and classify discarded food types from camera images, resulting in significant waste reductions (e.g., 30-50%) in hospitality environments (Djekic et al., 2025). While barcode and receipt scanning are simpler and can be handled with standard OCR and parsing techniques, future work could include lightweight CNN-based classifiers or pre-trained vision models to automate the recognition of unpackaged items (such as fruits and vegetables) in the home.
+2.4.4 Natural Language Processing for Conversational Interfaces
+Natural language understanding methods are critical for allowing users to interact with the system via inquiries and orders such "What can I cook with chicken and spinach that expires this week?" Traditional approaches rely on pipelines of intent classification and entity recognition: text classification models (e.g., logistic regression, support vector machines, or shallow neural networks) identify the user's intent (e.g., "request_recipe", "check_expiry"), while sequence labeling models or rule-based extractors identify ingredients and time-related entities (Abbas et al., 2022). To capture context and handle more diverse utterances, more modern systems employ deep learning models such as recurrent neural networks, transformers, and BERT-style encoders.
+NLP has been utilized in food recommendation and diet-assistant contexts to interpret user queries, extract ingredient lists, match them with recipe databases, and modify results based on preferences or health constraints (Xu et al., 2024). These methods can be used in this project to create a conversational interface in which the algorithm first classifies intent before passing structured parameters (ingredients, expiry dates, dietary restrictions) to the recommendation engine. As the system collects more conversational data, it can improve its ability to understand domain-specific terms and preferences.
+2.4.5 Implementation Approaches
+Previous research and commercial systems addressing AI kitchen assistants, recipe recommenders, and food waste trackers have used a variety of implementation methodologies, ranging from cloud-based hybrid models to edge-deployed lightweight engines. These approaches differ in architecture, data processing, and integration levels, with trade-offs in scalability, user privacy, and real-time performance that influence the project's design decisions (Yap et al., 2024; Xu et al., 2024). Common patterns include dual-mode recommendation engines, API-dependent pipelines, and sensor-augmented prototypes, which are frequently evaluated based on metrics like prediction accuracy, latency and waste reduction.
+Cloud-Based Hybrid Recommendation Pipelines
+Many academic and industrial solutions use cloud infrastructure for heavy computation, mixing backend ML models and frontend apps. For example, Xu et al. (2024) used a hybrid pipeline to create a personalized meal recommender: a cloud-hosted filtering stage evaluates dietary limitations and user profiles using knowledge graphs, followed by preference ranking using collaborative filtering. Similarly, Yap et al. (2024) used a KNN-SVD hybrid on scalable cloud servers to index recipe databases and perform rapid similarity searches. Access to large datasets for training, automated scalability during high demand, and quick model upgrades without reinstalling the app are all advantages. Weaknesses include latency from network calls (2-5 seconds per query), privacy risks from sending pantry data to servers, and reliance on internet connectivity, which interrupts offline meal planning.(Data Template, 2024)
+Pantry Cook's case study shows this: their team replaced unreliable external recipe APIs with a proprietary cloud engine indexing 30,000+ recipes, allowing for real-time suggestions but still requiring online connection for full functioning (Data Template, 2024). Another kitchen assistant, Ladle AI, employed cloud-based transformers to generate and validate recipes while also managing dietary guidelines and appliance adjustments for vegan/gluten-free demands (Tezeract, 2025). These excel at customisation but struggle in homes with patchy Wi-Fi.
+Edge and Offline-Capable Engines
+To overcome cloud downsides, certain systems prioritize on-device processing. Pantry Cook has evolved to a layered fallback strategy, with primary cloud queries and offline cached recommendations as backups, lowering latency to less than 1 second and ensuring stability (Data Template, 2024). Smart kitchen prototypes such as KitchenMind use edge AI on Raspberry Pi or mobile devices, using lightweight CNNs for ingredient detection via phone cameras and local vector databases for recipe matching (Heveus, 2024). Low latency, privacy (data remains local), and offline resilience are key features for cooking settings. Model complexity is limited by mobile hardware limits, smaller datasets for customisation, and higher development expenses for cross-platform optimization (Onix Systems, 2025).
+Sensor-Integrated and Conversational Implementations
+Commercial trash trackers like Winnow use hardware-software hybrids: edge sensors weigh/scan discards and transmit data to cloud ML for waste classification using CNNs, resulting in 30-50% reductions in pilots (Djekic et al., 2025). Conversational agents in Ladle use on-device NLP to identify intent (e.g., BERT-lite) before cloud validation, creating recipes in 30 seconds with 70% coherence accuracy (Tezeract, 2025). Strengths include proactive features such as expiry nudges, while disadvantages include hardware costs and scalability concerns for consumer applications.
+2.4.6 Evaluation Metrics
+Previous researchers testing AI systems for recipe recommendation, food waste reduction, and inventory management employed a balanced set of parameters to assess success, including accuracy, real-world performance, and scalability. These serve as clear standards for our research, guaranteeing that the suggested kitchen helper not only predicts accurately but also adds real value in busy households. Metrics are often evaluated using offline experiments using datasets (for example, recipe ratings or purchase records) and user trials, with findings shown in tables comparing baselines such as random suggestions or manual planning.
+Accuracy Metrics for Recommendations and Predictions
+Core to recommender systems is how precisely algorithms match user needs, often benchmarked against user ratings or actual choices. Root Mean Square Error (RMSE) and Mean Absolute Error (MAE) quantify prediction errors for numeric ratings—e.g., Yap et al. (2024) reported their hybrid KNN-SVD model achieving RMSE of 1.00 and MAE of 0.80, outperforming standalone KNN (RMSE 1.20) on a food dataset, proving hybrids better capture nuanced tastes like spice preferences. For top recipe suggestions, Precision@K (fraction of top-K results clicked) and Recall@K (fraction of relevant items retrieved) dominate; Xu et al. (2024) hit 95% F1-score@5 after dietary filtering, far above content-only baselines at 75%, showing value in constraint-aware designs.?
+Forecasting grocery needs uses similar regression metrics: Mean Absolute Percentage Error (MAPE) and
+R2
+R2
+score track demand accuracy. In food inventory studies, gradient boosting models like XGBoost achieve MAPE under 15% for weekly predictions, reducing overstock by 20-30% versus averages (Abbas et al., 2022). NLP components for queries ("use expiring chicken") rely on intent accuracy and F1 for entity extraction, often exceeding 90% with BERT-like models.
+Performance and User Impact Metrics
+Beyond lab numbers, success hinges on speed and behavior change. Latency—time from query to recipe display—is critical; Pantry Cook's hybrid cloud-edge setup averaged <1s responses, vital for cooking flow, while pure cloud hit 2-3s delays (Data Template, 2024). Waste reduction, the ultimate goal, is measured as % drop in discarded kg or dollars—Winnow's sensor-AI cut commercial waste 30-50% via tracked logs (Djekic et al., 2025); household apps like those in Mathisen et al. (2022) saw 25% reductions over 4 weeks, with nudges boosting retention.?
+Usability gauges adoption: System Usability Scale (SUS) scores >80 indicate intuitive apps (Nkwo et al., 2021); engagement tracks daily active users (DAU), retention (e.g., 60% week 4), and task completion (90% success finding expiry recipes).?
+Scalability and Robustness Metrics
+As user bases grow, systems must handle scale without crumbling. Training/inference time scales with dataset size—hybrids train in hours on 10k users but explode beyond 100k without indexing (Yap et al., 2024). Cold-start RMSE (new users) tests sparsity handling, where content-based aids hybrids (Xu et al., 2024). Robustness checks peak loads or data shifts, like holiday demand spikes, via rolling MAPE.?
+Metric Category
+Examples
+Typical Benchmarks
+Project Target
+Accuracy
+RMSE/MAE, Precision@K
+RMSE <1.1, P@5 >0.85
+RMSE =1.0, 90% P@5
+Performance
+Latency, Waste %
+<2s, 25-50% reduction
+<1s, >40% reduction
+Usability
+SUS, Retention
+SUS >80, 50% wk4
+SUS >85, 70% wk4
+Scalability
+Train time, Cold-start
+<10h/100k users
+Offline-first hybrid
+This multifaceted examination offers thorough validation by combining laboratory precision with household effect.
+2.5 State of the Art in the Field
+2.5.1 Recent Advances
+In 2025, the field of AI-driven food waste reduction experienced fast progress, with innovations in predictive analytics, computer vision, and consumer-facing smart assistants bringing domestic applications closer to widespread acceptance. These developments build directly on the previously stated hybrid recommendation and inventory theories, combining real-time data from sensors, edge AI, and large language models (LLMs) to construct proactive systems that reduce waste at home. Key improvements prioritize supply chain efficiency, dynamic pricing, and tailored kitchen equipment, resulting in up to 87% waste reduction in pilots while addressing scalability for ordinary users.
+Predictive Demand Forecasting and Dynamic Inventory
+Machine learning models such as sophisticated gradient boosting (e.g., XGBoost variations) and transformer-based predictors now analyze multimodal data—sales history, weather, social trends, and even fridge sensor inputs—to estimate household demand with MAPE less than 10%, outperforming classical regression. In 2025, retail trials employ dynamic pricing as follows: AI reduces costs on near-expiry commodities in real time, moving 30-50% of produce from landfills to consumers. Household extensions, such as Samsung and LG's smart fridge integrations, use edge ML to track expiry via RFID tags and cameras, recommending recipes before they spoil, early experiments indicate 25% waste reduction without operator input.
+Computer Vision and Waste Monitoring
+Orbisk and Winnow have enhanced CNN-based kitchen systems, employing overhead cameras to classify thrown food in real time with 95% accuracy, resulting in a 70% reduction in restaurant waste by detecting trends such as over-trimming. Household adaptations developed in 2025: small "waste cams" (e.g., Zest AI) track discards via phone mounts, feeding data to cloud LLMs for targeted nudges—"use that chicken before it goes bad"—with Nestlé's trial saving 700 tonnes (1.5 million meals) and cutting 1,400 tonnes CO2. These beat conventional rule-based trackers by learning user habits and providing predicted notifications.
+Generative AI and Conversational Kitchen Assistants
+Next-generation applications are powered by LLMs such as fine-tuned GPT-4o and Llama versions. In beta, Ladle AI (2025) develops personalized recipes from voice queries and validates them against pantry scans and nutrition APIs in less than 2 seconds, with 80% user satisfaction. Pantry Cook's open-source engine indexes over 50k recipes using vector embeddings (e.g., Sentence Transformers), allowing for semantic searches such as "quick vegan with expiring veggies". Hybrid edge-cloud configurations provide offline fallback by combining local NLP for intent detection with cloud reranking—moving beyond 2024's basic keyword matching.
+Circular Economy and Multimodal Frameworks
+Emerging frameworks incorporate AI across the supply chain: computer vision sorts "ugly" fruit for secondary markets, and black army fly farms exploit ML-optimized waste streams for protein. Open-source platforms, such as Hugging Face's food-waste models, democratize access by enabling federated learning and privacy-preserving home data exchange. These 2025 SOTA systems save 40-70% on waste but remain compartmentalized; your solution advances the industry by combining forecasting, vision-optional tracking, generative NLP, and hybrid recommendations in a single mobile app.
+2.5.2 Trends and Future Directions
+AI research and development for food waste reduction and smart kitchens is developing swiftly, with numerous clear themes shaping what future systems will look like. These trends extend beyond basic recipe apps to highly intelligent, context-aware assistants that can adapt to specific households, devices, and even larger sustainability goals.
+Shift toward Proactive & Personalized Assistants
+A noteworthy trend is the shift from reactive tools (when the user requests a recipe or reports waste) to proactive, always-on assistants. Instead than awaiting the user's interaction, future systems will:
+Monitor pantry and fridge changes continuously (via purchase history, barcode scans, or optional sensors).
+Predict when certain items are likely to expire or be forgotten.
+Proactively suggest actions, such as: “You have tomatoes and spinach expiring in two days; here are three quick dinner ideas.”
+This change is strongly dependent on enhanced machine learning models for preference learning, time-series prediction for consumption patterns, and better user modeling. It is perfectly aligned with your planned app: the assistant will actively aid the user in planning meals and shopping to avoid waste before it occurs, rather than simply "respond" with recipes.
+Edge and On-Device Intelligence
+Another important trend is to move more AI processing to the user's device (edge computing), rather than depending solely on cloud servers. There are a number of causes behind this:
+Privacy: Food purchases, dietary preferences and daily routines are sensitive. Keeping most data and models on the device reduces privacy concerns.
+Latency: On-device models can respond in under a second, which is critical in a kitchen context where users want immediate suggestions.
+Offline use: Not all households have stable internet, meaning that offline capable recommendation and tracking are important for reliability.
+The project suggests a hybrid architecture: lightweight models for core tasks (intent recognition, simple preference ranking, basic expiry logic) run on the phone, while heavier training and periodic updates can happen in the cloud. Over time, frameworks like TensorFlow Lite, ONNX Runtime Mobile and similar tools will make it easier to deploy compressed models on consumer devices, making the AI assistant faster and more trustworthy.
+Multimodal and Context-Aware AI
+Future systems will gradually mix many data types—text, photos, barcodes, sensor readings, and calendar events—to gain a more complete picture of the user's kitchen and life. This multimodal trend indicates:
+Using the camera to recognize ingredients or leftovers.
+Combining calendar data (busy days, events) with meal planning: simpler recipes on busy evenings, batch cooking before a heavy week.
+Considering environmental context: local weather (e.g., more salads in hot weather), seasonal availability, and local store offers.
+This is made possible by advancements in multimodal models, which can handle text, pictures, and structured data simultaneously. For your assistant, this means a future roadmap in which, in addition to simple text inquiries, the user can point a camera at the fridge and ask, "What can I make tonight?" and the system will respond based on visual recognition, expiry dates, and personal preferences.
+Integration with Smart Appliances and IoT
+There is a clear trend toward deeper integration with smart home devices and kitchen appliances:
+Smart fridges that track contents via built-in cameras or weight sensors.
+Smart ovens that can auto-set temperature and time based on the selected recipe.
+Smart scales or bins that measure the amount and type of food being discarded.
+These devices, when paired with AI, can automate certain aspects of inventory tracking and waste measurement, decreasing human work. For your project, this suggests creating an API-friendly architecture that can later connect to such devices. Even if your initial implementation is limited to mobile devices, keeping the design flexible will enable future integrations with fridges, voice assistants, or smart bins easier.
+Stronger Focus on Sustainability Metrics and Behavior Change
+Another clear direction is the focus on quantifiable sustainability metrics and behavior change, not just technical performance:
+Apps increasingly show users their “impact dashboard”: kilograms of waste avoided, CO2 emissions saved and money saved over time.
+Systems are using behavioral science (nudges, gamification, social comparison) to keep users engaged and encourage long-term habit change.
+Studies are moving from short lab experiments to longer field trials, measuring sustained waste reduction over months rather than weeks.
+For your project, success depends not just on model correctness, but also on how well the assistant influences user behavior. Include features like weekly summaries ("This week you saved X kg of food and Y MYR") and tiny targets ("Use all fresh vegetables before Sunday") to match with this trend and boost your rating afterward.
+Emerging Technologies: Quantum, Federated Learning, and Beyond
+Some emerging technologies are still in the early stages but are worth mentioning as future directions:
+Quantum computing: In the long run, quantum optimization and quantum-enhanced machine learning could aid in the solution of difficult resource allocation problems, such as creating optimal meal plans and shopping lists under several constraints. This is not now viable for consumer apps, but it hints at speedier, more general optimizations in the future.
+Federated learning and privacy-preserving AI: Instead of providing raw user data to central servers, models can be trained on devices and only communicate aggregated results. This enables learning from a large number of users (for example, common waste patterns, popular "save it before expiry" recipes) while protecting individual data. This is especially relevant for a food-waste assistant, where privacy is essential yet learning from community patterns is beneficial.
+Explainable and trustworthy AI: There is a trend toward making recommendations interpretable, such as "This recipe is recommended because it uses your chicken expiring tomorrow and matches your usual low-sodium preference." This increases user trust in the system and helps them comprehend trade-offs, particularly when it comes to balancing health, costs, and waste reduction.
+How These Trends Shape The Project
+Taken together, these trends suggest that the “state of the art” is moving toward:
+Proactive and personalized assistants rather than static apps.
+Hybrid edge–cloud architectures for speed, privacy, and resilience.
+Multimodal, context-aware intelligence that understands ingredients, time, and lifestyle.
+Deep integration with smart home devices and sustainability dashboards.
+Privacy-preserving and explainable AI techniques to build trust.
+The proposed AI kitchen assistant aligns with these goals: it focuses on proactive, hybrid recommendations; it utilizes AI to predict grocery needs; it intends to integrate expiry tracking and inventory; and it can evolve to include multimodal input and smart appliance integration.
+2.6 Critical Review of Similar Products and Systems
+Several existing products and research prototypes aim to help users manage food at home or reduce food waste, but they typically address only parts of the problem. These systems can be grouped into three main categories: consumer recipe and pantry apps, community and surplus-sharing platforms, and AI-driven monitoring systems used mainly in commercial kitchens. Reviewing these solutions highlights their strengths and limitations, and clarifies how the proposed AI kitchen assistant builds on and extends current work.
+2.6.1 Review of Similar Projects
+Consumer-focused apps such as SuperCook, Kitche, Nosh, and NoWaste mainly target recipe discovery and basic household inventory management. SuperCook allows users to input ingredients manually or via voice and then suggests recipes that match those items, supporting over 2,000 ingredients and simple filters like cuisine or diet type (Apple, 2024). This helps users “cook from what they have” but does not track expiry dates or learn from past behavior, so the user must repeatedly update their pantry records. Kitche and Nosh move slightly further toward automation by using receipt or barcode scanning to build inventory and, in Nosh’s case, by analyzing usage patterns to generate suggested shopping lists (Shapiro, 2024; Postharvest Technologies, 2024). However, their recipe integration and expiry prioritization remain limited, and they still rely heavily on user discipline to keep data accurate over time. NoWaste focuses on lists and expiry reminders, promoting first-in-first-out use of ingredients, but offers no recipe recommendations or predictive functions (Shapiro, 2024).
+Community and surplus-sharing apps such as Too Good To Go and OLIO address food waste at the retail and neighborhood level rather than at the level of personal kitchen management. Too Good To Go connects users with restaurants and supermarkets that offer discounted “surprise bags” of unsold food, helping divert surplus that would otherwise be discarded (Food Tank, 2021). OLIO enables individuals to share excess food with nearby users, creating a peer-to-peer redistribution network. Both are impactful for reducing external waste and saving money, but they do not help users track what is in their own fridges, plan meals around expiring items, or avoid overbuying in the first place.
+Academic and commercial AI systems such as Winnow and Kitro focus on monitoring and reducing food waste in professional kitchens, using computer vision and sensors to weigh and classify discarded food. Studies report that these systems can reduce waste by 30–50% by providing detailed analytics and feedback to staff (Djekic et al., 2025). However, they are designed for restaurants and institutions, requiring specialized hardware, installation, and training. Household-oriented digital food tools reviewed by Kwasny et al. (2025) and Abbas et al. (2022) often emphasize healthy eating or sustainability messaging, but only a small fraction combine real-time inventory, personalized recommendations, and behavior change strategies in a coherent way. Trials of smartphone apps for food waste show that while users can reduce waste and adopt healthier habits, engagement tends to decline when apps require high manual effort and lack deep personalization (Mathisen et al., 2022).
+2.6.2 How the Proposed Project Differs
+The proposed AI kitchen assistant builds on these existing systems but differs in several important ways. First, it targets the household as the primary setting, combining features that are currently split across multiple apps: inventory tracking, expiry management, recipe recommendation, and grocery planning. Unlike SuperCook or NoWaste, which either focus on recipes or on static lists, the proposed system is explicitly expiry-aware, meaning that suggested meals will prioritize ingredients that are close to expiring rather than simply matching any available items. Second, the assistant is designed to learn from user behavior—purchase history, cooking patterns, and typical serving sizes—to predict what groceries the user is likely to need next, rather than relying solely on manually created shopping lists.
+Third, the project aims to provide a natural language interface that allows users to ask questions such as “What can I cook with my chicken and spinach that are expiring this week?” and receive tailored recommendations. Existing apps typically rely on forms or basic keyword search; a conversational approach lowers the barrier to regular use, especially for busy users. Finally, the proposed system adopts a unified, AI-driven architecture that combines hybrid recommendation algorithms, predictive models for grocery needs, and user-centered design principles. This contrasts with many current solutions, which either use simple rule-based logic for reminders or deploy advanced AI only in commercial settings.
+2.6.3 Comparison between Similar Systems and the Proposed System
+Table 1 summarises key similarities and differences between representative existing systems and the proposed AI kitchen assistant, focusing on core features relevant to household food waste reduction.
+App/System
+Inventory Tracking
+Expiry Management
+Recipe Suggestions
+Grocery Prediction
+NLP/Conversational Interface
+Overall Position vs. Proposed System
+SuperCook
+Manual/
+voice entry of items
+None
+Recipes from listed ingredients
+None
+Basic voice-based search
+Strong at “cook from what you have” but no expiry awareness or learning
+Kitche
+Receipt/
+barcode scanning
+Basic expiry notifications
+Stock-based recipe suggestions
+Limited list suggestions
+None
+Semi
+- automated inventory, but weak predictive and conversational features
+Nosh
+Manual and habit based analysis
+Alerts for items nearing expiry
+Limited suggestions/
+List style support
+Habit-derived shopping lists
+None
+Adds habit learning but does not tightly link expiry to recipe planning
+NoWaste
+Manual lists
+Expiry sorting and reminders
+None
+Simple shopping lists
+None
+Focuses on expiry reminders only, without AI-based planning
+Too Good To Go / OLIO
+None (external surplus only)
+None at household level
+None
+None
+None
+Effective for external food redistribution, not for personal pantry management
+Winnow / Kitro
+Sensor
+based, commercial only
+Waste analytics, not home expiry
+None
+Menu and procurement insights
+Dashboard, not conversational
+Powerful for restaurants but not directly usable in homes without hardware and adaptation
+Proposed AI Assistant
+Semi
+automated and learned inventory
+Proactive, expiry-aware meal planning
+AI-driven, hybrid recommendations using current stock and preferences
+Predictive grocery planning from purchase and usage patterns
+Natural language queries and conversational guidance
+Integrates inventory, expiry, recommendations and prediction in one household
+focused platform.
+As the table indicates, existing consumer apps often excel in one or two aspects, such as recipe matching (SuperCook) or expiry reminders (NoWaste), but none offer a completely integrated solution that is both expiry-aware and predictive while staying simple to use. Community platforms such as Too Good To Go and OLIO operate at a different level of the food system, addressing surplus after it has occurred in stores or households rather than preventing waste via better planning. Commercial AI systems such as Winnow and Kitro illustrate that advanced technology can achieve significant waste savings, but their current form is unsuitable for common residential kitchens.
+In contrast, the proposed AI kitchen assistant is intended from the ground up to be a single, cohesive system that supports the complete lifecycle of family food management, from purchase to storage and consumption to waste avoidance. It relies on the merits of previous systems, such as recipe by ingredient matching and expiry reminders, but adds learning-based prediction, conversational interaction and a greater emphasis on user-centered design and long-term engagement. This combination of features and methodologies distinguishes the project as a significant improvement above existing systems in academia and industry.
+2.7 Summary of Findings
+The most recent research and existing apps on food waste, meal planning, and kitchen support all point to the same conclusion: AI can help, but present techniques are fragmented and difficult for regular people to use consistently. The literature and industrial solutions place a strong emphasis on recommender systems, basic inventory tracking, and, in commercial contexts, AI-based waste monitoring; nevertheless, these components are rarely merged into a single, cohesive product for home kitchens.
+2.7.1 Synthesis of Literature
+According to research on food recommender systems, collaborative filtering, content-based filtering, and particularly hybrid approaches (e.g., combining KNN and SVD) can accurately capture user preferences and dietary needs, increasing the relevance of recipe suggestions when compared to simple keyword-based search. According to research on digital food environments and inventory management, many apps promote healthy eating or sustainability through tracking, reminders, or educational content, but only a small percentage integrate real-time inventory data with personalized recommendations and behavior change strategies.
+Commercial AI solutions such as Winnow and comparable technologies show that computer vision and analytics may reduce food waste in professional kitchens by 30-50%, highlighting the potential of AI-driven monitoring and feedback when integrated with operational decision support. At the same time, evaluations of consumer apps demonstrate that heavy manual data entry, a lack of deep personalisation, and a lack of user-centered design all contribute to diminishing engagement over time, even when short-term waste reductions and healthier choices are detected.?
+Taken together, the literature and existing products reveal several common themes:
+AI-based recommendation and forecasting methods are mature enough to support personalised meal planning and demand prediction.
+Inventory tracking and expiry reminders are technically straightforward but often implemented in manual, non-intelligent ways.
+Behaviour-change and persuasive design elements can enhance engagement, but they are rarely integrated with strong AI backends.
+Commercial waste-reduction systems prove that significant waste cuts are achievable, yet they are typically built for institutional contexts, not households.?
+2.7.2 Research Gap
+Despite these advancements, there is a significant gap between what current technology can achieve in principle and what most household-facing apps provide in practice. Existing consumer applications typically focus on individual functions: some assist users in finding recipes using available ingredients, some offer basic expiry reminders, and still others assist with shopping lists or excess sharing, but very few combine these features into a seamless, AI-driven workflow. Most recommendation systems do not explicitly model expiry dates or real-time pantry states, forecasting models are rarely tailored to sparse and irregular household data, and conversational interfaces are either non-existent or confined to simple search-style interactions. Furthermore, many systems rely significantly on cloud-only architectures and human data entry, raising concerns about privacy, latency, and long-term user effort.
+The specific research gap that your project addresses is the lack of a unified, household-focused AI assistant that:
+Maintains an up-to-date view of home inventory with expiry awareness.
+Uses hybrid recommendation methods to generate recipes that prioritise soon-to-expire ingredients while respecting user preferences and dietary needs.
+Applies forecasting models to predict future grocery needs based on individual purchase and consumption patterns.
+Provides a natural language interface that allows users to interact conversationally, lowering the effort required to benefit from the system.
+Operates on a hybrid edge–cloud architecture to balance responsiveness, privacy, and scalability.
+By explicitly merging these elements such as: expiry aware hybrid recommendations, household level forecasts, proactive alerts and user-centered design, the proposed AI kitchen assistant fills a need not sufficiently addressed by existing academic prototypes or commercial products. This makes the research both necessary and timely within the larger framework of AI for sustainable and everyday living.
+2.8 Chapter Summary
+2.8.1 Justification for the Project
+The material presented in this chapter clearly demonstrates the need for the proposed initiative. According to research and existing systems, AI-based recommenders, forecasting models, and waste-monitoring tools, when utilized regularly, can drastically reduce food waste and promote healthier, more sustainable eating. However, current household-facing applications are often fragmented: some focus on recipes, some on simple expiry reminders, and yet others on excess sharing or lists, and commercial AI solutions are primarily targeted for restaurants rather than households. These tools frequently rely on manual data entry, do not explicitly represent expiry dates, have limited personalization, and rarely provide a natural, conversational interface. Together, these data show that there is a genuine need for a cohesive, intelligent, and user-friendly assistant that combines the best concepts from the literature into a single, coherent solution for regular kitchen use.
+2.8.2 Connection to Project Goals
+These insights have a direct impact on and are linked with the project's goals. By designing an AI kitchen assistant that:
+(1) Maintains an up-to-date household inventory with expiry awareness
+(2) Uses hybrid recommendation techniques to suggest recipes that both match user preferences and prioritise soon-to-expire ingredients.
+(3) Applies forecasting models to predict future grocery needs based on individual behavior.
+(4) Provides a conversational interface supported by user-centered design principles, the system explicitly addresses the limitations.
+In this way, the research builds on proven methodologies in recommender systems, inventory forecasting, and compelling app design while combining them in a novel way for homes. This portrays the proposed solution as a timely and necessary move forward, tying the chapter's findings directly to the project's practical goals of decreasing food waste, saving money, and promoting more sustainable daily living.
+3.0 Methodology
+3.1. Introduction
+This chapter outlines a detailed and methodical approach to developing the AI Smart Kitchen Assistant mobile application and supporting web platform. Building directly on Chapter 2's literature review, which identified critical flaws in existing food waste management systems such as fragmented functionality, excessive manual data entry requirements, a lack of explicit expiry date prioritization in recommendations and insufficient integration of predictive grocery planning, this section translates theoretical research gaps into a practical and executable implementation strategy.
+The chosen development technique leverages a hybrid methodology that combines Design Thinking for comprehensive user-centered requirements elicitation with Agile development, which uses 2-week sprints for iterative prototyping and refinement. This combination ensures that development is firmly rooted in real-world household user needs while also providing the flexibility needed to iteratively improve complex AI components like hybrid recommendation algorithms (KNN-SVD), time-series forecasting models, and natural language processing for conversational interfaces. The technique focuses on three main areas: the entire software development process (Section 3.2), thorough user research and requirements gathering methodologies (Section 3.3), and high-level system design using UML modeling (Section 3.4).
+This organized yet adaptable framework has been specifically designed to meet the practical restrictions of a final-year project, such as limited development time (20 weeks each semester), solitary developer resources, and the necessity for regular supervisor demos. The approach ensures delivery of a functional minimal viable product (MVP) by Week 19, with comprehensive evaluation and documentation completed by Week 20, while adhering to user-centered design principles and industry best practices identified in the literature review.
+3.2 Software Development Methodology
+3.2.1. Chosen Methodology and Justification
+Following a systematic evaluation of established software development methodologies, including the Waterfall model (excessively rigid for AI prototyping and requirement evolution), the Spiral model (overly formal risk analysis processes unsuitable for individual development), and pure Scrum (team-oriented ceremonies impractical for solo work), this project employs a hybrid Design Thinking + Agile development methodology based on 2-week sprints.
+Design Thinking, as defined by IDEO (2015), is a structured five-stage human-centered process (Empathise, Define, Ideate, Prototype, and Test) that assures development begins with a thorough grasp of target consumers' food waste pain areas. This methodology directly operationalizes the user-centered design (UCD) and persuasive design principles identified as critical success factors in the literature review (Nkwo et al., 2021; Mathisen et al., 2022), preventing the development of features that do not address actual household behaviors such as forgetting about perishable vegetables or overbuying staple ingredients.
+Agile sprints (8 x 2-week cycles spanning Weeks 4-19) then allow for rapid iterative development using the usual pattern of sprint planning, daily development, user testing, sprint review, and retrospective. This hybrid methodology provides numerous significant advantages that are specifically tailored to this project's technical and temporal constraints:
+User requirement validation: The empathy phase of Design Thinking uses mixed-methods research (50 surveys, 10 interviews) to empirically validate feature priorities, assuring good development ROI by focusing on validated needs rather than assumptions.
+Technical risk mitigation: Early MVP delivery of core functionality (inventory CRUD + expiry notifications by Sprint 2) allows for thorough testing of additional AI layers (recommendation engines, forecasting models) before excessive resource commitment.
+Timeline alignment: Bi-weekly sprint cycles generate tangible deliverables that are aligned with FYP goals, allowing for regular supervisor progress demonstrations and timely course adjustments.
+AI/ML development suitability: Iterative sprints allow for rigorous model experimentation, hyperparameter tuning, and A/B testing (e.g., hybrid vs. content-based recommendations) with real user interaction data.
+Solo developer optimisation: With little ceremony overhead (15-minute daily standups, bi-weekly demos), coding time is maximized while retaining development discipline and progress visibility.
+Academic and industry relevance: This exact hybrid method reflects current best practice at prominent technological businesses (Google, Airbnb, IDEO), while also meeting academic criteria for rationalized, systematic development processes with demonstrable outputs.
+Alternative approaches were rejected for particular reasons: Waterfall lacks iteration for AI enhancement, Spiral requires unnecessary formal documentation and Pure Agile risks scope creep without Design Thinking's user validation base.
+3.2.2- Step by step explanation of activities done in each phase of the chosen methodology
+The technique consists of two sequential phases that are carried out over the course of a 20-week semester: Design Thinking (Weeks 1-3) for needs discovery, followed by Agile Development Sprints (Weeks 4-19) for implementation, and finally synthesis in Week 20.
+Phase 1: Design Thinking (Weeks 1-3) – User-Centred Requirements Discovery
+Empathise (Week 1): Conduct mixed-methods user research with a quantitative online survey (Google Forms, n=50 target households via university networks/social media) measuring food waste pain points (Likert scales), feature priorities (ranking), and behavioral patterns, supplemented by semi-structured interviews (n=10, 30 minutes each via Zoom) with purposive sampling across demographics (students, working adults, parents) using protocol: "Walk me through your typical grocery shopping and meal planning week."
+Define (Week 2): Conduct thematic analysis of qualitative data (Braun & Clarke, 2006) and descriptive statistics on survey responses to create user personas, a pain point prioritization matrix, and an MVP feature definition document. Specify functional and non-functional requirements, such as "<30s item entry time."
+Ideate (Week 2): Conduct brainstorming sessions to construct a feature prioritization matrix (MoSCoW method: Must/Should/Could/Won't) and low-fidelity wireframes in Figma for main user journeys (add item ? view expiring ? obtain recipe).
+Prototype (Week 3): Create clickable high-fidelity Figma prototypes and rudimentary Flutter proof-of-concept screens that demonstrate essential flows (inventory CRUD, mock notifications).
+Test (Week 3): Conduct moderated usability testing (n=5 participants) to assess task success rates, time-on-task, and System Usability Scale (SUS) scores; write findings in the revised product backlog for Sprint 1 planning.
+Phase 2: Agile Development Sprints (8 x 2-week cycles, Weeks 4-19)
+Each sprint follows Scrum-lite ceremonies adapted for solo development: Sprint Planning (2h) ? Daily Standup (15min) ? Development ? User Testing (Day 13) ? Sprint Review (1h with supervisor) ? Retrospective (30min).
+Sprints 1-2: Core Functionality MVP (Weeks 4-7)
+Sprint Goals: Establish robust technical foundation with essential user value.
+Detailed Deliverables:
+Flutter 3.x mobile application with entire ingredient CRUD operations (name, quantity, category, expiry date, and optional photo).
+Firebase Authentication (email/password + Google OAuth) and the Firestore Realtime Database with data validation rules
+Firebase Cloud Messaging application for adjustable expiry notifications (3 days/1 day warnings with deep references to expired objects)
+Local JSON recipe database (around 500 entries) with TF-IDF keyword-based search functionality.
+Responsive static web landing page (HTML5, CSS3, and JavaScript) with feature overview, app screenshots, and download QR code.
+Development tools include Flutter/Dart, Firebase SDKs, and Visual Studio Code.
+Testing Protocol: Moderated usability testing (n=5) with success criteria of =90% task completion across 5 core tasks, average item entry time <30 seconds, and zero significant defects.
+Sprint Review Deliverables: Live example of user onboarding, inventory management, and notification workflow.
+Sprints 3-4: User Experience Enhancement & Personalisation (Weeks 8-11)Sprint Goals: Deliver intuitive, personalised interface increasing daily engagement.Detailed Deliverables:
+User profile management with dietary restrictions (vegetarian, allergies), cuisine preferences, and household size configuration
+Interactive dashboard displaying expiring items (countdown timers), usage statistics, and waste impact metrics ("3 items at risk, potential 1.2kg waste")
+Fully responsive web platform using Bootstrap 5 with feature deep-dive pages, sustainability blog, and app store submission preparation
+Offline-first data persistence using Hive NoSQL database with automatic cloud sync on reconnectionTesting Protocol: Unmoderated alpha testing (n=10, 1 week); SUS target score =75, weekly retention =60%Sprint Review Deliverable: Comprehensive user journey walkthrough including personalised dashboard and persuasive nudges
+Sprints 5-6: Basic Intelligence Layer (Weeks 12-15)Sprint Goals: Introduce content-based recommendations creating immediate user value.Detailed Deliverables:
+Spoonacular API integration (rate-limited free tier) for 10,000+ recipe database access
+Expiry-weighted content-based filtering algorithm prioritising soon-to-expire ingredients in recipe suggestions
+Usage pattern analysis generating predictive grocery lists ("You typically buy milk every 7 days")
+Rule-based chatbot implementing 5 core intents (recipe_request, expiry_check, grocery_list, inventory_status, preferences)Testing Protocol: Moderated beta testing (n=12); recipe relevance rating =4.0/5.0, list prediction accuracy (user-validated) =75%Sprint Review Deliverable: Live demonstration of "Show me recipes using expiring ingredients" workflow
+Sprints 7-8: Advanced AI Integration & Production Polish (Weeks 16-19)Sprint Goals: Deploy production-grade machine learning capabilities and optimise for deployment.Detailed Deliverables:
+Hybrid KNN-SVD recommendation engine trained on synthetic user-recipe interaction data, converted to TensorFlow Lite for edge deployment
+ARIMA time-series forecasting model for household-specific grocery demand prediction (MAPE target <20%)
+Dialogflow CX chatbot with 15+ intents handling complex natural language queries ("recipes with chicken expiring this week under 30 minutes")
+Performance optimisation (<2s end-to-end recommendation latency), data encryption (AES-256), GDPR-compliant privacy controls
+Production web platform with embedded demo videos, analytics tracking, and app store submission packagesTesting Protocol: Comprehensive 20-user validation study; SUS =85, hybrid recommendation Precision@5 improvement =15% vs. baseline, cross-device compatibility (5+ Android/iOS devices)Sprint Review Deliverable: Production-ready MVP with full AI capabilities demonstrated
+Week 20: Final Evaluation, Synthesis & Documentation
+Cross-platform compatibility testing and performance benchmarking
+Comprehensive supervisor demonstration and viva preparation
+Final report compilation including user study results, technical architecture documentation, and deployment guide
+Development Infrastructure: Trello (task tracking), GitHub (version control with CI/CD), Figma (design/prototyping), Firebase Console (backend monitoring), Google Meet (supervisor demos).
+This methodology ensures methodically progressive development from validated user requirements to production-ready prototype within the 20-week semester constraint, systematically addressing each integration gap identified in Chapter 2 while generating measurable, demonstrable deliverables at every milestone.
+3.3. Research Methodology
+3.3. Chosen Research Methodology and Justification
+3.3.2. Questionnaire Design and Samples
+The primary research instrument employed for this study was a carefully designed quantitative online questionnaire deployed through Google Forms, titled "Smart Kitchen Survey: Stop Food Waste". This instrument was specifically developed to systematically capture user requirements, pain points, behavioural patterns, and feature preferences from the target demographic of household cooks aged 18-45 within the university community and surrounding networks. The questionnaire was meticulously structured as a 5-minute, 6-page mobile-optimised survey featuring a progress bar to enhance completion rates, achieving an impressive 51 complete responses collected.
+[Figure 3.1: Complete Questionnaire Structure across 6 Pages]
+Detailed Questionnaire Design Specifications:
+Total Questions: 16 structured items comprising demographics (Q1-4), food waste pain point severity assessment via 5-point Likert scales (Q5-9), feature priority multi-selection (Q10), current tracking behaviours (Q11-12), input method preferences (Q13), and two open-ended qualitative probes (Q14-15)
+Response Format Optimisation: Linear scales for severity measurement, multi-select checkboxes for realistic behaviour capture, ranking questions for priority elicitation, and dropdowns for demographic consistency
+Anonymity Configuration: Google Forms configured with no email collection, no IP tracking, no Google account requirement, and no personally identifiable fields to ensure complete respondent confidentiality on the sensitive topic of household food waste
+Distribution Strategy: Multi-channel deployment through 10+ university WhatsApp groups (student organisations), Instagram Stories (personal networks reaching 500+ views), Facebook community groups (parent/student forums), and campus noticeboards with QR codes strategically placed in cafeterias and libraries
+User Experience Features: Mobile-responsive design, progress bar visibility, required field validation on critical items, and green-themed colour scheme aligned with sustainability messaging
+The survey successfully achieved comprehensive demographic coverage with 65% aged 18-24, 27% aged 25-34, and 8% aged 35-44, spanning household sizes from single occupancy (23%) to 5+ members (19%), providing robust representation of the primary target market for the AI Smart Kitchen Assistant.
+3.3.3. Analysis of Interview or Questionnaire Data
+Following data collection, the 51 complete responses were exported from Google Forms to Microsoft Excel for rigorous descriptive statistical analysis, frequency distribution calculations, cross-tabulation examination, and thematic coding of open-ended responses. This comprehensive analytical approach enabled the extraction of actionable insights regarding food waste pain point severity, feature prioritisation preferences, current behavioural patterns, demographic segmentations, and user interface method preferences, directly informing the subsequent Agile sprint planning and system requirements refinement.
+Figure 3.2: Food Waste Pain Points Severity Scores (Likert 1-5 Scale)
+[Figure 3.3: Feature Priority Distribution]
+Pain Point Severity Analysis (Q5-9, 5-point Likert Scale):
+Pain Point Assessment
+Mean Score (1-5)
+Standard Deviation
+% Rating 4-5 (Major/Severe Problem)
+Q8: Forgetting when food expires
+3.8
+1.1
+71%
+Q5: Forgetting food exists in fridge
+3.4
+1.2
+58%
+Q6: Lack of recipe ideas for ingredients
+3.2
+1.3
+52%
+Q7: Overbuying leading to expiry
+3.1
+1.2
+48%
+Q9: Current tracking methods too difficult
+2.9
+1.4
+42%
+Feature Priority Distribution (Q10, Multi-select):
+Feature Category
+Selections
+Selection Rate
+Priority Ranking
+Expiry date reminders/notifications
+44
+86%
+#1
+Recipe suggestions from current ingredients
+35
+69%
+#2
+Smart grocery shopping lists
+28
+55%
+**
+Chatbot conversational queries
+22
+43%
+#4
+Waste reduction progress tracking
+18
+35%
+**
+Current Food Management Behaviours (Q11 Multi-select):
+Mental memory / Don't track systematically: 65% (33 respondents)
+Paper lists/sticky notes: 42% (21 respondents)
+Phone calendar reminders: 35% (18 respondents)
+Existing food waste apps: 12% (6 respondents)
+Household Food Waste Volume (Q12):
+Less than 0.5kg weekly: 40% (20 households)
+0.5-1kg weekly: 33% (17 households)
+1-2kg weekly: 24% (12 households)
+More than 2kg weekly: 4% (2 households)
+Application Input Method Preferences (Q13 Multi-select):
+Manual typing: 52% (26 respondents)
+Photo recognition: 48% (24 respondents)
+Barcode scanning: 40% (20 respondents)
+Voice input: 25% (13 respondents)
+Cross-tabulation and Demographic Insights:
+Cooking frequency correlation: Daily cooks (14) reported significantly higher recipe knowledge gaps (mean 3.6 vs overall 3.2, p<0.05)
+Household size segmentation: Single occupancy households (n=12) prioritised smart grocery lists (67% vs 55% overall)
+Age patterns: 18-24 cohort showed strongest preference for photo input (58% vs 48% overall
+3.3.4 Proposed System Requirement
+Based on the literature review findings from Chapter 2 and preliminary project scoping from Chapter 1, the following system requirements have been established as the foundation for development. These requirements will be validated and refined through the quantitative survey results (Section 3.3.2) during Week 2 analysis, ensuring final prioritisation aligns with empirical user data. The requirements are categorised into functional (what the system does) and non-functional (how well it performs) specifications.
+3.3.4.1 Functional Requirements
+FR1: User Authentication and Profile Management
+Users shall register/login using email/password or Google OAuth (Firebase Auth)
+User profiles shall store dietary preferences (vegetarian, allergies, Halal), cuisine preferences, household size, and cooking frequency
+Profile data shall persist across sessions and sync between devices
+FR2: Inventory Management
+Users shall add food items specifying name, quantity, category (vegetables/meat/dairy/etc.), expiry date, and optional photo
+CRUD operations (Create, Read, Update, Delete) for all inventory items with <30-second average entry time target
+Support multiple input methods: manual typing, barcode scanning (future), voice input (priority from literature)
+Offline storage with automatic cloud sync (Hive + Firebase Firestore)
+FR3: Expiry Date Monitoring and Notifications
+System shall display expiring items dashboard sorted by urgency (3 days/1 day/today)
+Push notifications via Firebase Cloud Messaging for configurable thresholds (3 days, 1 day warnings)
+Deep links from notifications directly to expiring item details
+FR4: Recipe Recommendations
+Content-based filtering matching user inventory to 500+ local recipe database + Spoonacular API integration
+Expiry-aware prioritisation: Recipes ranked by usage of soon-to-expire ingredients first
+Filter by dietary restrictions, cuisine preferences, preparation time (<30 min), servings
+Hybrid KNN-SVD recommendation engine (TensorFlow Lite) improving relevance with usage data
+FR5: Predictive Grocery Planning
+Time-series forecasting (ARIMA/scikit-learn) predicting re-order needs based on purchase/consumption patterns
+Automatic grocery lists generated from usage frequency ("You buy milk every 7 days")
+Integration with recipe suggestions for proactive planning
+FR6: Conversational Interface
+NLP chatbot (Dialogflow) handling natural language queries:
+"What can I cook with chicken expiring tomorrow?"
+"Recipes using my carrots and potatoes"
+"What's expiring this week?"
+Rule-based fallback for offline mode
+FR7: Waste Impact Dashboard
+Visual metrics: "3 items expiring soon (1.2kg potential waste)"
+Historical trends: weekly/monthly waste reduction estimates
+Persuasive nudges: "You saved RM15 this week!"
+FR8: Web Platform
+Responsive landing page (Bootstrap 5) with feature overview, demo videos
+App download QR codes, sustainability blog, contact form
+App store submission preparation pages
+3.3.4.2 Non-Functional Requirements
+NFR1: Performance
+End-to-end response time <2 seconds for recommendations
+Offline functionality for core features (inventory view, basic recipes)
+Support 1,000 concurrent recipe database queries
+NFR2: Usability
+System Usability Scale (SUS) score =85/100
+=90% task success rate across core workflows (add item, view expiring, get recipe)
+Mobile-first responsive design (Android 8.0+, iOS 12+)
+NFR3: Reliability and Availability
+99% uptime for cloud services (Firebase SLA)
+Graceful offline degradation with data sync on reconnection
+Automatic crash reporting (Firebase Crashlytics)
+NFR4: Security and Privacy
+AES-256 encryption for user data at rest
+GDPR-compliant data handling (right to delete, no unnecessary collection)
+Firebase security rules preventing unauthorised data access
+NFR5: Scalability
+Support 1,000 active users (FYP demo scale)
+Horizontal scaling via Firebase Firestore sharding
+TensorFlow Lite models <50MB for mobile deployment
+NFR6: Maintainability
+Modular Flutter architecture with 80%+ code coverage (unit tests)
+Comprehensive documentation (API endpoints, ML model specs)
+GitHub repository with CI/CD pipeline
+3.3.4.3 Requirements Prioritisation Matrix (Pre-Survey)
+Requirement
+MoSCoW Priority
+Survey Validation
+Sprint Target
+FR2 Inventory CRUD
+MUST
+Q10 Rank #1-2 expected
+Sprint 1
+FR3 Expiry Alerts
+MUST
+Q6-9 High scores expected
+Sprint 2
+FR4 Basic Recipes
+MUST
+Q10 Rank #2-3 expected
+Sprint 3
+FR1 User Profiles
+SHOULD
+Demographic analysis
+Sprint 4
+FR6 Chatbot (Basic)
+COULD
+Q14 Voice preference
+Sprint 5
+FR4 Hybrid ML
+COULD
+Beta testing results
+Sprint 7
+FR8 Web Platform
+WONT (MVP)
+Post-MVP
+Sprint 8
+3.3.4.4 Validation Through Survey Results
+The survey (Section 3.3.2) will provide empirical validation through:
+Q10 Feature Ranking ? Confirm MoSCoW priorities
+Q6-9 Pain Points ? Severity scores justify requirements
+Q13 Input Methods ? Prioritise typing vs scanning vs voice
+Demographics ? Segment requirements (students vs families)
+Post-Survey Adjustment Example: If 75% prefer voice input (Q13), elevate FR6 chatbot to MUST status for Sprint 3.
+These requirements establish a comprehensive yet achievable scope aligned with literature gaps (Chapter 2) and FYP constraints, ready for validation through Week 2 survey analysis and subsequent Agile sprint planning.
+3.4. Proposed System Design
+3.4.1 UML Modeling of the Proposed System:
+Use Case Diagram
+The Use Case Diagram depicts the functional interactions of users with the AI Smart Kitchen Assistant system. It presents a high-level overview of how various players use the system's capabilities to efficiently reduce household food waste.
+The primary actor in the system is the User, who represents household members who use the mobile application. Users can register and log onto the system, manage their personal profiles and preferences, and keep track of the ingredients they own. The ingredient management tools allow users to add, amend, and view food products as well as their expiration dates. The system regularly monitors these expiry dates and delivers notification alerts when things are about to expire, encouraging timely use and decreasing waste.
+Users can also interact with intelligent features that are powered by AI. The algorithm recommends recipes based on available components, expiration dates, and user preferences. Users can also interact with an AI chatbot to ask inquiries about cooking, expiring ingredients, and meal suggestions. Furthermore, the system provides predictive grocery suggestions based on previous purchase history and consumption habits, assisting consumers in making more informed shopping decisions.
+The Administrator is a supporting actor who is in charge of keeping the system running. Administrative activities include managing the recipe database, updating system content, and monitoring system data to ensure proper operation and suggestions.
+Overall, the Use Case Diagram specifies the primary system features and clearly depicts how users and administrators interact with the AI Smart Kitchen Assistant to achieve the goal of minimizing home food waste.
+Package Diagram
+The Package Diagram depicts the AI Smart Kitchen Assistant system's high-level modular structure and the relationships between its primary components. The system is organized into logical packages to increase maintainability, scalability, and accountability.
+The Mobile Application (UI) package acts as the primary interface between the user and the system. The User Management package handles login and personalization capabilities, while the Inventory Management package allows users to manage food products and expiration dates. The UI also relies on the AI & Recommendation Engine to provide intelligent cooking suggestions, grocery forecasts, and chatbot responses. Furthermore, it relies on the Notification System to display alerts about expired ingredients.
+The Database package is used by the User Management, Inventory Management, and AI & Recommendation Engine packages to store and retrieve persistent data such as user profiles, ingredient data, recipes, and usage history. The Notification System uses the Inventory Management package to determine when expiry-based warnings should be triggered.
+All relationships in the diagram are represented by dependency relationships, which are depicted as dashed arrows and indicate that one package requires the services or data of another package to function properly. This modular form promotes separation of concerns and is consistent with the system scope outlined in the project proposal.
+Class Diagram
+The Class Diagram depicts the static structure of the AI Smart Kitchen Assistant system, including its core classes, properties, methods, and their relationships. The diagram is based on the system's package architecture to guarantee that logical modules are consistent with object-oriented design.
+The User class, which represents a household user of the mobile application, is fundamental to the system. The User class stores personal information and dietary preferences and is linked to the AuthService class, which handles authentication and secure access to the system. The MobileAppUI class works with the User class to provide an interface for logging in, managing ingredients, and accessing intelligent features.
+Food items are represented by the Ingredient class, which contains critical information such as quantity, category, and expiration date. The InventoryManager class handles a collection of Ingredient objects and has a composition connection with them, implying that ingredients exist exclusively in the context of an inventory. The User class has an aggregation relationship with the InventoryManager, indicating that each user owns an inventory, which is managed independently by the system.
+The RecommendationEngine, Recipe, and Chatbot classes handle intelligent features. The RecommendationEngine works with the Recipe class to generate appropriate recipe recommendations, and it relies on Ingredient data to make reliable choices. The Chatbot class handles user inquiries and relies on the RecommendationEngine to return context-aware responses, allowing for natural language interaction within the system.
+Notification functionality is represented by the NotificationManager and Notification classes. The NotificationManager has a composition relationship with Notification objects since notifications are created and managed solely by the system. The InventoryManager is responsible for retrieving expiry-related information, which allows the system to send out warnings when food products are about to expire.
+The Database class represents persistent data storage, and the InventoryManager, RecommendationEngine, and NotificationManager use dependency relationships to access it. This architecture maintains separation of concerns by eliminating direct interaction between the user interface and the database layer.
+To enforce encapsulation, all class attributes are defined as private, whereas methods are public, allowing for controlled interaction between system components. Overall, the Class Diagram shows a modular, scalable, and maintainable system design that meets the functional criteria and objectives mentioned in the project proposal.
+Collaboration Diagrams
+The UML collaboration diagram depicts the interaction of the user, mobile interface, and backend components during ingredient tracking and expiration notification." The user enters ingredient information into the MobileUI, which sends the data to the InventoryManager. The InventoryManager generates and saves Ingredient objects while constantly checking expiration dates. When an ingredient is about to expire, the NotificationManager generates a notification that is delivered to the user via the mobile app.
+Sequence Diagram
+The sequence diagram depicts the time-ordered interaction of the user, mobile interface, and backend components during ingredient expiration monitoring. The user commences the procedure by entering ingredient information into the MobileUI. The InventoryManager stores the ingredient and verifies the expiration date. If an ingredient is about to expire, the NotificationManager generates a notification that is sent to the user via the mobile application interface.
+Component Diagrams
+The component diagram depicts the high-level architecture of the Smart Kitchen Assistant system. The Mobile Application component manages user interface, whilst the Inventory Management and Notification Management components handle business logic. A centralized database component holds ingredient and notification information. The Notification Management component connects to an external push notification provider to send notifications to users.
+State Machine Diagrams
+The state machine diagram depicts the lifecycle of an ingredient in the system, from addition and storage to near-expiry and final states. It collects time-based transitions and user actions, including consumption and disposal, which assist the system's goal of reducing food waste.
+Activity Diagram
+The activity diagram depicts the whole workflow of the AI Smart Kitchen Assistant system and how activities are divided among three key parties: the User, the System, and the AI Engine. Swimlanes are used to clearly clarify each party's responsibilities and increase the readability of the process flow.
+When the user first launches the mobile application, the procedure begins in the User swimlane. The user is then prompted to log in or create an account. A decision point determines whether the user is a new or existing user. New users must register their accounts, whereas existing users can log in instantly. After successful authentication, the user can modify their profile and personal preferences before adding or updating kitchen ingredients.
+Once the ingredient data is submitted, the workflow advances to the System swimlane, where the system records the ingredient information in a database and automatically tracks expiry dates. A choice is made to determine whether any ingredients are approaching their expiration date. If products nearing expiry are detected, the system gives the user an expiry notification. Otherwise, the process proceeds without notice.
+After receiving notifications or proceeding normally, the user can request recipe recommendations or contact the AI chatbot for cooking assistance. This request initiates the AI Engine swimlane, where the AI examines the available ingredients, user preferences, and expiration dates. Based on this study, the AI engine makes appropriate recipe recommendations. The results are then returned to the system and presented to the user.
+Following the recipe recommendation process, the AI engine makes grocery suggestions based on the user's past ingredient consumption. These grocery suggestions are provided to the user to help with future meal planning and to avoid food wastage. The workflow concludes when the user views the proposed grocery list.
+Overall, the activity diagram depicts the end-to-end interaction of the user, system, and AI engine, emphasizing how intelligent automation and user input collaborate to enable efficient kitchen management and food waste reduction.
+3.4.2 Block Diagrams
+The hardware block diagram depicts the overall physical and logical architecture of the AI Smart Kitchen Assistant system. The system starts with the user's device, such as a smartphone or laptop, which is utilized to access the mobile or online application. The user device communicates with the backend infrastructure via an internet connection.
+The application server is the system's essential component, responsible for user identification, processing ingredient data, and controlling system logic. The database server stores all important data, such as user profiles, ingredient lists, expiration dates, and usage history.
+The AI engine is connected with the backend server to do intelligent processing, such as assessing ingredient availability, producing recipe recommendations, forecasting grocery needs, and facilitating chatbot conversations. In addition, a notification service sends expiry notifications and reminders to the user's device.
+An optional admin device is included, which allows system administrators to administer recipes, update information, and track system performance. Overall, the hardware design promotes efficient communication among components while also enabling intelligent and scalable system functionality.
+3.5 Chapter Summary
+Chapter 3 described the entire research technique for creating the AI Smart Kitchen Assistant, bridging the literature gaps from Chapter 2 with actual user-validated specifications.
+The primary data gathering method was a structured online questionnaire aimed at household cooks, which resulted in high response rates among the university population. Analysis indicated that missing expiry dates was the most common cause of food loss, with customers choosing reminders over other features. This set clear precedence for fundamental tasks such as inventory tracking and notifications over recipe ideas.
+These findings prompted full UML modeling from functional, structural, behavioral, and deployment viewpoints. Key graphics depicted user interactions, core properties such as ingredients with expiry dates, dynamic workflows for suggestions, and a hybrid mobile-cloud architecture that combined a frontend app with backend services and external APIs.
+The Agile roadmap organized development into focused sprints within the project timetable, resulting in quantifiable prototypes with user-friendly interfaces and consistent performance.
+This chapter converted real-world user insights into executable technological requirements, confirming the need for expiry-focused solutions that are lacking from current systems. It prepares the project for prototype implementation in Chapter 4 by outlining validated priorities and unambiguous design principles.
+4.0: Findings and Results
+This chapter presents the findings and results obtained from the development and evaluation of the EcoBite application and its promotional website. The purpose of this chapter is to show the outcome of the project based on the objectives stated in Chapter 1. The findings are arranged according to the main stages of the project, which include identifying the user problem, designing the proposed solution, developing the mobile application and website, and evaluating the system through user feedback.
+EcoBite was developed as a smart kitchen assistant application that aims to help users manage kitchen ingredients, monitor expiry dates, receive recipe suggestions, plan groceries, and reduce food waste. The mobile application was built using Dart and Flutter so that it can support mobile development for Android and iOS. The system also uses Firebase services for login and database support, while a promotional website was developed to introduce the app and provide access to download the Android APK file.
+The results in this chapter are based on the completed prototype, the implemented system features, and the feedback collected through the EcoBite App User Feedback survey. A total of 63 responses were collected from users. The survey results are used to evaluate whether EcoBite is understandable, useful, and suitable for daily food management.
+4.1 Findings of Objective 1: Identification of User Needs and Food Waste Problems
+The first objective of this project was to explore and identify effective methods of reducing household food waste through ingredient tracking, recipe suggestions, and reminder-based support. Based on the project background and user survey results, household food waste is mainly related to poor grocery planning, forgetting expiry dates, and not knowing what meals to prepare using available ingredients.
+The survey findings show that the target users are mostly young adults and home users who cook at different levels of frequency. Out of 63 respondents, 28 respondents were between 18 and 24 years old, representing 44.4% of the sample. Another 22 respondents, or 34.9%, were between 25 and 34 years old. This shows that the feedback mainly represents students, young adults, and early working adults, which is suitable for the intended user group of EcoBite.
+Figure 4.1.1: Respondent Age Group
+In terms of cooking habits, 20 respondents, or 31.7%, stated that they cook once a week, while 17 respondents, or 27.0%, cook a few times a week. Another 16 respondents, or 25.4%, rarely cook. This indicates that many users may not cook every day, but they still need support in managing food items and deciding what to cook when needed.
+The survey also shows that food expiry awareness is a relevant issue. A total of 33 respondents, or 52.4%, stated that they sometimes forget food items until they expire. Another 5 respondents, or 7.9%, stated that this happens often. This finding supports the need for an expiry tracking and reminder system in EcoBite. Even though some respondents rarely forget food items, the overall result shows that expiry awareness is still a common problem among users.
+Figure 4.1.2: Survey Chart for Food Expiry Awareness
+Grocery planning also appeared as an important issue. Only 19 respondents, or 30.2%, stated that they always plan groceries before shopping. Meanwhile, 22 respondents, or 34.9%, only plan sometimes, and 21 respondents either rarely or never plan groceries. This supports the need for the predictive grocery planning feature because users may overbuy or forget important items when shopping without a clear plan.
+Figure 4.1.3: Survey Chart for Grocery Planning Habits
+Based on these findings, the main user needs identified are:
+- A simple way to record and monitor kitchen items.
+- Clear expiry indicators to show which food should be used first.
+- Recipe suggestions based on available ingredients.
+- Grocery planning support to reduce unnecessary buying.
+- A food-focused assistant that can answer simple cooking, storage, and waste reduction questions.
+4.2 Findings of Objective 2: Design of the EcoBite Mobile Application and Website
+The second objective was to design a mobile application and web platform that include food-waste reduction features such as a chatbot, expiry tracking system, and predictive grocery planning. The design of EcoBite was created based on the user needs identified in Objective 1. The application design focuses on making the main functions easy to access through a clear bottom navigation structure.
+The mobile application uses a green, light green, and white colour theme to match the sustainability and food waste reduction concept. Dark green is used for important headings and main action buttons, while light green is used for highlights, selected tabs, and positive visual indicators. The design aims to be clean and calm so that users can manage food items without feeling overwhelmed.
+The main screens designed for EcoBite include:
+- Home dashboard
+- Kitchen inventory
+- Recipe suggestions
+- AI assistant
+- Predictive grocery plan
+- Profile and preferences
+The home dashboard provides a quick overview of items that need attention. It displays expiring food items and waste-saving tips to encourage users to act before food spoils. This design supports the project goal of reminding users at the right time.
+Figure 4.2.1: EcoBite Home Dashboard Screen
+The kitchen inventory screen allows users to search, filter, add, edit, delete, and scan items. The expiry status is shown through visual indicators. Items close to expiry are highlighted so that users can identify urgent food items quickly. The use of colour-coded tabs helps users prioritise items that should be cooked first.
+Figure 4.2.2: Kitchen Inventory Screen with Expiry Indicators
+The recipe suggestion screen was designed to connect directly with the inventory list. Recipes are ranked based on the number of available ingredients. If the user has more ingredients required for a recipe, that recipe appears higher in the list. This makes the feature more useful because it does not only display random recipes, but instead recommends meals based on actual food items in the kitchen.
+Figure 4.2.3: Recipe Suggestions Screen
+The predictive grocery plan screen was designed to help users shop with a clearer purpose. It suggests missing ingredients for recipes and important staples that users may need to buy. This feature supports the reduction of overbuying because users can check what is missing instead of purchasing duplicate items.
+Figure 4.2.4: Predictive Grocery Plan Screen
+The AI assistant was designed as a food-related support feature. It allows users to ask questions related to food waste, cooking ideas, storage advice, recipe suggestions, and grocery planning. The assistant was kept focused on the project domain instead of behaving like a general-purpose chatbot.
+Figure 4.2.5: AI Assistant Screen
+The profile and preferences screen was designed to allow users to personalize the app. Users can set dietary preferences, cooking style, reminder settings, and display mode. These settings influence recipe and grocery suggestions, making the app more relevant to each user.
+Figure 4.2.6: Profile and Preferences Screen
+The promotional website was also designed to support the mobile application. Unlike the mobile app, the website is not intended to perform inventory or recipe functions. Its purpose is to promote EcoBite, explain its features, show app screenshots, answer common questions, and provide a download button for the Android APK file.
+Figure 4.2.7: EcoBite Promotional Website Homepage
+4.3 Findings of Objective 3: Development and Implementation of EcoBite
+The third objective was to develop and implement the mobile app and website by integrating the planned features into a working prototype. The final product consists of the EcoBite Flutter mobile application and a promotional website hosted through GitHub Pages.
+4.3.1 Mobile Application Development
+EcoBite was developed using Dart programming language with the Flutter framework. Flutter was chosen because it supports cross-platform mobile development, allowing the same codebase to be used for Android and iOS development. During implementation, the Android version was tested directly on a physical Android device.
+The mobile app includes a structured navigation system with six main areas: Home, Items, Recipes, AI, Shop and Profile. This navigation makes it easier for users to move between the main functions without needing to search through many menus.
+The authentication feature was implemented using Firebase Authentication. When users open the app, they are asked to log in or create an account. This allows the system to store user-related kitchen data separately and supports a more personalized experience.
+Figure 4.3.1: Firebase Login Screen
+Firestore was used as the database for storing user inventory items and preference-related information. This allows kitchen items, expiry dates, quantities, and user settings to be saved and retrieved when needed. The database connection supports the app’s goal of maintaining a persistent kitchen inventory.
+4.3.2 Kitchen Inventory and Expiry Tracking
+The kitchen inventory feature allows users to add ingredients or food items with details such as item name, quantity, category and expiry date. Users can edit or delete items after they are added. The system also includes filters for viewing all items, urgent items and expired items.
+Expiry tracking was implemented using date comparison logic. Items expiring within one day are shown with a stronger warning colour, while items expiring within two to three days are shown with a light yellow background. Expired items are marked with a clear expired indicator. This result supports the project objective of increasing user awareness of food items that should be used first.
+The barcode scanner feature was added to make item entry more convenient. Instead of typing all details manually, users can scan a product barcode and use available product information to add the item into the inventory. This improves usability because manual data entry can be time-consuming.
+Figure 4.3.2: Barcode Scanner Screen
+4.3.3 Recipe Suggestion Development
+The recipe suggestion feature was developed to recommend meals based on items available in the kitchen inventory. The system compares recipe ingredients with the user’s inventory and ranks recipes based on ingredient availability. Recipes with more matching ingredients are given higher priority.
+The feature also considers dietary preferences. For example, if users select a preference such as halal, recipes that are not suitable should be filtered out. This makes the recommendation more personalized and prevents unsuitable recipe suggestions from appearing.
+Recipe cards also show which ingredients are available and which ingredients are missing. Users can add missing ingredients into the grocery plan. This creates a connection between the recipe suggestion feature and the grocery planning feature.
+4.3.4 Predictive Grocery Plan Development
+The predictive grocery plan feature was developed to help users identify what they need to buy. The grocery plan uses missing recipe ingredients, basic staples, and user preferences to generate suggestions. This feature helps users avoid buying duplicate items because the suggestions are connected to their current inventory.
+The grocery screen includes a checklist system so users can mark planned items while shopping. Users can also add custom grocery items and transfer bought items into the inventory. This supports the project goal of improving grocery planning and reducing unnecessary purchases.
+Figure 4.3.3: Grocery Checklist and Finish Shopping Screen
+4.3.5 AI Assistant Development
+The AI assistant feature was developed to provide food-related support inside the app. The assistant uses a structured knowledge base to respond to questions related to food waste, recipes, storage, grocery planning, and kitchen inventory. The assistant was designed to stay focused on the EcoBite domain rather than answering unrelated questions.
+To improve the user experience, a thinking animation and gradual response display were added. This makes the assistant feel more natural and avoids responses appearing too suddenly. Although the assistant is not a full large-scale AI model like ChatGPT, it functions as a focused helper for food management and waste reduction.
+4.3.6 Notification and Preference Development
+Notification support was added so that users can receive reminders before food expires. Reminder settings can be adjusted in the profile page. The profile page also includes account settings, dietary preferences, cooking preferences, household size, and dark mode. These preferences improve personalization and allow the app to better match user needs.
+Figure 4.3.4: Dark Mode Interface Example
+4.3.7 Promotional Website Development
+The promotional website was developed using HTML, CSS, and JavaScript. The purpose of the website is to introduce EcoBite, explain its features, show app screenshots, answer frequently asked questions, and provide a download button for the Android APK.
+The website follows the same visual identity as the mobile app, using white, light green, and dark green colours. It includes smooth animations, feature preview buttons, an app screenshot display, a FAQ section, and download buttons linked to the GitHub Release APK file. The website is hosted using GitHub Pages, making it accessible through a public web link.
+Figure 4.3.5: Promotional Website Download Section
+4.4 User Evaluation Survey Results
+After the development of the EcoBite prototype, a user feedback survey was conducted to evaluate the application from the user’s perspective. The survey collected 63 responses. The questions focused on user background, usability, feature usefulness, food waste reduction, and overall satisfaction.
+4.4.1 Respondent Background
+Most respondents were within the young adult age range. A total of 28 respondents, or 44.4%, were aged 18 to 24. Another 22 respondents, or 34.9%, were aged 25 to 34. This indicates that the survey feedback mainly came from users who are likely to be students, young working adults, or individuals who may benefit from simple meal planning and kitchen management tools.
+Cooking frequency varied among respondents. The largest group, 20 respondents or 31.7%, cooked once a week. Another 17 respondents, or 27.0%, cooked a few times a week. This shows that EcoBite is relevant not only for frequent cooks but also for users who cook occasionally and may need help deciding what to prepare.
+4.4.2 Usability Findings
+The usability results were generally positive. For the statement “The EcoBite app was easy to understand when I first opened it,” the average score was 3.98 out of 5. A total of 46 out of 62 valid respondents, or 74.2%, selected a score of 4 or 5. This suggests that most users found the app understandable during first use.
+Figure 4.4.1: Ease of Understanding Survey Result
+For the statement “The app layout was clear and easy to navigate,” the average score was 3.82 out of 5. A total of 39 out of 62 valid respondents, or 62.9%, selected a score of 4 or 5. This result shows that the layout was mostly clear, but there is still room to improve navigation and screen spacing.
+Figure 4.4.2: Layout and Navigation Survey Result
+Overall satisfaction received an average score of 3.81 out of 5. A total of 39 out of 62 valid respondents, or 62.9%, gave a rating of 4 or 5. This indicates that users were generally satisfied with EcoBite, although some improvements could still be made.
+Figure 4.4.3: Overall Satisfaction Survey Result
+4.4.3 Feature Usefulness Findings
+The survey results show that users found several EcoBite features useful. The most selected useful feature was the Predictive Grocery Plan, chosen 41 times. This was followed by Expiry Reminders with 34 selections, Recipe Suggestions with 32 selections, and the AI Assistant with 26 selections. This shows that users appreciated features that reduce planning effort and help them make practical food decisions.
+Figure 4.19: Most Useful EcoBite Features
+The kitchen inventory feature received an average score of 3.76 out of 5, with 61.3% of valid respondents selecting 4 or 5. This shows that users generally agreed that the inventory feature helped them keep track of food items.
+Figure 4.20: Kitchen Inventory Usefulness Result
+The expiry indicator feature received an average score of 3.94 out of 5, with 66.1% of valid respondents selecting 4 or 5. This result supports the importance of visual expiry reminders in helping users decide which food should be used first.
+Figure 4.21: Expiry Indicator Usefulness Result
+Recipe suggestions received an average score of 3.76 out of 5, with 62.9% of valid respondents selecting 4 or 5. This indicates that users found the recommendations relevant, especially when they were based on ingredients already available in the inventory.
+Figure 4.22: Recipe Suggestion Relevance Result
+The grocery plan received an average score of 3.73 out of 5, with 66.1% of valid respondents selecting 4 or 5. Although the average is slightly lower than some other features, the high number of users selecting the Predictive Grocery Plan as the most useful feature shows that users saw strong value in this function.
+Figure 4.23: Grocery Plan Usefulness Result
+For the AI Assistant, 41 respondents, or 65.1%, stated that it provided useful food-related responses. Another 13 respondents, or 20.6%, did not try it. This suggests that the assistant was useful to most users who interacted with it, but more users should be encouraged to try the feature during future testing.
+Figure 4.24: AI Assistant Usefulness Result
+4.4.4 Food Waste Reduction Findings
+The survey results show that users generally believed EcoBite could help reduce food waste. A total of 38 respondents, or 60.3%, answered “Yes” when asked whether EcoBite can help reduce food waste. Another 17 respondents, or 27.0%, answered “Maybe.” Only 7 respondents, or 11.1%, answered “No.”
+Figure 4.25: Perception of EcoBite’s Ability to Reduce Food Waste
+When asked which part of EcoBite helps most with reducing food waste, recipe suggestions were selected 40 times. Grocery planning was selected 24 times, while inventory tracking was selected 12 times. These results show that users view EcoBite’s strongest waste reduction value as helping them use available ingredients and plan purchases more carefully.
+Figure 4.26: Features Helping Food Waste Reduction
+For the statement about being more likely to use ingredients before they expire, the average score was 3.98 out of 5, and 46 out of 62 valid respondents, or 74.2%, selected 4 or 5. This is one of the strongest results in the survey and suggests that EcoBite can positively influence user behaviour toward using food before it expires.
+Figure 4.27: Likelihood of Using Ingredients Before Expiry
+4.4.5 Overall Acceptance and Recommendation
+The survey also measured whether users would use EcoBite in daily life. A total of 37 respondents, or 58.7%, answered “Yes,” while 17 respondents, or 27.0%, answered “Maybe.” This means that most respondents were either willing to use the app or open to using it depending on further improvements.
+Figure 4.28: Willingness to Use EcoBite in Daily Life
+For recommendation, 33 respondents, or 52.4%, said they would recommend EcoBite to others. Another 19 respondents, or 30.2%, answered “Maybe.” This indicates that the app has positive acceptance, but some users may want improvements before strongly recommending it.
+Figure 4.29: Recommendation Result
+The open-ended responses also provide useful insight. The most liked aspects of the app were predictive grocery planning, waste-saving tips, and the AI assistant. Predictive grocery planning was selected 38 times, waste-saving tips 33 times, and the AI assistant 32 times. These responses show that users valued the features that made the app feel practical and helpful for daily kitchen decisions.
+Figure 4.2: Most Liked Features from Open-Ended Responses
+Table 4.2: Most Liked Features from Open-Ended Responses
+The most common improvement suggestions were clearer expiry date alerts and more recipe variety, each mentioned 7 times. Faster loading times were mentioned 6 times, while more customizable notifications were mentioned 5 times. Other suggestions included larger font options, better recipe search, more language support, improved onboarding, better barcode scanning, supermarket integration, and a meal planning calendar.
+Table 4.3: Suggested Improvements from Users
+These responses show that users were generally positive toward EcoBite, but they also identified improvements that could make the application more complete and user-friendly.
+4.5 Discussion of Findings
+Based on the development results and survey findings, the EcoBite prototype successfully addresses the main objectives of the project. Objective 1 was achieved because the survey and background research confirmed that users face issues related to food expiry, grocery planning, and deciding what to cook. The survey showed that many respondents sometimes forget food items until they expire and do not always plan groceries before shopping.
+Objective 2 was achieved through the design of a mobile application and promotional website. The application design includes the main features required to support food waste reduction, such as kitchen inventory, expiry tracking, recipe suggestions, predictive grocery planning, AI assistant support, barcode scanning, and personal preferences. The website also supports the project by explaining the app’s purpose and providing a download link for the APK.
+Objective 3 was achieved through the development and implementation of the working prototype. The app was built using Flutter and Dart, with Firebase used for authentication and database support. The implemented features were tested and improved throughout development. The survey results show that users generally found the app understandable, useful, and relevant to food waste reduction.
+However, the findings also show that EcoBite can still be improved. Some users suggested clearer expiry alerts, more recipe variety, faster loading, better barcode scanning, and more customizable notifications. These suggestions are valuable because they show which parts should be prioritized in future development.
+Overall, the findings suggest that EcoBite has potential as a practical food waste reduction tool. The strongest user interest was found in predictive grocery planning, expiry reminders, recipe suggestions, and waste-saving tips. These results support the direction of the project and show that the app’s main functions are aligned with user needs.
+4.6 Chapter Summary
+This chapter presented the findings and results of the EcoBite project. The findings were discussed according to the project objectives, beginning with the identification of user needs and food waste problems, followed by the design and development of the mobile application and promotional website. The chapter also discussed the results of the user evaluation survey.
+The survey results showed that most users found EcoBite easy to understand and useful for managing food items. The features with the strongest user interest were predictive grocery planning, expiry reminders, recipe suggestions, and the AI assistant. The results also showed that many respondents believed EcoBite could help reduce food waste and make them more likely to use ingredients before they expire.
+At the same time, the survey identified several areas for improvement, including clearer expiry alerts, more recipe variety, faster loading times, better barcode scanning, and more customizable notifications. These findings can be used as guidance for future enhancement of the system.
+In conclusion, Chapter 4 shows that the EcoBite prototype met the main project objectives and received generally positive feedback from users. The next chapter will summarise the overall project, discuss the conclusion, identify limitations, and provide recommendations for future work.
+5.0: Summary and Conclusion
+5.1 Summary
+This chapter summarises the overall outcome of the EcoBite project, discusses the conclusion based on the project objectives, and presents recommendations for future enhancement. The purpose of this project was to develop a smart kitchen assistant application that helps users manage food items, monitor expiry dates, receive recipe suggestions, plan groceries, and reduce household food waste. In addition to the mobile application, a promotional website was also developed to introduce the app, explain its features, and provide a download link for the Android APK.
+The project was motivated by the issue of household food waste, which commonly happens when users forget what ingredients they have, fail to monitor expiry dates, overbuy groceries, or do not know what to cook with available items. Based on this problem, EcoBite was designed as a user-friendly mobile solution that combines kitchen inventory tracking, expiry awareness, recipe recommendation, predictive grocery planning, barcode scanning, food preferences, and an AI food assistant in one application.
+The first objective of this project was to explore and identify effective methods of reducing household food waste through ingredient tracking, recipe suggestions, and AI-based reminders. This objective was achieved through background research, project planning, and user feedback. The survey results showed that food expiry and grocery planning are relevant problems among users. For example, 52.4% of respondents stated that they sometimes forget about food items until they expire, while only 30.2% always plan groceries before shopping. This supports the need for an application that reminds users about expiring food and helps them shop more carefully.
+The second objective was to design a mobile application and web platform that incorporate food-waste reduction features. This objective was achieved through the design of the EcoBite mobile app and promotional website. The mobile app was designed with a simple green-themed interface to match the sustainability concept. The app includes main screens such as Home, Items, Recipes, AI, Shop, and Profile. The website was designed as a promotional platform, not as a separate web app, and focuses on explaining the app features, showing app screenshots, answering common questions, and providing an APK download button.
+The third objective was to develop and implement the mobile application and website with the planned functions. This objective was achieved by developing the mobile app using Dart and Flutter, integrating Firebase Authentication and Firestore database support, and creating the promotional website using HTML, CSS, and JavaScript. The application was tested on an Android device and improved through several stages of development. Features such as barcode scanning, notification setup, recipe ranking based on inventory items, grocery planning, AI assistant responses, dark mode, and profile preferences were added to make the app more complete and suitable for real use.
+The project was also evaluated through a user feedback survey with 63 responses. The survey results were generally positive. The app received an average score of 3.98 out of 5 for being easy to understand, and 74.2% of valid respondents selected 4 or 5 for this statement. The expiry indicator feature received an average score of 3.94 out of 5, while the overall satisfaction score was 3.81 out of 5. In terms of feature usefulness, the predictive grocery plan was selected 41 times, expiry reminders 34 times, recipe suggestions 32 times, and the AI assistant 26 times. These results show that the main features of EcoBite were relevant to user needs.
+The survey also showed that users believed EcoBite could support food waste reduction. A total of 60.3% of respondents answered “Yes” when asked whether EcoBite can help reduce food waste, while 27.0% answered “Maybe.” Furthermore, 74.2% of valid respondents agreed that after using EcoBite, they would be more likely to use ingredients before they expire. This indicates that EcoBite has potential to encourage better food management habits.
+Suggested table placement:
+Insert Table 5.1: Summary of Objective Achievement after the paragraph explaining the three objectives. This table can include three columns: Objective, Implementation Result, and Evidence from Findings.
+5.2 Conclusion
+In conclusion, the EcoBite project successfully achieved its main aim of developing a smart kitchen assistant application to support household food waste reduction. The final prototype provides users with tools to monitor kitchen inventory, track expiry dates, receive recipe suggestions, plan groceries, scan barcodes, ask food-related questions, and customize their preferences. These features are connected to the core problem identified in the project, which is the lack of awareness and planning that often leads to food waste at home.
+The completed application shows that technology can be used to support simple but meaningful daily decisions. Instead of only reminding users about expiry dates, EcoBite combines several related functions into one system. For example, an item added to the kitchen inventory can influence expiry reminders, recipe suggestions, and grocery planning. This makes the app more practical because the features support one another rather than working separately.
+The survey results also support the conclusion that EcoBite is useful and understandable for users. Most respondents found the app easy to understand, and many agreed that the expiry indicators, grocery plan, and recipe suggestions were helpful. The positive response toward predictive grocery planning and waste-saving tips shows that users value features that help them make decisions faster and reduce unnecessary waste.
+However, the project also shows that EcoBite is still a prototype and can be improved further. Some users suggested clearer expiry alerts, more recipe variety, faster loading times, better barcode scanning, more customizable notifications, larger font options, and more language support. These suggestions show that while the app’s core idea is strong, future improvements are needed to make the system more reliable, accessible, and complete.
+Overall, EcoBite meets the project objectives and demonstrates a practical solution for household food management. The project contributes to the use of mobile technology for sustainability by encouraging users to cook with available ingredients, reduce overbuying, and use food before it expires.
+5.2.1 Achievement of Project Objectives
+The project objectives were achieved through the design, development, and evaluation of the EcoBite system. The first objective was achieved by identifying user needs related to food expiry, grocery planning, and meal decision-making. The second objective was achieved by designing the app and website around these needs. The third objective was achieved by developing the functional mobile app and promotional website.
+The implementation of the kitchen inventory and expiry tracking features directly addressed the problem of forgotten food items. The recipe suggestion feature helped users make use of available ingredients. The predictive grocery plan helped users identify what they need to buy instead of purchasing unnecessary items. The AI assistant provided additional food-related guidance, while the barcode scanner improved convenience when adding items.
+From the evaluation results, users responded positively to the app’s purpose and features. This shows that the final output is aligned with the project aim and has potential for real-world use if further enhanced.
+5.2.2 Limitations of the Study
+Although the project achieved its objectives, several limitations were identified during development and evaluation. Firstly, the application was mainly tested on Android. Since iOS requires Apple development tools, certificates, and TestFlight or App Store distribution, the iOS version was not fully tested in this project phase. Therefore, the current downloadable APK is only suitable for Android users.
+Secondly, the recipe database is limited to the recipes included during development. Although the app contains a variety of recipes and website references, it does not yet have a large-scale dynamic recipe database like commercial recipe platforms. As a result, recipe variety may still be limited for users with very specific ingredients or dietary needs.
+Thirdly, the AI assistant is a focused food-related assistant rather than a full advanced AI model. It can answer questions related to food waste, storage, recipes, and grocery planning based on the app’s knowledge base, but it may not handle very complex or unrelated questions.
+Fourthly, barcode scanning depends on available product data. If an item barcode is not found in the database or lookup source, the user may still need to enter details manually. This means barcode scanning improves convenience but does not completely remove manual input.
+Fifthly, the survey results were based on 63 respondents, which is useful for FYP evaluation but still limited compared to a larger real-world user study. The respondents mainly represented young adults, so future evaluation should include a wider group of users such as families, working parents, and older adults.
+Finally, the app update process is not fully automatic. The website can provide an APK download link, but Android users still need to manually confirm installation when updating the app. For iOS, updates would need to be managed through TestFlight or the App Store.
+5.2.3 Project Contribution
+This project contributes by providing a mobile application that combines several food management features in one system. Many existing apps focus only on recipes, grocery lists, or reminders separately. EcoBite attempts to connect these functions through the user’s kitchen inventory so that the app can provide more relevant support.
+The project also contributes to sustainable technology by encouraging users to reduce food waste through practical daily actions. Instead of presenting sustainability only as information, EcoBite turns it into app functions such as expiry indicators, waste-saving tips, recipe suggestions, and grocery planning. This makes the sustainability goal more actionable for users.
+From a development perspective, the project demonstrates the use of Flutter, Firebase, Firestore, notification services, barcode scanning, and web promotion in a single FYP system. The promotional website also contributes by making the app easier to explain and distribute to users.
+From a user experience perspective, EcoBite shows how a simple visual design, clear navigation, and connected features can make kitchen management easier. The survey results suggest that users responded positively to the app’s core concept and found its main features useful.
+5.3 Recommendations and Future Enhancements
+Based on the findings and limitations, several recommendations are suggested for future development.
+Firstly, the expiry reminder system should be improved. Some respondents suggested clearer expiry date alerts. Future versions can include stronger notification options, reminder frequency settings, quiet hours, and priority reminders for items expiring within one day. This would make the reminder system more flexible and useful for different user habits.
+Secondly, the recipe database should be expanded. Users suggested more recipe variety and better recipe search. Future work can include a larger recipe database with more cuisines, cooking times, dietary filters, and ingredient substitutions. This would make the recipe suggestion feature more helpful, especially for users with limited ingredients or specific food preferences.
+Thirdly, the barcode scanner can be improved by connecting it to a larger product database. This would increase the chance of recognizing scanned products and reduce the need for manual entry. Future versions can also allow users to contribute missing barcode information to improve the database over time.
+Fourthly, the AI assistant can be enhanced with more advanced natural language processing. The current assistant is useful as a focused helper, but future versions could connect to a stronger AI model or cloud-based AI service. This would allow the assistant to provide more detailed answers, better recipe guidance, and more natural conversation.
+Fifthly, the app can include a meal planning calendar. Some users suggested adding a meal planning feature. A weekly calendar would allow users to plan breakfast, lunch, and dinner using items in their inventory. This would strengthen the connection between recipe suggestions and grocery planning.
+Sixthly, the app can include food waste progress tracking. For example, users could see how many items they used before expiry, how many expired, and how much money they may have saved. This would make the impact of using EcoBite more visible and could motivate users to continue using the app.
+Seventhly, accessibility should be improved. Some respondents suggested larger font options and better usability. Future versions can include adjustable font sizes, clearer contrast settings, screen reader support, and simplified onboarding screens for first-time users.
+Eighthly, the app should be tested with a wider range of users. Future evaluation should include students, families, working adults, and users who cook frequently. A longer testing period would also help measure whether EcoBite actually changes user behaviour over time.
+Ninthly, the app update process can be improved. Since the APK download is hosted through GitHub Releases, the app can include a version check feature using Firebase. When a new version is available, the app can notify users and open the download link. This would make updates easier for Android users.
+Finally, iOS deployment should be considered in future work. Since Flutter supports cross-platform development, the app can be prepared for iOS testing through TestFlight. This would allow EcoBite to reach a wider group of users beyond Android.
+5.4 Chapter Summary
+This chapter summarised the overall outcome of the EcoBite project and concluded that the project objectives were successfully achieved. The app was developed as a smart kitchen assistant that helps users manage food inventory, monitor expiry dates, receive recipe suggestions, plan groceries, and reduce food waste. A promotional website was also developed to introduce the app and provide an APK download link.
+The survey results showed that users generally found EcoBite understandable, useful, and relevant to food waste reduction. The strongest features identified by users were predictive grocery planning, expiry reminders, recipe suggestions, waste-saving tips, and the AI assistant. These findings show that the app has potential to support better kitchen habits and reduce unnecessary food waste.
+The chapter also discussed the limitations of the project, including limited iOS testing, limited recipe database size, barcode database dependency, prototype-level AI assistant, and the need for wider user testing. Recommendations were provided for future work, including improved notifications, larger recipe database, enhanced AI assistant, meal planning calendar, food waste progress tracking, better accessibility, and app update notifications.
+Overall, EcoBite is a practical and relevant FYP project that applies mobile application development to a real household problem. The project demonstrates how technology can support sustainability by helping users make better food, cooking, and grocery decisions in daily life.
+References
+Donnelly, P. (2023). AI applications to track and reduce food waste. Innovation News Network.
+https://www.innovationnewsnetwork.com/ai-applications-track-reduce-food-waste-save-billions/32247/
+Kaur, R., & Sharma, S. (2023). Predictive analysis of grocery sales: A machine learning approach. International Journal of Creative Research Thoughts, 11(9).
+https://ijcrt.org/papers/IJCRT2309240.pdf
+Kulwinder. (2023). NLP-based recipe recommender system [GitHub repository].
+https://github.com/kulwinderkk/recipe_recommender_nlp
+Mathisen, R., et al. (2022). The impact of smartphone apps designed to reduce food waste. Frontiers in Nutrition.
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9482070/
+Nkwo, M., et al. (2021). Persuasive apps for sustainable waste management. Frontiers in Artificial Intelligence, 4, Article 748454.
+https://doi.org/10.3389/frai.2021.748454
+Statista. (2025a). Chart: Most food is wasted at the household level.
+https://www.statista.com/chart/24349/estimated-annual-global-food-waste-by-sector/
+Statista. (2025b). Chart: The enormous scale of global food waste.
+https://www.statista.com/chart/24350/total-annual-household-waste-produced-in-selected-countries/
+Xu, Z., et al. (2024). Developing a personalized meal recommendation system for chronic disease prevention. JMIR Formative Research, 8, e52170.
+https://doi.org/10.2196/52170
+Yap, Z. T., et al. (2024). Hybrid-based food recommender system utilizing KNN and SVD. Cogent Engineering, 11(1).
+https://doi.org/10.1080/23311916.2024.2436125
+Abbas, A., Khan, S., & Ahmad, M. (2022). Food recommender system: A review on techniques, datasets and evaluation. Journal of Soft Computing and Data Mining, 3(2), 45–60.
+Djekic, I., et al. (2025). Exploring the potential of AI-driven food waste management in commercial kitchens. Sustainability, 17(2), Article 1234.
+IBM. (2024, November 6). What is AI inventory management? IBM.
+Xu, Z., et al. (2024). Developing a personalized meal recommendation system for chronic disease prevention. JMIR Formative Research, 8, e52170.
+https://doi.org/10.2196/52170
+Yap, Z. T., Roy, A., & Lim, K. (2024). Hybrid-based food recommender system utilizing KNN and SVD. Cogent Engineering, 11(1), 2436125.
+https://doi.org/10.1080/23311916.2024.2436125
+Data Template. (2024). Pantry Cook case study.
+https://www.datatemplate.com/case-studies/pantry/
+?
+Djekic, I., et al. (2025). Exploring AI-driven food waste management. Sustainability.
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11799730/
+?
+Prism Sustainability. (2025). AI-driven food waste reduction technologies.
+https://prism.sustainability-directory.com/scenario/ai-driven-food-waste-reduction-technologies-future/
+?
+RPRA. (2025). AI innovations in food waste.
+https://rpra.ca/the-hub/ai-innovations-drive-global-food-waste-reduction-and-sustainability/
+?
+Tezeract. (2025). Ladle AI case study.
+https://tezeract.ai/ai-case-studies/ladle-ai-powered-kitchen-assistant/
+?
+The Guardian. (2025). AI tool trial saves 1.5M meals.
+https://www.theguardian.com/environment/2025/may/27/food-companies-edible-waste-charities-ai-tool-trial
+?
+The Rail Media. (2025). 5 ways AI cuts restaurant waste.
+https://www.therail.media/stories/2025/1/21/5-ways-ai-reduces-food-waste-in-restaurants-by-30
+?
+Abbas, A., Khan, S., & Ahmad, M. (2022). Food recommender system: A review on techniques, datasets and evaluation. Journal of Soft Computing and Data Mining, 3(2), 45–60.?
+Djekic, I., Smigic, N., Ristic, I., & Tesovic, M. (2025). Exploring the potential of AI-driven food waste management in commercial kitchens. Sustainability, 17(2), 1234. https://pmc.ncbi.nlm.nih.gov/articles/PMC11799730/
+?
+IBM. (2024, November 6). What is AI inventory management? IBM Think.
+https://www.ibm.com/think/topics/ai-inventory-management
+?
+Kwasny, T., et al. (2025). Byte into sustainability: A scoping review of digital food environments and sustainability. Public Health Nutrition. https://pmc.ncbi.nlm.nih.gov/articles/PMC12560354/
+?
+Mathisen, R., et al. (2022). The impact of smartphone apps designed to reduce food waste. Frontiers in Nutrition, 9, 948207. https://pmc.ncbi.nlm.nih.gov/articles/PMC9482070/
+Abbas, A., Khan, S., & Ahmad, M. (2022). Food recommender system: A review on techniques, datasets and evaluation. Journal of Soft Computing and Data Mining, 3(2), 45–60.
+Apple. (2024). SuperCook: Recipe by ingredient [Mobile app]. App Store.
+Djekic, I., Smigic, N., Ristic, I., & Tesovic, M. (2025). Exploring the potential of AI-driven food waste management in commercial kitchens. Sustainability, 17(2), 1234.
+Food Tank. (2021, September 27). 12 apps preventing household food waste and protecting the planet. Food Tank.
+Kwasny, T., et al. (2025). Byte into sustainability: A scoping review of digital food environments and sustainability. Public Health Nutrition.
+Mathisen, R., et al. (2022). The impact of smartphone apps designed to reduce food waste. Frontiers in Nutrition, 9, 948207.
+Postharvest Technologies. (2024, February 5). 7 mobile apps that help consumers reduce food waste.
+Shapiro, E. (2024, May 19). Top 5 apps for food waste.
+Abbas, A., Khan, S., & Ahmad, M. (2022). Food recommender system: A review on techniques, datasets and evaluation. Journal of Soft Computing and Data Mining, 3(2), 45–60.
+Djekic, I., Smigic, N., Ristic, I., & Tesovic, M. (2025). Exploring the potential of AI-driven food waste management in commercial kitchens. Sustainability, 17(2), 1234.
+IBM. (2024, November 6). What is AI inventory management? IBM Think.
+Kwasny, T., et al. (2025). Byte into sustainability: A scoping review of digital food environments and sustainability. Public Health Nutrition.
+Xu, Z., et al. (2024). Developing a personalized meal recommendation system for chronic disease prevention. JMIR Formative Research, 8, e52170.
+Yap, Z. T., Roy, A., & Lim, K. (2024). Hybrid-based food recommender system utilizing KNN and SVD. Cogent Engineering, 11(1), 2436125.
+Braun, V., & Clarke, V. (2006). Using thematic analysis in psychology. Qualitative Research in Psychology, 3(2), 77-101.
+IDEO. (2015). The field guide to human-centered design. IDEO.org.
+Nkwo, M., et al. (2021). Designing persuasive mobile applications for sustainable waste management. Frontiers in Artificial Intelligence, 4, 748454.

@@ -25,10 +25,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(123, 196, 127, 0.28), transparent 32rem),
     radial-gradient(circle at top right, rgba(31, 122, 77, 0.16), transparent 30rem),
@@ -75,7 +77,8 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.2rem;
+  min-width: 0;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
   font-weight: 900;
   color: var(--dark-green);
 }
@@ -92,6 +95,7 @@ a {
   gap: 14px;
   color: var(--muted);
   font-weight: 750;
+  min-width: 0;
 }
 
 .nav-links a:hover {
@@ -158,13 +162,13 @@ a {
   width: min(1120px, calc(100% - 32px));
   min-height: calc(100vh - 72px);
   margin: 0 auto;
-  padding: 108px 0 80px;
+  padding: clamp(56px, 10vw, 108px) 0 clamp(44px, 8vw, 80px);
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 390px;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
   align-items: center;
-  gap: 72px;
-  overflow: hidden;
+  gap: clamp(36px, 6vw, 72px);
+  overflow: visible;
   isolation: isolate;
 }
 
@@ -257,16 +261,18 @@ p {
 h1 {
   margin-bottom: 18px;
   color: var(--dark-green);
-  font-size: clamp(3rem, 7.3vw, 6rem);
-  line-height: 0.94;
+  font-size: clamp(2.75rem, 7.3vw, 6rem);
+  line-height: 0.98;
   font-weight: 950;
+  overflow-wrap: anywhere;
 }
 
 h2 {
   color: var(--dark-green);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.05;
+  font-size: clamp(1.85rem, 4vw, 3.5rem);
+  line-height: 1.08;
   font-weight: 930;
+  overflow-wrap: anywhere;
 }
 
 h3 {
@@ -277,7 +283,7 @@ h3 {
 
 .hero-copy {
   color: var(--muted);
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
   line-height: 1.65;
   max-width: 620px;
 }
@@ -299,6 +305,8 @@ h3 {
   padding: 0 18px;
   border: 1px solid transparent;
   font-weight: 850;
+  text-align: center;
+  white-space: normal;
   cursor: pointer;
   transition:
     transform 180ms ease,
@@ -334,11 +342,11 @@ h3 {
 }
 
 .phone-shell {
-  width: 340px;
-  min-height: 620px;
-  padding: 18px;
-  border: 10px solid #102119;
-  border-radius: 38px;
+  width: min(100%, clamp(280px, 32vw, 340px));
+  min-height: clamp(520px, 58vw, 620px);
+  padding: clamp(14px, 2vw, 18px);
+  border: clamp(7px, 1.2vw, 10px) solid #102119;
+  border-radius: clamp(30px, 4vw, 38px);
   background: var(--pale-green);
   box-shadow: 0 32px 80px rgba(15, 61, 46, 0.28);
   transform: none;
@@ -378,7 +386,7 @@ h3 {
 
 .hero-app-card h2 {
   margin: 8px 0;
-  font-size: 1.6rem;
+  font-size: clamp(1.25rem, 4vw, 1.6rem);
 }
 
 .hero-app-card p,
@@ -454,7 +462,7 @@ h3 {
 .split-section {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 92px 0 0;
+  padding: clamp(58px, 9vw, 92px) 0 0;
 }
 
 .section-heading {
@@ -482,11 +490,11 @@ h3 {
 
 .feature-demo {
   display: grid;
-  grid-template-columns: minmax(280px, 440px) minmax(360px, 1fr);
-  gap: 52px;
+  grid-template-columns: minmax(260px, 440px) minmax(300px, 1fr);
+  gap: clamp(26px, 4.5vw, 52px);
   align-items: center;
   min-height: 720px;
-  padding: 26px;
+  padding: clamp(16px, 3vw, 26px);
   border: 1px solid var(--line);
   border-radius: 8px;
   background:
@@ -501,10 +509,10 @@ h3 {
 
 .feature-tab {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr);
+  grid-template-columns: clamp(38px, 7vw, 44px) minmax(0, 1fr);
   gap: 4px 14px;
   width: 100%;
-  padding: 18px;
+  padding: clamp(14px, 2.4vw, 18px);
   border: 1px solid transparent;
   border-radius: 8px;
   background: transparent;
@@ -536,8 +544,8 @@ button.feature-tab {
 
 .feature-tab span {
   grid-row: span 2;
-  width: 36px;
-  height: 36px;
+  width: clamp(34px, 7vw, 36px);
+  height: clamp(34px, 7vw, 36px);
   display: inline-grid;
   place-items: center;
   border-radius: 8px;
@@ -558,14 +566,16 @@ button.feature-tab {
 
 .feature-tab strong {
   color: var(--dark-green);
-  font-size: 1.06rem;
+  font-size: clamp(0.98rem, 2.5vw, 1.06rem);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .feature-tab small {
   display: block;
   max-width: 340px;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: clamp(0.86rem, 2.25vw, 0.92rem);
   line-height: 1.55;
 }
 
@@ -575,7 +585,7 @@ button.feature-tab {
 }
 
 .feature-preview-panel {
-  min-height: 660px;
+  min-height: clamp(500px, 70vw, 660px);
   display: grid;
   place-items: center;
   border-radius: 8px;
@@ -585,7 +595,7 @@ button.feature-tab {
 }
 
 .feature-phone {
-  width: min(100%, 410px);
+  width: min(100%, clamp(300px, 44vw, 410px));
   transition:
     opacity 180ms ease,
     transform 180ms ease;
@@ -626,7 +636,7 @@ button.feature-tab {
 }
 
 .phone-frame {
-  width: min(100%, 410px);
+  width: min(100%, clamp(300px, 44vw, 410px));
   aspect-ratio: 1080 / 2182;
   overflow: hidden;
   border: 8px solid #102119;
@@ -1106,10 +1116,12 @@ button.feature-tab {
 
 .faq-list summary {
   cursor: pointer;
-  padding: 18px 20px;
+  padding: 18px 46px 18px 20px;
   color: var(--dark-green);
   font-weight: 950;
   list-style: none;
+  position: relative;
+  line-height: 1.35;
 }
 
 .faq-list summary::-webkit-details-marker {
@@ -1118,7 +1130,10 @@ button.feature-tab {
 
 .faq-list summary::after {
   content: "+";
-  float: right;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--forest-green);
   font-size: 1.3rem;
   line-height: 1;
@@ -1240,7 +1255,7 @@ button.feature-tab {
 .cta {
   width: min(1120px, calc(100% - 32px));
   margin: 92px auto 0;
-  padding: 28px;
+  padding: clamp(22px, 4vw, 28px);
   justify-content: space-between;
 }
 
@@ -1275,6 +1290,7 @@ button.feature-tab {
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .login-page {
@@ -1358,7 +1374,40 @@ button.feature-tab {
   border-color: var(--forest-green);
 }
 
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 720px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-copy {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-actions,
+  .phone-preview {
+    justify-content: center;
+  }
+
+  .phone-shell {
+    width: min(100%, 330px);
+  }
+}
+
 @media (max-width: 900px) {
+  .nav {
+    width: min(100% - 24px, 1120px);
+    gap: 14px;
+  }
+
   .split-section {
     grid-template-columns: 1fr;
   }
@@ -1370,14 +1419,24 @@ button.feature-tab {
   }
 
   .feature-preview-panel {
-    min-height: 620px;
+    min-height: clamp(520px, 88vw, 620px);
   }
 
   .hero {
     min-height: auto;
-    padding: 70px 0 44px;
+    padding: 64px 0 44px;
     grid-template-columns: 1fr;
     gap: 36px;
+    text-align: center;
+  }
+
+  .hero-copy {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
   }
 
   .phone-preview {
@@ -1411,13 +1470,82 @@ button.feature-tab {
   }
 
   .phone-frame {
-    width: min(100%, 280px);
+    width: min(100%, 360px);
   }
 }
 
 @media (max-width: 640px) {
+  .section,
+  .split-section,
+  .hero,
+  .problem-strip,
+  .cta,
+  .footer,
+  .login-page {
+    width: min(100% - 24px, 1120px);
+  }
+
   .nav {
     min-height: 64px;
+    width: min(100% - 24px, 1120px);
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .hero::before {
+    inset: 6% -18% 32% -18%;
+  }
+
+  .hero::after {
+    width: 92vw;
+    right: -28vw;
+    top: 34%;
+  }
+
+  .hero-copy {
+    max-width: none;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .phone-preview {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .phone-shell {
+    max-width: calc(100vw - 48px);
+  }
+
+  .mini-card strong,
+  .mini-card span,
+  .hero-app-card h2,
+  .hero-app-card p {
+    overflow-wrap: anywhere;
+  }
+
+  .feature-preview-panel {
+    overflow: hidden;
+  }
+
+  .phone-frame {
+    max-width: calc(100vw - 52px);
+  }
+
+  .screenshot-image {
+    object-position: center top;
   }
 
   .nav-toggle {
@@ -1453,7 +1581,20 @@ button.feature-tab {
   }
 
   h1 {
-    font-size: 3.35rem;
+    font-size: clamp(2.7rem, 15vw, 3.65rem);
+    line-height: 1;
+  }
+
+  h2 {
+    font-size: clamp(1.85rem, 10vw, 2.7rem);
+  }
+
+  .section-heading {
+    margin-bottom: 22px;
+  }
+
+  .section-heading p {
+    font-size: 1rem;
   }
 
   .feature-grid,
@@ -1466,15 +1607,23 @@ button.feature-tab {
   .feature-demo {
     padding: 14px;
     gap: 26px;
+    margin-right: -2px;
+    margin-left: -2px;
   }
 
   .feature-tab {
     grid-template-columns: 38px minmax(0, 1fr);
     padding: 14px;
+    gap: 4px 12px;
+  }
+
+  .feature-tab small {
+    max-width: none;
   }
 
   .feature-preview-panel {
-    min-height: 560px;
+    min-height: clamp(520px, 142vw, 620px);
+    padding: 10px;
   }
 
   .faq-list {
@@ -1482,7 +1631,7 @@ button.feature-tab {
   }
 
   .feature-phone {
-    width: min(100%, 335px);
+    width: min(100%, 350px);
   }
 
   .screen-showcase {
@@ -1492,7 +1641,8 @@ button.feature-tab {
   }
 
   .phone-shell {
-    min-height: 560px;
+    width: min(100%, 315px);
+    min-height: 540px;
   }
 
   .screen-card {
@@ -1515,7 +1665,9 @@ button.feature-tab {
   }
 
   .phone-frame {
-    width: min(100%, 285px);
+    width: min(100%, 340px);
+    border-width: 7px;
+    border-radius: 30px;
   }
 
   .screen-title {
@@ -1526,6 +1678,10 @@ button.feature-tab {
   .footer,
   .login-panel {
     display: block;
+  }
+
+  .cta {
+    text-align: center;
   }
 
   .login-form {
@@ -1539,5 +1695,86 @@ button.feature-tab {
 
   .final-cta .button.primary {
     margin-right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hero {
+    width: calc(100% - 28px);
+    padding-top: 42px;
+    gap: 30px;
+  }
+
+  h1 {
+    font-size: clamp(2.05rem, 12.5vw, 2.85rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
+  .hero-copy {
+    font-size: clamp(0.95rem, 4.4vw, 1.02rem);
+    line-height: 1.55;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .feature-tab {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .feature-tab span {
+    width: 34px;
+    height: 34px;
+  }
+
+  .feature-preview-panel {
+    min-height: clamp(500px, 150vw, 590px);
+  }
+
+  .feature-phone,
+  .phone-frame {
+    width: min(100%, calc(100vw - 54px));
+  }
+
+  .phone-shell {
+    width: min(100%, calc(100vw - 54px));
+    min-height: auto;
+  }
+
+  .faq-list summary {
+    padding-right: 42px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand {
+    gap: 8px;
+    font-size: 0.98rem;
+  }
+
+  .brand img {
+    width: 34px;
+    height: 34px;
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 12vw, 2.55rem);
+  }
+
+  .hero-copy {
+    font-size: 0.92rem;
+  }
+
+  .phone-shell {
+    width: min(100%, calc(100vw - 44px));
+    padding: 12px;
+    border-width: 7px;
   }
 }

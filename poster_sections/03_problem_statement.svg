@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" rx="42" fill="#ffffff" />
+  <rect x="30" y="30" width="1540" height="840" rx="34" fill="#f6fbf7" stroke="#ddefe1" stroke-width="4" />
+  <circle cx="1460" cy="120" r="72" fill="#eaf7ec" />
+  <path d="M1430 125 C1465 72 1504 78 1488 132 C1474 177 1436 167 1430 125Z" fill="#1f7a4d" opacity="0.9" />
+  <path d="M1398 152 C1434 150 1460 171 1474 202" fill="none" stroke="#0f3d2e" stroke-width="8" stroke-linecap="round" />
+  <text x="90" y="130" font-size="62" font-weight="900" fill="#0f3d2e" font-family="Arial, sans-serif">Problem Statement</text>
+  
+  <text x="95" y="265" font-size="38" font-weight="550" fill="#1d2b24">Many households waste edible food because users forget expiry dates,</text>
+<text x="95" y="316.3" font-size="38" font-weight="550" fill="#1d2b24">buy duplicate grocery items, or do not know what to cook with existing</text>
+<text x="95" y="367.6" font-size="38" font-weight="550" fill="#1d2b24">ingredients. Existing recipe and grocery applications often work</text>
+<text x="95" y="418.9" font-size="38" font-weight="550" fill="#1d2b24">separately and do not fully connect inventory tracking, expiry</text>
+<text x="95" y="470.20000000000005" font-size="38" font-weight="550" fill="#1d2b24">reminders, recipe suggestions, and grocery planning.</text>
+  
+  
+</svg>

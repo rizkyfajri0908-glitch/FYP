@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" rx="42" fill="#ffffff" />
+  <rect x="30" y="30" width="1540" height="840" rx="34" fill="#f6fbf7" stroke="#ddefe1" stroke-width="4" />
+  <circle cx="1460" cy="120" r="72" fill="#eaf7ec" />
+  <path d="M1430 125 C1465 72 1504 78 1488 132 C1474 177 1436 167 1430 125Z" fill="#1f7a4d" opacity="0.9" />
+  <path d="M1398 152 C1434 150 1460 171 1474 202" fill="none" stroke="#0f3d2e" stroke-width="8" stroke-linecap="round" />
+  <text x="90" y="130" font-size="62" font-weight="900" fill="#0f3d2e" font-family="Arial, sans-serif">Results &amp; Discussion</text>
+  <text x="94" y="188" font-size="30" font-weight="800" fill="#1f7a4d" letter-spacing="2" font-family="Arial, sans-serif">USER FEEDBACK SURVEY</text>
+  <text x="95" y="265" font-size="38" font-weight="550" fill="#1d2b24">EcoBite was evaluated through a user feedback survey with 63</text>
+<text x="95" y="316.3" font-size="38" font-weight="550" fill="#1d2b24">respondents. The results showed generally positive feedback toward the</text>
+<text x="95" y="367.6" font-size="38" font-weight="550" fill="#1d2b24">app usability and its food waste reduction purpose.</text>
+  
+  <g font-family="Arial, sans-serif">
+    <rect x="115" y="560" width="610" height="120" rx="24" fill="#eaf7ec" stroke="#ddefe1" stroke-width="3" />
+      <text x="149" y="615" font-size="42" font-weight="950" fill="#0f3d2e">63</text>
+      <text x="149" y="652" font-size="25" font-weight="800" fill="#66746c">Respondents</text>
+<rect x="815" y="560" width="610" height="120" rx="24" fill="#ffffff" stroke="#ddefe1" stroke-width="3" />
+      <text x="849" y="615" font-size="42" font-weight="950" fill="#0f3d2e">3.98 / 5</text>
+      <text x="849" y="652" font-size="25" font-weight="800" fill="#66746c">Ease of understanding</text>
+<rect x="115" y="715" width="610" height="120" rx="24" fill="#eaf7ec" stroke="#ddefe1" stroke-width="3" />
+      <text x="149" y="770" font-size="42" font-weight="950" fill="#0f3d2e">74.2%</text>
+      <text x="149" y="807" font-size="25" font-weight="800" fill="#66746c">More likely to use ingredients before expiry</text>
+<rect x="815" y="715" width="610" height="120" rx="24" fill="#ffffff" stroke="#ddefe1" stroke-width="3" />
+      <text x="849" y="770" font-size="42" font-weight="950" fill="#0f3d2e">60.3%</text>
+      <text x="849" y="807" font-size="25" font-weight="800" fill="#66746c">Believe EcoBite can reduce food waste</text>
+  </g>
+</svg>
