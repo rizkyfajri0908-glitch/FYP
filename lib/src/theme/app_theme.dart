@@ -78,9 +78,9 @@ class AppTheme {
 
   static ThemeData get dark {
     final colorScheme = ColorScheme.fromSeed(
-      seedColor: AppColors.leafGreen,
+      seedColor: AppColors.mutedLeafGreen,
       brightness: Brightness.dark,
-      primary: AppColors.leafGreen,
+      primary: AppColors.mutedLeafGreen,
       secondary: AppColors.mintGreen,
       surface: const Color(0xFF13261D),
     );
@@ -107,8 +107,20 @@ class AppTheme {
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: const Color(0xFF102119),
         indicatorColor: const Color(0xFF28503B),
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return const IconThemeData(color: AppColors.mutedLeafGreen);
+          }
+          return const IconThemeData(color: Color(0xFFB7C8BD));
+        }),
         labelTextStyle: WidgetStateProperty.all(
           const TextStyle(fontSize: 11, fontWeight: FontWeight.w700),
+        ),
+      ),
+      iconTheme: const IconThemeData(color: Color(0xFFB7C8BD)),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          foregroundColor: AppColors.mutedLeafGreen,
         ),
       ),
       chipTheme: const ChipThemeData(
@@ -118,7 +130,7 @@ class AppTheme {
           color: AppColors.mintGreen,
           fontWeight: FontWeight.w700,
         ),
-        iconTheme: IconThemeData(color: AppColors.leafGreen),
+        iconTheme: IconThemeData(color: AppColors.mutedLeafGreen),
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(

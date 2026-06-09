@@ -6,6 +6,7 @@ class AppColors {
   static const darkGreen = Color(0xFF0F3D2E);
   static const forestGreen = Color(0xFF1F7A4D);
   static const leafGreen = Color(0xFF7BC47F);
+  static const mutedLeafGreen = Color(0xFF5FAE68);
   static const mintGreen = Color(0xFFEAF7EC);
   static const paleGreen = Color(0xFFF6FBF7);
   static const warning = Color(0xFFE7A23B);
@@ -22,7 +23,7 @@ class AppColors {
   }
 
   static Color iconGreen(BuildContext context) {
-    return isDarkMode(context) ? leafGreen : forestGreen;
+    return isDarkMode(context) ? mutedLeafGreen : forestGreen;
   }
 
   static Color readableMuted(BuildContext context) {
