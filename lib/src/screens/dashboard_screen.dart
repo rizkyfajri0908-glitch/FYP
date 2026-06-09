@@ -62,7 +62,7 @@ class DashboardScreen extends StatelessWidget {
                               backgroundColor: AppColors.mintGreen,
                               child: Icon(
                                 Icons.schedule,
-                                color: AppColors.titleGreen(context),
+                                color: AppColors.darkGreen,
                               ),
                             ),
                             title: Text(item.name),
@@ -178,8 +178,8 @@ class _WasteSavingTipCardState extends State<_WasteSavingTipCard> {
                 tip,
                 key: ValueKey(tip),
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: AppColors.ink,
+                style: TextStyle(
+                  color: AppColors.titleGreen(context),
                   height: 1.4,
                   fontWeight: FontWeight.w700,
                 ),

@@ -189,7 +189,10 @@ class _SignOutCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: FilledButton.icon(
-          style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
+          style: FilledButton.styleFrom(
+            backgroundColor: AppColors.danger,
+            foregroundColor: Colors.white,
+          ),
           onPressed: FirebaseAuth.instance.signOut,
           icon: const Icon(Icons.logout),
           label: const Text('Log Out'),
@@ -226,7 +229,7 @@ class _ProfileSummaryCard extends StatelessWidget {
             Text(
               'Your EcoBite Profile',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: AppColors.titleGreen(context),
+                    color: AppColors.darkGreen,
                     fontWeight: FontWeight.w900,
                   ),
               textAlign: TextAlign.center,
@@ -805,7 +808,7 @@ class _InlineNumberPreference extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.iconGreen(context)),
+          Icon(icon, color: AppColors.darkGreen),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -813,13 +816,16 @@ class _InlineNumberPreference extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontWeight: FontWeight.w800),
+                  style: const TextStyle(
+                    color: AppColors.ink,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   '$value $suffix',
-                  style: TextStyle(
-                    color: AppColors.readableMuted(context),
+                  style: const TextStyle(
+                    color: AppColors.muted,
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                   ),
@@ -874,7 +880,7 @@ class _ReminderTimePreference extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.iconGreen(context)),
+          Icon(icon, color: AppColors.darkGreen),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -882,13 +888,16 @@ class _ReminderTimePreference extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontWeight: FontWeight.w800),
+                  style: const TextStyle(
+                    color: AppColors.ink,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   '$hour12:00 $period',
-                  style: TextStyle(
-                    color: AppColors.readableMuted(context),
+                  style: const TextStyle(
+                    color: AppColors.muted,
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                   ),

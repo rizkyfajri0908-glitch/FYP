@@ -822,11 +822,11 @@ class _SourceChip extends StatelessWidget {
     };
 
     return Chip(
-      avatar: Icon(icon, size: 16, color: AppColors.titleGreen(context)),
+      avatar: Icon(icon, size: 16, color: AppColors.darkGreen),
       label: Text(
         label,
-        style: TextStyle(
-          color: AppColors.titleGreen(context),
+        style: const TextStyle(
+          color: AppColors.darkGreen,
           fontWeight: FontWeight.w800,
         ),
       ),
@@ -846,8 +846,8 @@ class _TagChip extends StatelessWidget {
     return Chip(
       label: Text(
         tag,
-        style: TextStyle(
-          color: AppColors.titleGreen(context),
+        style: const TextStyle(
+          color: AppColors.darkGreen,
           fontWeight: FontWeight.w700,
         ),
       ),

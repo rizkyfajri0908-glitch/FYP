@@ -264,9 +264,12 @@ class _IngredientTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final date = DateFormat('dd MMM yyyy').format(ingredient.expiryDate);
     final cardColor = _cardColor(ingredient);
+    final contentColor = _contentColor(ingredient);
+    final mutedContentColor = contentColor.withValues(alpha: 0.68);
 
     return Card(
       color: cardColor,
+      surfaceTintColor: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: Row(
@@ -279,7 +282,10 @@ class _IngredientTile extends StatelessWidget {
                 color: AppColors.mintGreen,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(_categoryIcon(ingredient.category)),
+              child: Icon(
+                _categoryIcon(ingredient.category),
+                color: AppColors.darkGreen,
+              ),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -290,18 +296,19 @@ class _IngredientTile extends StatelessWidget {
                   Text(
                     ingredient.name,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: contentColor,
                           fontWeight: FontWeight.w800,
                         ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     ingredient.quantity,
-                    style: TextStyle(color: AppColors.readableMuted(context)),
+                    style: TextStyle(color: mutedContentColor),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     'Expiry: $date',
-                    style: TextStyle(color: AppColors.readableMuted(context)),
+                    style: TextStyle(color: mutedContentColor),
                   ),
                 ],
               ),
@@ -309,6 +316,7 @@ class _IngredientTile extends StatelessWidget {
             const SizedBox(width: 8),
             _IngredientActions(
               ingredient: ingredient,
+              foregroundColor: contentColor,
               onEdit: onEdit,
               onDelete: onDelete,
             ),
@@ -337,16 +345,27 @@ class _IngredientTile extends StatelessWidget {
       ExpiryStatus.fresh => Colors.white,
     };
   }
+
+  Color _contentColor(Ingredient ingredient) {
+    return switch (ingredient.expiryStatus) {
+      ExpiryStatus.expired => const Color(0xFF3A0B08),
+      ExpiryStatus.today => const Color(0xFF3A0B08),
+      ExpiryStatus.soon => const Color(0xFF4A3300),
+      ExpiryStatus.fresh => AppColors.ink,
+    };
+  }
 }
 
 class _IngredientActions extends StatelessWidget {
   const _IngredientActions({
     required this.ingredient,
+    required this.foregroundColor,
     required this.onEdit,
     required this.onDelete,
   });
 
   final Ingredient ingredient;
+  final Color foregroundColor;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
 
@@ -375,7 +394,11 @@ class _IngredientActions extends StatelessWidget {
                   tooltip: 'Remove expired item',
                   visualDensity: VisualDensity.compact,
                   onPressed: onDelete,
-                  icon: const Icon(Icons.delete_outline, size: 18),
+                  icon: Icon(
+                    Icons.delete_outline,
+                    size: 18,
+                    color: foregroundColor,
+                  ),
                 ),
               ),
             ],
@@ -407,7 +430,11 @@ class _IngredientActions extends StatelessWidget {
                   tooltip: 'Edit',
                   visualDensity: VisualDensity.compact,
                   onPressed: onEdit,
-                  icon: const Icon(Icons.edit_outlined, size: 18),
+                  icon: Icon(
+                    Icons.edit_outlined,
+                    size: 18,
+                    color: foregroundColor,
+                  ),
                 ),
               ),
               SizedBox(
@@ -419,7 +446,11 @@ class _IngredientActions extends StatelessWidget {
                   tooltip: 'Remove',
                   visualDensity: VisualDensity.compact,
                   onPressed: onDelete,
-                  icon: const Icon(Icons.delete_outline, size: 18),
+                  icon: Icon(
+                    Icons.delete_outline,
+                    size: 18,
+                    color: foregroundColor,
+                  ),
                 ),
               ),
             ],
@@ -787,8 +818,8 @@ class _AddIngredientSheetState extends State<_AddIngredientSheet> {
                 ),
                 child: Text(
                   'Found from ${widget.scannedIngredient!.source}. Confirm the item details before saving',
-                  style: TextStyle(
-                    color: AppColors.titleGreen(context),
+                  style: const TextStyle(
+                    color: AppColors.darkGreen,
                     fontWeight: FontWeight.w700,
                     height: 1.35,
                   ),
