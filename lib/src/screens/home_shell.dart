@@ -95,22 +95,36 @@ class _HomeShellState extends State<HomeShell> {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 720) {
+          final useCompactRail = constraints.maxHeight < 560;
+
           return Scaffold(
             body: Row(
               children: [
-                NavigationRail(
-                  selectedIndex: _selectedIndex,
-                  onDestinationSelected: _selectDestination,
-                  labelType: NavigationRailLabelType.all,
-                  destinations: destinations
-                      .map(
-                        (destination) => NavigationRailDestination(
-                          icon: Icon(destination.icon),
-                          selectedIcon: Icon(destination.selectedIcon),
-                          label: Text(destination.label),
-                        ),
-                      )
-                      .toList(),
+                SafeArea(
+                  right: false,
+                  child: NavigationRail(
+                    selectedIndex: _selectedIndex,
+                    onDestinationSelected: _selectDestination,
+                    minWidth: useCompactRail ? 72 : 96,
+                    labelType: useCompactRail
+                        ? NavigationRailLabelType.none
+                        : NavigationRailLabelType.all,
+                    destinations: destinations
+                        .map(
+                          (destination) => NavigationRailDestination(
+                            icon: Tooltip(
+                              message: destination.label,
+                              child: Icon(destination.icon),
+                            ),
+                            selectedIcon: Tooltip(
+                              message: destination.label,
+                              child: Icon(destination.selectedIcon),
+                            ),
+                            label: Text(destination.label),
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
                 const VerticalDivider(width: 1),
                 Expanded(child: content),
