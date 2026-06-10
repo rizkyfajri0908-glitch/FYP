@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -143,8 +144,8 @@ class KitchenController extends ChangeNotifier {
       }
     } finally {
       _isLoading = false;
-      await _rescheduleExpiryReminders();
       notifyListeners();
+      unawaited(_rescheduleExpiryReminders().catchError((_) {}));
     }
   }
 
@@ -157,9 +158,7 @@ class KitchenController extends ChangeNotifier {
         return null;
       }
       if (cloudIngredients.isEmpty) {
-        for (final ingredient in SampleData.ingredients) {
-          await _cloudService?.saveIngredient(ingredient);
-        }
+        unawaited(_seedCloudIngredients());
         return SampleData.ingredients;
       }
       return cloudIngredients;
@@ -187,13 +186,14 @@ class KitchenController extends ChangeNotifier {
         return null;
       }
       if (cloudRecipes.isEmpty) {
-        for (final recipe in RecipeCatalog.recipes) {
-          await _cloudService?.saveRecipe(recipe);
-        }
+        unawaited(_seedCloudRecipes(RecipeCatalog.recipes));
         return RecipeCatalog.recipes;
       }
 
-      return _syncCatalogRecipesToFirestore(cloudRecipes);
+      return _syncCatalogRecipesToFirestore(cloudRecipes).timeout(
+        const Duration(seconds: 8),
+        onTimeout: () => _mergeCatalogRecipes(cloudRecipes),
+      );
     } catch (_) {
       return null;
     }
@@ -208,15 +208,48 @@ class KitchenController extends ChangeNotifier {
         return null;
       }
       if (cloudKnowledge.isEmpty) {
-        for (final knowledge in AssistantKnowledgeBase.entries) {
-          await _cloudService?.saveAssistantKnowledge(knowledge);
-        }
+        unawaited(_seedCloudAssistantKnowledge(AssistantKnowledgeBase.entries));
         return AssistantKnowledgeBase.entries;
       }
 
-      return _syncAssistantKnowledgeToFirestore(cloudKnowledge);
+      return _syncAssistantKnowledgeToFirestore(cloudKnowledge).timeout(
+        const Duration(seconds: 8),
+        onTimeout: () => _mergeAssistantKnowledge(cloudKnowledge),
+      );
     } catch (_) {
       return null;
+    }
+  }
+
+  Future<void> _seedCloudIngredients() async {
+    try {
+      for (final ingredient in SampleData.ingredients) {
+        await _cloudService?.saveIngredient(ingredient);
+      }
+    } catch (_) {
+      // Background sync should never block the app from opening.
+    }
+  }
+
+  Future<void> _seedCloudRecipes(List<Recipe> recipes) async {
+    try {
+      for (final recipe in recipes) {
+        await _cloudService?.saveRecipe(recipe);
+      }
+    } catch (_) {
+      // Background sync should never block the app from opening.
+    }
+  }
+
+  Future<void> _seedCloudAssistantKnowledge(
+    List<AssistantKnowledge> knowledgeBase,
+  ) async {
+    try {
+      for (final knowledge in knowledgeBase) {
+        await _cloudService?.saveAssistantKnowledge(knowledge);
+      }
+    } catch (_) {
+      // Background sync should never block the app from opening.
     }
   }
 
@@ -251,6 +284,18 @@ class KitchenController extends ChangeNotifier {
     return [...syncedKnowledge, ...customCloudKnowledge];
   }
 
+  List<AssistantKnowledge> _mergeAssistantKnowledge(
+    List<AssistantKnowledge> cloudKnowledge,
+  ) {
+    final customCloudKnowledge = cloudKnowledge.where(
+      (knowledge) => !AssistantKnowledgeBase.entries.any(
+        (defaultKnowledge) => defaultKnowledge.id == knowledge.id,
+      ),
+    );
+
+    return [...AssistantKnowledgeBase.entries, ...customCloudKnowledge];
+  }
+
   Future<List<Recipe>> _syncCatalogRecipesToFirestore(
     List<Recipe> cloudRecipes,
   ) async {
@@ -280,6 +325,16 @@ class KitchenController extends ChangeNotifier {
     );
 
     return [...syncedRecipes, ...customCloudRecipes];
+  }
+
+  List<Recipe> _mergeCatalogRecipes(List<Recipe> cloudRecipes) {
+    final customCloudRecipes = cloudRecipes.where(
+      (recipe) => !RecipeCatalog.recipes.any(
+        (catalogRecipe) => catalogRecipe.id == recipe.id,
+      ),
+    );
+
+    return [...RecipeCatalog.recipes, ...customCloudRecipes];
   }
 
   Future<void> _saveIngredients() async {
