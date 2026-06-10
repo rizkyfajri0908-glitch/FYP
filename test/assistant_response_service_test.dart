@@ -58,6 +58,43 @@ void main() {
     expect(response, anyOf(contains('cook'), contains('Best option')));
   });
 
+  test('does not use expired ingredients for recipe answers', () {
+    const service = AssistantResponseService();
+    final inventory = [
+      Ingredient(
+        id: '1',
+        name: 'Chicken breast',
+        quantity: '2 pieces',
+        category: IngredientCategory.protein,
+        expiryDate: DateTime.now().subtract(const Duration(days: 2)),
+      ),
+      Ingredient(
+        id: '2',
+        name: 'Rice',
+        quantity: '1 kg',
+        category: IngredientCategory.grain,
+        expiryDate: DateTime.now().add(const Duration(days: 30)),
+      ),
+      Ingredient(
+        id: '3',
+        name: 'Eggs',
+        quantity: '6 pieces',
+        category: IngredientCategory.protein,
+        expiryDate: DateTime.now().add(const Duration(days: 5)),
+      ),
+    ];
+
+    final response = service.respond(
+      question: 'What can I cook?',
+      inventory: inventory,
+      recipes: RecipeCatalog.recipes,
+      knowledgeBase: AssistantKnowledgeBase.entries,
+      preferences: UserPreferences.defaults(),
+    );
+
+    expect(response, isNot(contains('Chicken breast')));
+  });
+
   test('answers food waste questions from the knowledge base', () {
     const service = AssistantResponseService();
 

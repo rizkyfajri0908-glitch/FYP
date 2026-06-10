@@ -18,6 +18,7 @@ class AssistantResponseService {
     UserPreferences? preferences,
   }) {
     final normalizedQuestion = question.toLowerCase().trim();
+    final usableInventory = _usableInventory(inventory);
 
     if (_containsAny(normalizedQuestion, [
       'expire',
@@ -62,7 +63,7 @@ class AssistantResponseService {
       "don't know",
     ])) {
       return _recipeResponse(
-        inventory: inventory,
+        inventory: usableInventory,
         recipes: recipes,
         preferences: preferences,
       );
@@ -83,16 +84,16 @@ class AssistantResponseService {
         'restock',
       ],
     )) {
-      return _groceryResponse(inventory);
+      return _groceryResponse(usableInventory);
     }
 
     if (_containsAny(normalizedQuestion, ['inventory', 'kitchen', 'have'])) {
-      return _inventoryResponse(inventory);
+      return _inventoryResponse(usableInventory);
     }
 
     final vagueFoodResponse = _vagueFoodResponse(
       question: normalizedQuestion,
-      inventory: inventory,
+      inventory: usableInventory,
       recipes: recipes,
       preferences: preferences,
     );
@@ -107,6 +108,12 @@ class AssistantResponseService {
 
   bool _containsAny(String question, List<String> keywords) {
     return keywords.any(question.contains);
+  }
+
+  List<Ingredient> _usableInventory(List<Ingredient> inventory) {
+    return inventory
+        .where((ingredient) => ingredient.expiryStatus != ExpiryStatus.expired)
+        .toList();
   }
 
   String _expiryResponse(List<Ingredient> inventory) {
