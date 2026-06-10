@@ -58,7 +58,7 @@ class DashboardScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Card(
                           child: ListTile(
-                            leading: CircleAvatar(
+                            leading: const CircleAvatar(
                               backgroundColor: AppColors.mintGreen,
                               child: Icon(
                                 Icons.schedule,
